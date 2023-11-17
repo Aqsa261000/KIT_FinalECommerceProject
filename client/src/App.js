@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from 'react';
 
-function App() {
+import { CssBaseline } from '@mui/material';
+import { Route, Routes } from 'react-router-dom';
+import SampleComponent from './views/samplecomponent';
+import { BrowserRouter } from 'react-router-dom';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Fragment>
+        <CssBaseline />
+        {/* Yahan par routes aayeghe */}
+        <Routes>
+          <Route path="/" element={<SampleComponent />} />
+        </Routes>
+      </Fragment>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
