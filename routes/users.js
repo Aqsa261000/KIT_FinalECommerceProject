@@ -5,8 +5,14 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User')
 const router = express.Router();
 
-router.get('/',(req,res)=>{
-    res.send('Users Get');
+router.get('/',async (req,res)=>{
+    try {
+        const users = await User.find();
+        res.json(users);
+      } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Server Error');
+      }
 })
 
 router.post('/',[
