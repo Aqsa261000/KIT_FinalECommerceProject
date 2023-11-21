@@ -1,0 +1,122 @@
+
+* > * {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+body{
+    /* background: #70e1f5;   
+    background: -webkit-linear-gradient(to right, #ffd194, #70e1f5);  
+    background: linear-gradient(to right, #ffd194, #70e1f5); 
+  */
+overflow-x:hidden ;
+height: 100vh;
+}
+
+.App {
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}
+
+.vendor-registeration-form{
+    display: flex;
+    height: 100vh;
+
+}
+.vendor-registeration-form .box{
+    flex: 1;
+}
+
+.vendor-registeration-form span{
+  color: #adb5bd;
+}
+
+#form{
+  max-width: 600px;
+  width: 100vw;
+  margin: 7rem auto;
+  padding: 0.5rem 1rem;
+  display: flex;
+}
+
+.input-boxes input{
+  padding: 0.5rem  1rem;
+  max-width: 60%;
+margin: 0 2rem;
+margin-top: 1rem;
+border:none;
+border-radius: 0.3rem;
+}
+
+#form .input-boxes > input:focus{
+  outline: none;
+}
+
+#form > .btn{
+  background: #1D2B64;  
+background: -webkit-linear-gradient(to right, #F8CDDA, #1D2B64); 
+background: linear-gradient(to right, #F8CDDA, #1D2B64); 
+  color: #eee;
+  font-size: 1.2em;
+  cursor: pointer;
+  border-radius: 0.3rem; 
+  margin:2rem auto;
+  width: 30%;
+  padding: 0.3rem 0;
+
+}
+
+
+.vendor-registeration-form .coln-1{
+  padding: 2em 0;
+  position: relative; 
+}
+.coln-1 .vendorHeading{
+    position: absolute; 
+    top: 5%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 2rem;
+}
+.coln-1 > #text {
+    position: absolute;
+    top: 13%;
+   min-width: 20px;
+   margin:0 2rem ;
+   color: #87888dda;
+}
+.eye-icon{
+    color: rgba(185, 182, 182, 0.928);
+    position: absolute;
+    right: 4%;
+    top: 57%;
+}
+#form > p{
+    text-align: center;
+}
+.link{
+    color: #000;
+    font-size: 1rem; 
+    text-decoration: underline;
+}
+.vendor-registeration-form .col-2{
+    height: 100%;
+    overflow-y: hidden;
+}
+.vendor-registeration-form .col-2 img{
+  width: 640px;
+  height: 100%;
+  object-fit:cover;
+  align-self: flex-end;
+  /* display: none; */
+}
+
+@media screen and (min-width: 860px)  {
+  .vendor-registeration-form .col-2 img{
+    display: initial;
+  }
+}

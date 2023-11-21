@@ -1,3 +1,9 @@
-import SampleComponentDefault from './SampleComponent';
+// import SampleComponentDefault from './SampleComponent';
 
-export { SampleComponentDefault };
+// export { SampleComponentDefault };
+import SignUpDefault from './SignUp';
+import LoginDefault from './LogIn';
+import VendorSignUpDefault from './VendorSignUp';
+import VendorLoginDefault from './VendorLogin';
+
+export { SignUpDefault,LoginDefault , VendorSignUpDefault,VendorLoginDefault };

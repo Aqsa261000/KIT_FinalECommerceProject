@@ -1,0 +1,116 @@
+
+* > * {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+body{
+    /* background: #70e1f5;   
+    background: -webkit-linear-gradient(to right, #ffd194, #70e1f5);  
+    background: linear-gradient(to right, #ffd194, #70e1f5); 
+  */
+overflow-x:hidden ;
+height: 100vh;
+}
+
+.App {
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}
+
+.vendor-registeration-form{
+    display: flex;
+    height: 100vh;
+    
+
+}
+.vendor-registeration-form .box{
+    flex: 1;
+}
+
+.vendor-registeration-form span{
+  color: #adb5bd;
+}
+
+
+ #vendorForm{
+    max-width: 400px;
+    width: 100vw;
+    margin: 7rem auto;
+  }
+  
+  #vendorForm >  input, .btn{
+    border: 1px solid #e9ecef;
+    padding: .9em 1em;
+    border-radius: 0.4rem;
+  }
+
+  #vendorForm > input:focus{
+    outline: none;
+  }
+  
+  #vendorForm > .btn{
+   background: #1D2B64;  
+  background: -webkit-linear-gradient(to right, #F8CDDA, #1D2B64); 
+  background: linear-gradient(to right, #F8CDDA, #1D2B64); 
+    color: #eee;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 0.3rem;
+  }
+
+
+.vendor-registeration-form .colm-1{
+  padding: 2em 0;
+  position: relative; 
+}
+.colm-1 .vendorHeading{
+    position: absolute; 
+    top: 5%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 4rem;
+}
+.colm-1 > #text {
+    position: absolute;
+    top: 13%;
+   min-width: 20px;
+   margin:0 2rem ;
+   color: #87888dda;
+}
+.eye-icon3{
+    color: rgba(185, 182, 182, 0.928);
+    position: absolute;
+    right: 22%;
+    top: 42%;
+}
+#vendorForm > p{
+    text-align: center;
+    margin-top: 1.5rem;
+}
+.link{
+    color: #000;
+    font-size: 1rem; 
+    text-decoration: underline;
+}
+.vendor-registeration-form .col-2{
+    height: 100%;
+    overflow-y: hidden;
+}
+.vendor-registeration-form .col-2 img{
+  width: 640px;
+  height: 100%;
+  object-fit:cover;
+  align-self: flex-end;
+  /* display: none; */
+}
+
+@media screen and (min-width: 860px)  {
+  .vendor-registeration-form .col-2 img{
+    display: initial;
+  }
+}
