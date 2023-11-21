@@ -4,6 +4,8 @@ import { CssBaseline } from '@mui/material';
 import { Route, Routes } from 'react-router-dom';
 import SampleComponent from './views/samplecomponent';
 import { BrowserRouter } from 'react-router-dom';
+import { AdminHome } from './views';
+import { DefaultLayout } from './components/layout';
 
 const App = () => {
   return (
@@ -12,7 +14,8 @@ const App = () => {
         <CssBaseline />
         {/* Yahan par routes aayeghe */}
         <Routes>
-          <Route path="/" element={<SampleComponent />} />
+          <Route path="/" element={<DefaultLayout />} />
+          <Route path="/shop" element={<AdminHome />} />
         </Routes>
       </Fragment>
     </BrowserRouter>
