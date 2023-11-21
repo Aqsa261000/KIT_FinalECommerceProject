@@ -15,7 +15,6 @@ const App = () => {
         {/* Yahan par routes aayeghe */}
         <Routes>
           <Route path="/" element={<DefaultLayout />} />
-          <Route path="/shop" element={<AdminHome />} />
         </Routes>
       </Fragment>
     </BrowserRouter>
