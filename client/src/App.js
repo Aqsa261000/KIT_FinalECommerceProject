@@ -2,8 +2,14 @@ import React, { Fragment } from 'react';
 
 import { CssBaseline } from '@mui/material';
 import { Route, Routes } from 'react-router-dom';
-import SampleComponent from './views/samplecomponent';
+
+import LogIn from './views/login';
+
 import { BrowserRouter } from 'react-router-dom';
+
+import { AdminHome } from './views';
+import { DefaultLayout } from './components/layout';
+import SignUp from './views/signup';
 
 const App = () => {
   return (
@@ -12,7 +18,8 @@ const App = () => {
         <CssBaseline />
         {/* Yahan par routes aayeghe */}
         <Routes>
-          <Route path="/" element={<SampleComponent />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<LogIn />} />
         </Routes>
       </Fragment>
     </BrowserRouter>

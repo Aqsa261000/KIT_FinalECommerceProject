@@ -1,3 +1,7 @@
-import SampleComponentDefault from './SampleComponent';
+// import SampleComponentDefault from './SampleComponent';
 
-export { SampleComponentDefault };
+// export { SampleComponentDefault };
+import SignUpDefault from './SignUp';
+import LoginDefault from './LogIn';
+
+export { SignUpDefault, LoginDefault };
