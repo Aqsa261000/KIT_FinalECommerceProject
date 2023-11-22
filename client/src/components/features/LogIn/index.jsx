@@ -5,11 +5,11 @@ import './style.css';
 
 const LoginDefault = () => {
   return (
-    <section className='fullcontainer'>
+    <section className="fullcontainer">
       <div className="sigin-registeration-form">
         <div className="column-1">
           <h2 className="signinHeader">Log In</h2>
-          <span>Welcome back!</span>
+          <h4 className="signinsubHeading">Welcome back!</h4>
           <form id="signinForm" className="flex flex-col">
             {/* <input  type='text' placeholder='Type your Full Name' /> */}
             <input type="text" required placeholder="Enter your Email" />
@@ -17,10 +17,10 @@ const LoginDefault = () => {
             <i class="fa-regular fa-eye eye-icon2"></i>
 
             <button className="btn" type="submit">
-              Click to Log in
+              Login
             </button>
           </form>
-          <p className='flex2'>
+          <p className="flex2">
             Don't have an Account?{' '}
             <Link to="/signup" className="link">
               {' '}

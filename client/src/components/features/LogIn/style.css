@@ -1,5 +1,5 @@
-* > * {
-  font-family: 'Roboto', sans-serif;
+* {
+  font-family: 'Poppins', sans-serif;
   margin: 0;
 }
 
@@ -42,11 +42,14 @@
   background: #8a33fd;
   /* background: -webkit-linear-gradient(to right, #f8cdda, #1d2b64);
   background: linear-gradient(to right, #f8cdda, #1d2b64); */
-  color: #eee;
+  color: white;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   border-radius: 0.3rem;
+}
+#signinForm > .btn:hover {
+  background-color: #7a2fdc;
 }
 
 .flex {
@@ -73,6 +76,14 @@
   top: 1.3%;
   font-size: 1.5rem;
   font-weight: bold;
+}
+.column-1 .signinsubHeading {
+  /* position: absolute; */
+  /* left: 0; */
+  color: #adb5bd;
+  top: 1.3%;
+  /* font-size: 1.5rem; */
+  font-weight: 500;
 }
 .eye-icon2 {
   color: rgba(185, 182, 182, 0.928);
