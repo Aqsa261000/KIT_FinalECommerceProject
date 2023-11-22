@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import {LoginDefault} from '../components/features';
+import { LoginDefault } from '../components/features';
 
 const Login = () => {
   return (
@@ -9,4 +9,4 @@ const Login = () => {
   );
 };
 
-export default Login; 
+export default Login;

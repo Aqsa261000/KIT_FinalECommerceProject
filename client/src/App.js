@@ -11,7 +11,7 @@ import { AdminHome } from './views';
 import { DefaultLayout } from './components/layout';
 import SignUp from './views/signup';
 
-const App = () => {  
+const App = () => {
   return (
     <BrowserRouter>
       <Fragment>
@@ -25,7 +25,5 @@ const App = () => {
     </BrowserRouter>
   );
 };
-
-
 
 export default App;
