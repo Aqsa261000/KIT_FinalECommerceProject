@@ -2,6 +2,6 @@
 
 // export { SampleComponentDefault };
 import SignUpDefault from './SignUp';
-import LoginDefault from './LogIn';
+import LoginDefault from './Login';
 
 export { SignUpDefault, LoginDefault };

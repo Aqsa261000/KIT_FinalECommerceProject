@@ -1,3 +1,4 @@
 import { AdminHome } from './AdminDashboard';
-
-export { AdminHome };
+import Login from './login';
+import SignUp from './signup';
+export { AdminHome, Login, SignUp };

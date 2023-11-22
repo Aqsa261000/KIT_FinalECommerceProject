@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
-import {LoginDefault } from '../components/features';
+import {LoginDefault} from '../components/features';
 
-const LogIn = () => {
+const Login = () => {
   return (
     <Fragment>
       <LoginDefault />
@@ -9,4 +9,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn; 
+export default Login; 
