@@ -18,6 +18,20 @@ const userSchema = mongoose.Schema({
     type: Number,
     default: 0
   },
+  gender: {
+    type: String,
+    // require: true
+    default: null
+  },
+  city: {
+    type: String,
+    default: null
+  },
+  cnic: {
+    type: String,
+    // require: true
+    default:null
+  },
   password: {
     type: String,
     require: true,
