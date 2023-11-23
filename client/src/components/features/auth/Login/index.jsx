@@ -14,7 +14,7 @@ const LoginDefault = () => {
             {/* <input  type='text' placeholder='Type your Full Name' /> */}
             <input type="text" required placeholder="Enter your Email" />
             <input type="password" required placeholder="Enter your Password" />
-            <i class="fa-regular fa-eye eye-icon2"></i>
+            {/* <i className="fa-regular fa-eye eye-icon2"></i> */}
 
             <button className="btn" type="submit">
               Login

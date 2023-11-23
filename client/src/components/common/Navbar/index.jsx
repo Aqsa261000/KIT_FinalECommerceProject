@@ -124,7 +124,9 @@ const Navbar = () => {
                 }}
                 className="navButton"
               >
-                <Button sx={style.button}>Login</Button>
+                <Link to="/login">
+                  <Button sx={style.button}>Login</Button>
+                </Link>
                 {/* <AccountCircleIcon sx={style.buttonIcons} /> */}
                 {/* <Avatar sx={{ bgcolor: 'orange' }}>A</Avatar> */}
               </Box>
