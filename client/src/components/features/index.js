@@ -1,7 +1,4 @@
-// import SampleComponentDefault from './SampleComponent';
-
-// export { SampleComponentDefault };
-import SignUpDefault from './SignUp';
-import LoginDefault from './Login';
+import { SignUpDefault } from './auth';
+import { LoginDefault } from './auth';
 
 export { SignUpDefault, LoginDefault };
