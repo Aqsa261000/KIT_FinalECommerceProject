@@ -9,20 +9,28 @@ import { BrowserRouter } from 'react-router-dom';
 
 // import { AdminHome } from './views';
 // import { DefaultLayout } from './components/layout';
-import SignUp from './views/signup';
-
+import { SignUp } from './views';
+import { DefaultLayout } from './components/layout';
+import { Login } from './views';
+import AlertState from './context/alert/alertState';
+// import BasicAlert from './components/common/Alert';
 const App = () => {
   return (
-    <BrowserRouter>
-      <Fragment>
-        <CssBaseline />
-        {/* Yahan par routes aayeghe */}
-        <Routes>
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<LogIn />} />
-        </Routes>
-      </Fragment>
-    </BrowserRouter>
+    <AlertState>
+      <BrowserRouter>
+        <Fragment>
+          <CssBaseline />
+          {/* Yahan par routes aayeghe */}
+
+          <Routes>
+            <Route path="/" element={<DefaultLayout />} />
+
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </Fragment>
+      </BrowserRouter>
+    </AlertState>
   );
 };
 
