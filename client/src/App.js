@@ -23,7 +23,7 @@ const App = () => {
           {/* Yahan par routes aayeghe */}
 
           <Routes>
-            <Route path="/" element={<DefaultLayout />} />
+            <Route path="/" element={<Home />} />
 
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
