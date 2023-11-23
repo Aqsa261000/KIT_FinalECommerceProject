@@ -10,6 +10,7 @@ import { BrowserRouter } from 'react-router-dom';
 // import { AdminHome } from './views';
 // import { DefaultLayout } from './components/layout';
 import SignUp from './views/signup';
+import { Home } from './views';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Routes>
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<LogIn />} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </Fragment>
     </BrowserRouter>
