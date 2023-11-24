@@ -15,17 +15,25 @@ const AuthState = ({ children }) => {
   const alertId = useId();
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
+  const SignUpUserExists = async () => {
+    try {
+      const response = await axios.get('/api/users');
 
+      return response;
+    } catch (error) {
+      console.log('error', error.message);
+    }
+  };
   const SignUpUserHandler = async (data) => {
     try {
       const config = {
         headers: { 'Content-Type': 'application/json' },
       };
       const response = await axios.post('/api/users', data, config);
-      console.log('hh', response);
+      // console.log('signup successful', response);
     } catch (error) {
-      console.log('error', error.message);
-      console.log('error', error.response);
+      // console.log('error', error.message);
+      console.log('error', error.response.data.msg);
     }
   };
 
@@ -38,6 +46,7 @@ const AuthState = ({ children }) => {
         user: state.user,
         error: state.error,
         SignUpUserHandler,
+        SignUpUserExists,
       }}
     >
       {children}

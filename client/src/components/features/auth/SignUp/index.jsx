@@ -5,12 +5,12 @@ import './style.css';
 import AlertContext from '../../../../context/alert/alertContext';
 import BasicAlert from '../../../common/Alert';
 import AuthContext from '../../../../context/auth/authContext';
-
+import { useNavigate } from 'react-router-dom';
 const SignUpDefault = () => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
-
-  const { SignUpUserHandler } = authContext;
+  const navigate = useNavigate();
+  const { SignUpUserExists, SignUpUserHandler } = authContext;
   const { AlertHandler } = alertContext;
   const [signup, setSignup] = useState({
     name: '',
@@ -25,10 +25,10 @@ const SignUpDefault = () => {
     signup;
   const onChangeHandler = (e) => {
     setSignup((prevData) => ({ ...prevData, [e.target.name]: e.target.value }));
-    // console.log(signup);
+    console.log(signup);
   };
 
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
     // console.log(signup);
 
@@ -46,9 +46,33 @@ const SignUpDefault = () => {
       AlertHandler('Password does not match', 'error');
     } else if (password.length < 6) {
       AlertHandler('Password should be more than 6 characters', 'error');
+    } else if (phone.length !== 11) {
+      AlertHandler('Please enter correct phone number of 11 digits', 'error');
     } else {
-      console.log('User is signed up', signup);
-      SignUpUserHandler(signup);
+      try {
+        // Check if the email already exists
+        const response = await SignUpUserExists();
+        const isEmailExists = response.data.some(
+          (user) => user.email === email
+        );
+
+        if (isEmailExists) {
+          AlertHandler(
+            'User with this email already exists, Please try again',
+            'error'
+          );
+        } else {
+          // Continue with the sign-up process if the email is unique
+          SignUpUserHandler(signup);
+          AlertHandler(
+            'Congratulations! You have created your account, Welcome to KickKart!',
+            'success'
+          );
+          navigate('/');
+        }
+      } catch (error) {
+        console.error('Error checking if email exists:', error.message);
+      }
     }
   };
   return (
@@ -98,10 +122,10 @@ const SignUpDefault = () => {
               // minLength={6}
             />
             <input
-              type="text"
+              type="city"
+              placeholder="Enter City"
               name="city"
               value={signup.city}
-              placeholder="Enter City"
               id="city"
               onChange={onChangeHandler}
             />

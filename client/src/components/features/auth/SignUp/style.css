@@ -16,7 +16,7 @@ body {
     #ffd194,
     #85bdc6 */
   /* ); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}  
+}
 
 .signup-registeration-form {
   max-width: 1000px;
@@ -59,7 +59,7 @@ body {
   background-color: #8a33fd;
   /* background: -webkit-linear-gradient(to right, #F8CDDA, #1D2B64); 
 background: linear-gradient(to right, #F8CDDA, #1D2B64);  */
-  color: #eee;
+  color: white;
   font-size: 1em;
   font-weight: 600;
   cursor: pointer;
