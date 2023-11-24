@@ -4,9 +4,13 @@ import img from '../../../../assets/sneaker.jpg';
 import './style.css';
 import AlertContext from '../../../../context/alert/alertContext';
 import BasicAlert from '../../../common/Alert';
+import AuthContext from '../../../../context/auth/authContext';
 
 const SignUpDefault = () => {
   const alertContext = useContext(AlertContext);
+  const authContext = useContext(AuthContext);
+
+  const { SignUpUserHandler } = authContext;
   const { AlertHandler } = alertContext;
   const [signup, setSignup] = useState({
     name: '',
@@ -40,12 +44,11 @@ const SignUpDefault = () => {
       AlertHandler('Please fill all the required fields', 'error');
     } else if (password !== confirmPassword) {
       AlertHandler('Password does not match', 'error');
-    }
-    // else if (password.length < 6) {
-    //   AlertHandler('Password should be more than 6 letters', 'error');
-    // }
-    else {
+    } else if (password.length < 6) {
+      AlertHandler('Password should be more than 6 characters', 'error');
+    } else {
       console.log('User is signed up', signup);
+      SignUpUserHandler(signup);
     }
   };
   return (
@@ -117,6 +120,8 @@ const SignUpDefault = () => {
               placeholder="Enter your Contact Number"
               id="phone"
               onChange={onChangeHandler}
+              minLength={11}
+              maxLength={11}
             />
             {/* <i class="fa-regular fa-eye .eye-icon-1"></i> */}
 
