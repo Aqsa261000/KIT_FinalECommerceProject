@@ -13,24 +13,27 @@ import { SignUp, Home, Login } from './views';
 import { DefaultLayout } from './components/layout';
 
 import AlertState from './context/alert/alertState';
+import AuthState from './context/auth/authState';
 // import BasicAlert from './components/common/Alert';
 const App = () => {
   return (
-    <AlertState>
-      <BrowserRouter>
-        <Fragment>
-          <CssBaseline />
-          {/* Yahan par routes aayeghe */}
+    <AuthState>
+      <AlertState>
+        <BrowserRouter>
+          <Fragment>
+            <CssBaseline />
+            {/* Yahan par routes aayeghe */}
 
-          <Routes>
-            <Route path="/" element={<DefaultLayout />} />
+            <Routes>
+              <Route path="/" element={<DefaultLayout />} />
 
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </Fragment>
-      </BrowserRouter>
-    </AlertState>
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/login" element={<Login />} />
+            </Routes>
+          </Fragment>
+        </BrowserRouter>
+      </AlertState>
+    </AuthState>
   );
 };
 
