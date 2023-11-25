@@ -56,7 +56,7 @@ const SignUpDefault = () => {
           (user) => user.email === email
         );
 
-        if (isEmailExists) {
+        if (isEmailExists) {  
           AlertHandler(
             'User with this email already exists, Please try again',
             'error'
