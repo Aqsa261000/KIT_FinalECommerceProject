@@ -1,16 +1,16 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import img from '../../../../assets/sneaker.jpg';
 import './style.css';
 import AlertContext from '../../../../context/alert/alertContext';
 import { BasicAlert } from '../../../common';
 import AuthContext from '../../../../context/auth/authContext';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 const SignUpDefault = () => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
-  const navigate = useNavigate();
-  const { SignUpUserExists, SignUpUserHandler } = authContext;
+  // const navigate = useNavigate();
+  const { SignUpUserHandler, error, clearErrorHandler } = authContext;
   const { AlertHandler } = alertContext;
   const [signup, setSignup] = useState({
     name: '',
@@ -23,6 +23,13 @@ const SignUpDefault = () => {
   });
   const { name, email, password, confirmPassword, city, gender, phone } =
     signup;
+
+  useEffect(() => {
+    if (error) {
+      AlertHandler(error, 'error');
+    }
+    clearErrorHandler();
+  }, [error]);
   const onChangeHandler = (e) => {
     setSignup((prevData) => ({ ...prevData, [e.target.name]: e.target.value }));
     console.log(signup);
@@ -49,30 +56,31 @@ const SignUpDefault = () => {
     } else if (phone.length !== 11) {
       AlertHandler('Please enter correct phone number of 11 digits', 'error');
     } else {
-      try {
-        // Check if the email already exists
-        const response = await SignUpUserExists();
-        const isEmailExists = response.data.some(
-          (user) => user.email === email
-        );
+      // try {
+      //   // Check if the email already exists
+      //   const response = await SignUpUserExists();
+      //   const isEmailExists = response.data.some(
+      //     (user) => user.email === email
+      //   );
 
-        if (isEmailExists) {  
-          AlertHandler(
-            'User with this email already exists, Please try again',
-            'error'
-          );
-        } else {
-          // Continue with the sign-up process if the email is unique
-          SignUpUserHandler(signup);
-          AlertHandler(
-            'Congratulations! You have created your account, Welcome to KickKart!',
-            'success'
-          );
-          navigate('/');
-        }
-      } catch (error) {
-        console.error('Error checking if email exists:', error.message);
-      }
+      //   if (isEmailExists) {
+      //     AlertHandler(
+      //       'User with this email already exists, Please try again',
+      //       'error'
+      //     );
+      //   } else {
+      //     // Continue with the sign-up process if the email is unique
+      //     SignUpUserHandler(signup);
+      //     AlertHandler(
+      //       'Congratulations! You have created your account, Welcome to KickKart!',
+      //       'success'
+      //     );
+      //     navigate('/');
+      //   }
+      // } catch (error) {
+      //   console.error('Error checking if email exists:', error.message);
+      // }
+      SignUpUserHandler(signup);
     }
   };
   return (
@@ -110,7 +118,7 @@ const SignUpDefault = () => {
               value={signup.password}
               id="password1"
               onChange={onChangeHandler}
-              minLength={6}
+              // minLength={6}
             />
             <input
               type="password"
@@ -155,7 +163,7 @@ const SignUpDefault = () => {
           </form>
           <p className="flex2">
             Already Have an Account?{' '}
-            <Link to="/login" className="link">
+            <Link to="/login" className="linkk">
               Login
             </Link>
           </p>
