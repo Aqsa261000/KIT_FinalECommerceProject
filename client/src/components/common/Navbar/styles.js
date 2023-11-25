@@ -20,6 +20,7 @@ const style = {
     listStyle: 'none',
     columnGap: '10px',
     width: 'max-content',
+    textDecoration: 'none',
 
     '& :hover': {
       color: '#8a33fd',

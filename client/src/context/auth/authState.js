@@ -3,6 +3,7 @@ import axios from 'axios';
 import useId from '@mui/material/utils/useId';
 import AuthReducer from './authReducer';
 import AuthContext from './authContext';
+import { CLEAR_ERROR, SIGNUP_FAIL, SIGNUP_SUCCESS } from '../type';
 
 const AuthState = ({ children }) => {
   const initialState = {
@@ -30,10 +31,12 @@ const AuthState = ({ children }) => {
         headers: { 'Content-Type': 'application/json' },
       };
       const response = await axios.post('/api/users', data, config);
-      // console.log('signup successful', response);
+      console.log('signup successful', response);
+      dispatch({ type: SIGNUP_SUCCESS, payload: response.data });
     } catch (error) {
       // console.log('error', error.message);
       console.log('error', error.response.data.msg);
+      dispatch({ type: SIGNUP_FAIL, payload: error.response.data.msg });
     }
   };
 
@@ -64,7 +67,9 @@ const AuthState = ({ children }) => {
   //     console.log('error', error);
   //   }
   // };
-
+  const clearErrorHandler = () => {
+    dispatch({ type: CLEAR_ERROR });
+  };
   return (
     <AuthContext.Provider
       value={{
@@ -76,7 +81,7 @@ const AuthState = ({ children }) => {
         SignUpUserHandler,
         SignUpUserExists,
         SignInUserHandler,
-
+        clearErrorHandler
         // SignInUserExists,
       }}
     >

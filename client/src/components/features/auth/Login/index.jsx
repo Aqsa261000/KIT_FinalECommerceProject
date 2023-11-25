@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import img from '../../../../assets/sneaker.jpg';
 import { Link } from 'react-router-dom';
 import './style.css';
@@ -7,19 +7,25 @@ import AlertContext from '../../../../context/alert/alertContext';
 import { BasicAlert } from '../../../common';
 
 const LoginDefault = () => {
-  const [login, setLogin] = useState({
+  const [signin, setSignin] = useState({
     email: '',
     password: '',
   });
-  const { email, password } = login;
+  const { email, password } = signin;
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
-  const { SignInUserHandler } = authContext;
+  const { SignInUserHandler, error } = authContext;
   const { AlertHandler } = alertContext;
 
+  useEffect(() => {
+    if (error) {
+      AlertHandler(error, 'error');
+    }
+  }, [error]);
+
   const onChangeHandler = (e) => {
-    setLogin((prevData) => ({ ...prevData, [e.target.name]: e.target.value }));
-    console.log(login);
+    setSignin((prevData) => ({ ...prevData, [e.target.name]: e.target.value }));
+    console.log(signin);
   };
 
   const onSubmitHandler = async (e) => {
@@ -27,23 +33,24 @@ const LoginDefault = () => {
     if (!email || !password) {
       AlertHandler('Please fill all the required fields', 'error');
     } else {
-      try {
-        const response = await SignInUserHandler(login);
-        console.log(response);
+      // try {
+      //   const response = await SignInUserHandler(signin);
+      //   console.log(response);
 
-        const tokenExist = response?.data?.token;
-        console.log('te', tokenExist);
-        if (!tokenExist) {
-          AlertHandler('Please write the correct credentials', 'error');
-        }
+      //   const tokenExist = response?.data?.token;
+      //   console.log('te', tokenExist);
+      //   if (!tokenExist) {
+      //     AlertHandler('Please write the correct credentials', 'error');
+      //   }
 
-        // SignInUserExists();
-        else {
-          SignInUserHandler(login);
-        }  
-      } catch (error) {
-        console.log('error occured', error);
-      }
+      //   // SignInUserExists();
+      //   else {
+      //     SignInUserHandler(signin);
+      //   }
+      // } catch (error) {
+      //   console.log('error occured', error);
+      // }
+      SignInUserHandler(signin);
     }
   };
   return (
@@ -64,7 +71,7 @@ const LoginDefault = () => {
               placeholder="Enter your Email"
               name="email"
               id="email"
-              value={login.email}
+              value={signin.email}
               onChange={onChangeHandler}
             />
             <input
@@ -72,7 +79,7 @@ const LoginDefault = () => {
               placeholder="Enter your Password"
               name="password"
               id="password"
-              value={login.password}
+              value={signin.password}
               onChange={onChangeHandler}
             />
             {/* <i className="fa-regular fa-eye eye-icon2"></i> */}
@@ -83,7 +90,7 @@ const LoginDefault = () => {
           </form>
           <p className="flex2">
             Don't have an Account?{' '}
-            <Link to="/signup" className="link">
+            <Link to="/signup" className="linkk">
               {' '}
               Register
             </Link>

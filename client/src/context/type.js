@@ -1,2 +1,9 @@
 export const SET_ALERT = 'setAlert';
 export const CLEAR_ALERT = 'clearAlert';
+export const SIGNUP_SUCCESS = 'signupSuccess';
+export const SIGNUP_FAIL = 'signupFail';
+export const AUTH_SUCCESS = 'authSuccess';
+export const AUTH_FAIL = 'authFail';
+export const CLEAR_ERROR = 'clearError';
+export const SIGNIN_SUCCESS = 'loginSuccess';
+export const SIGNIN_FAIL = 'loginFail';
