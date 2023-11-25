@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import img from '../../../../assets/sneaker.jpg';
 import './style.css';
 import AlertContext from '../../../../context/alert/alertContext';
-import BasicAlert from '../../../common/Alert';
+import { BasicAlert } from '../../../common';
 import AuthContext from '../../../../context/auth/authContext';
 import { useNavigate } from 'react-router-dom';
 const SignUpDefault = () => {

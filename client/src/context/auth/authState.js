@@ -18,7 +18,7 @@ const AuthState = ({ children }) => {
   const SignUpUserExists = async () => {
     try {
       const response = await axios.get('/api/users');
-
+      console.log(response);
       return response;
     } catch (error) {
       console.log('error', error.message);
@@ -37,6 +37,34 @@ const AuthState = ({ children }) => {
     }
   };
 
+  let token;
+  const SignInUserHandler = async (data) => {
+    try {
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+      };
+      const response = await axios.post('/api/auth', data, config);
+      // token = await response.data.token;
+      console.log('signin successful', response);
+      return response;
+    } catch (error) {
+      // console.log('error', error.message);
+      console.log('error', error);
+    }
+  };
+  // const SignInUserExists = async () => {
+  //   try {
+  //     const config = {
+  //       headers: { 'Content-Type': 'application/json', 'x-auth-token': token },
+  //     };
+  //     const response = await axios.get('/api/auth', config);
+  //     console.log('get response', response);
+  //     // return response;
+  //   } catch (error) {
+  //     console.log('error', error);
+  //   }
+  // };
+
   return (
     <AuthContext.Provider
       value={{
@@ -47,6 +75,9 @@ const AuthState = ({ children }) => {
         error: state.error,
         SignUpUserHandler,
         SignUpUserExists,
+        SignInUserHandler,
+
+        // SignInUserExists,
       }}
     >
       {children}
