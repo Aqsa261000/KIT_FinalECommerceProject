@@ -55,9 +55,10 @@ const SignUpDefault = () => {
       AlertHandler('Please fill all the required fields', 'error');
     } else if (password !== confirmPassword) {
       AlertHandler('Password does not match', 'error');
-    } else if (password.length < 6) {
-      AlertHandler('Password should be more than 6 characters', 'error');
     }
+    // else if (password.length < 6) {
+    //   AlertHandler('Password should be more than 6 characters', 'error');
+    // }
     // else if (phone.length !== 11) {
     //   AlertHandler('Please enter correct phone number of 11 digits', 'error');
     // }

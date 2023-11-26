@@ -41,8 +41,15 @@ const AuthState = ({ children }) => {
       dispatch({ type: SIGNUP_SUCCESS, payload: response.data });
     } catch (error) {
       // console.log('error', error.message);
-      console.log('error', error.response.data.msg);
-      dispatch({ type: SIGNUP_FAIL, payload: error.response.data.msg });
+      console.log('error', error.response.data.errors);
+      dispatch({
+        type: SIGNUP_FAIL,
+        payload:
+          error.response.data.msg ||
+          error.response.data.errors.map((errorObject, index) => (
+            <span key={index}>{errorObject.msg}</span>
+          )),
+      });
     }
   };
 
@@ -60,7 +67,14 @@ const AuthState = ({ children }) => {
     } catch (error) {
       // console.log('error', error.message);
       console.log('error', error);
-      dispatch({ type: SIGNIN_FAIL, payload: error.response.data.msg });
+      dispatch({
+        type: SIGNIN_FAIL,
+        payload:
+          error.response.data.msg ||
+          error.response.data.errors.map((errorObject, index) => (
+            <span key={index}>{errorObject.msg}</span>
+          )),
+      });
     }
   };
   // const SignInUserExists = async () => {
