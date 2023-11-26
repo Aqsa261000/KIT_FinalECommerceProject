@@ -3,7 +3,13 @@ import axios from 'axios';
 import useId from '@mui/material/utils/useId';
 import AuthReducer from './authReducer';
 import AuthContext from './authContext';
-import { CLEAR_ERROR, SIGNUP_FAIL, SIGNUP_SUCCESS } from '../type';
+import {
+  CLEAR_ERROR,
+  SIGNIN_FAIL,
+  SIGNIN_SUCCESS,
+  SIGNUP_FAIL,
+  SIGNUP_SUCCESS,
+} from '../type';
 
 const AuthState = ({ children }) => {
   const initialState = {
@@ -49,10 +55,12 @@ const AuthState = ({ children }) => {
       const response = await axios.post('/api/auth', data, config);
       // token = await response.data.token;
       console.log('signin successful', response);
+      dispatch({ type: SIGNIN_SUCCESS, payload: response.data });
       return response;
     } catch (error) {
       // console.log('error', error.message);
       console.log('error', error);
+      dispatch({ type: SIGNIN_FAIL, payload: error.response.data.msg });
     }
   };
   // const SignInUserExists = async () => {
@@ -81,7 +89,7 @@ const AuthState = ({ children }) => {
         SignUpUserHandler,
         SignUpUserExists,
         SignInUserHandler,
-        clearErrorHandler
+        clearErrorHandler,
         // SignInUserExists,
       }}
     >

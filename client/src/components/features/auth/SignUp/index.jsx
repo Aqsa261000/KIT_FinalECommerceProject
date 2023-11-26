@@ -26,9 +26,9 @@ const SignUpDefault = () => {
     signup;
 
   useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/');
-    }
+    // if (isAuthenticated) {
+    //   navigate('/');
+    // }
     if (error) {
       AlertHandler(error, 'error');
     }
@@ -57,9 +57,11 @@ const SignUpDefault = () => {
       AlertHandler('Password does not match', 'error');
     } else if (password.length < 6) {
       AlertHandler('Password should be more than 6 characters', 'error');
-    } else if (phone.length !== 11) {
-      AlertHandler('Please enter correct phone number of 11 digits', 'error');
-    } else {
+    }
+    // else if (phone.length !== 11) {
+    //   AlertHandler('Please enter correct phone number of 11 digits', 'error');
+    // }
+    else {
       // try {
       //   // Check if the email already exists
       //   const response = await SignUpUserExists();

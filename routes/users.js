@@ -18,7 +18,7 @@ router.get('/',async (req,res)=>{
 router.post('/',[
     check('name','enter valid name').not().isEmpty(),
     check('email','enter valid mail address').isEmail(),
-    check('phone', 'enter phone number').isLength({min:11}),
+    check('phone', 'contact should be in standard format').isLength({min:11}),
     check('password','please enter pass with length 6').isLength({min:6})
 ],async (req,res)=>{
     // res.send(req.body);
