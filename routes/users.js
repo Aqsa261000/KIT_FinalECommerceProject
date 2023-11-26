@@ -26,7 +26,9 @@ router.post('/',[
     const {phone} = req.body;
     console.log(phone);
     if (!result.isEmpty()) {
-        return res.status(400).json({erros: result.array()})
+        console.log(result.array());
+        return res.status(400).json({errors: result.array()})
+        
     }
     const {name, email, password, gender, cnic, role,city} = req.body;
     try {
