@@ -55,7 +55,7 @@ router.post(
       }
       console.log("USER: ",user);
       if (!user) {
-        return res.status(400).json({ msg: 'User not exist.' });
+        return res.status(400).json({ msg: 'User with this email does not exist.' });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
