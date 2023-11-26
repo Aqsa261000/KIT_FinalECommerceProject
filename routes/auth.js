@@ -42,17 +42,17 @@ router.post(
 
     try {
       const user = await User.findOne({ email });
-      const {role} = user;
-      console.log(role);
-      if(role == "1"){
-        console.log("Admin Login");
-      }
-      else if(role == "0"){
-        console.log("Normal User Login");
-      }
-      else if(role == "2"){
-        console.log("Vendor Login");
-      }
+      // const {role} = user;
+      // console.log(role);
+      // if(role == "1"){
+      //   console.log("Admin Login");
+      // }
+      // else if(role == "0"){
+      //   console.log("Normal User Login");
+      // }
+      // else if(role == "2"){
+      //   console.log("Vendor Login");
+      // }
       console.log("USER: ",user);
       if (!user) {
         return res.status(400).json({ msg: 'User with this email does not exist.' });
