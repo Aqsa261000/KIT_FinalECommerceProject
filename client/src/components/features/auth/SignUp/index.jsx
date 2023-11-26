@@ -5,12 +5,13 @@ import './style.css';
 import AlertContext from '../../../../context/alert/alertContext';
 import { BasicAlert } from '../../../common';
 import AuthContext from '../../../../context/auth/authContext';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const SignUpDefault = () => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
-  // const navigate = useNavigate();
-  const { SignUpUserHandler, error, clearErrorHandler } = authContext;
+  const navigate = useNavigate();
+  const { SignUpUserHandler, error, clearErrorHandler, isAuthenticated } =
+    authContext;
   const { AlertHandler } = alertContext;
   const [signup, setSignup] = useState({
     name: '',
@@ -25,6 +26,9 @@ const SignUpDefault = () => {
     signup;
 
   useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/');
+    }
     if (error) {
       AlertHandler(error, 'error');
     }
