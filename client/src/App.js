@@ -4,6 +4,7 @@ import { CssBaseline } from '@mui/material';
 import { Route, Routes } from 'react-router-dom';
 import SampleComponent from './views/samplecomponent';
 import { BrowserRouter } from 'react-router-dom';
+import Home from './views/home';
 
 const App = () => {
   return (
@@ -12,7 +13,7 @@ const App = () => {
         <CssBaseline />
         {/* Yahan par routes aayeghe */}
         <Routes>
-          <Route path="/" element={<SampleComponent />} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </Fragment>
     </BrowserRouter>

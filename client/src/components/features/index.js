@@ -1,3 +1,3 @@
 import SampleComponentDefault from './SampleComponent';
-
-export { SampleComponentDefault };
+import HomeDefault from './Home';
+export { SampleComponentDefault, HomeDefault };
