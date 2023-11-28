@@ -6,7 +6,7 @@ import { Container } from '@mui/material';
 
 const CardSection = () => {
   return (
-    <Container>
+    <div>
       <div className="card-container">
         <div className="card">
           <div
@@ -30,7 +30,7 @@ const CardSection = () => {
           </div>
         </div>
       </div>
-    </Container>
+    </div>
   );
 };
 
