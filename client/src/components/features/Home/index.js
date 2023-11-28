@@ -21,14 +21,17 @@ const HomeDefault = () => {
       title: 'Knitted Joggers',
     },
     {
+      id: 2,
       image: knitted,
       title: 'Knitted Joggers',
     },
     {
+      id: 3,
       image: knitted,
       title: 'Knitted Joggers',
     },
     {
+      id: 4,
       image: shoes1,
       title: 'Knitted Joggers',
     },
@@ -36,18 +39,22 @@ const HomeDefault = () => {
 
   const brands = [
     {
+      id: 1,
       title: 'Puma',
       image: puma,
     },
     {
+      id: 2,
       title: 'Puma',
       image: hm,
     },
     {
+      id: 3,
       title: 'Puma',
       image: brand3,
     },
     {
+      id: 4,
       title: 'Puma',
       image: brand4,
     },
@@ -69,7 +76,7 @@ const HomeDefault = () => {
           <div className="arrival">
             {arrival.map((item, index) => {
               return (
-                <div className="itemArrival" key={index}>
+                <div className="itemArrival" key={item.id}>
                   <img src={item.image} alt="shoes" className="prod-card-img" />
                   <h2>{item.title}</h2>
                 </div>
@@ -94,7 +101,7 @@ const HomeDefault = () => {
           <div className="arrival">
             {arrival.map((item, index) => {
               return (
-                <div className="itemArrival" key={index}>
+                <div className="itemArrival" key={item.id}>
                   <img src={item.image} alt="shoes" className="prod-card-img" />
                   <h5>{item.title}</h5>
                 </div>
@@ -119,7 +126,7 @@ const HomeDefault = () => {
           <div className="arrival">
             {arrival.map((item, index) => {
               return (
-                <div className="itemArrival" key={index}>
+                <div className="itemArrival" key={item.id}>
                   <img src={item.image} alt="shoes" className="prod-card-img" />
                   <h5>{item.title}</h5>
                 </div>
@@ -142,7 +149,7 @@ const HomeDefault = () => {
           <div className="arrival">
             {arrival.map((item, index) => {
               return (
-                <div className="itemArrival">
+                <div className="itemArrival" key={item.id}>
                   <img src={item.image} alt="shoes" className="prod-card-img" />
                   <h5>{item.title}</h5>
                 </div>
@@ -166,7 +173,7 @@ const HomeDefault = () => {
             <div className="arrival">
               {brands.map((item, index) => {
                 return (
-                  <div className="itemBrand">
+                  <div className="itemBrand" key={item.id}>
                     <img
                       src={item.image}
                       alt="shoes"
