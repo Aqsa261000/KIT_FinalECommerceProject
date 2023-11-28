@@ -55,7 +55,7 @@ const HomeDefault = () => {
   return (
     <>
       <DefaultLayout>
-        <HeroSection />
+        {/* <HeroSection />
         <CardSection />
 
         <Container className="prod-container">
@@ -177,7 +177,8 @@ const HomeDefault = () => {
               })}
             </div>
           </div>
-        </Container>
+        </Container> */}
+        I am a homepage
       </DefaultLayout>
     </>
   );

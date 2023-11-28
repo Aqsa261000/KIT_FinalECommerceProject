@@ -13,32 +13,38 @@ import {
 
 const AuthState = ({ children }) => {
   const initialState = {
-    token: localStorage.getItem('token'),
+    token: null,
     isAuthenticated: false,
     isLoading: true,
     user: null,
     error: null,
   };
-  const alertId = useId();
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
-  const SignUpUserExists = async () => {
-    try {
-      const response = await axios.get('/api/users');
-      console.log(response);
-      return response;
-    } catch (error) {
-      console.log('error', error.message);
-    }
-  };
+  // const SignUpUserExists = async () => {
+  //   try {
+  //     const response = await axios.get('/api/users');
+  //     console.log(response);
+  //     return response;
+  //   } catch (error) {
+  //     console.log('error', error.message);
+  //   }
+  // };
   const SignUpUserHandler = async (data) => {
     try {
+      const apidata = {
+        ...data,
+        role: 0,
+      };
       const config = {
         headers: { 'Content-Type': 'application/json' },
       };
-      const response = await axios.post('/api/users', data, config);
+      const response = await axios.post('/api/users', apidata, config);
       console.log('signup successful', response);
-      dispatch({ type: SIGNUP_SUCCESS, payload: response.data });
+      dispatch({
+        type: SIGNUP_SUCCESS,
+        payload: response.data,
+      });
     } catch (error) {
       // console.log('error', error.message);
       console.log('error', error.response.data.errors);
@@ -56,10 +62,39 @@ const AuthState = ({ children }) => {
   let token;
   const SignInUserHandler = async (data) => {
     try {
+      const apidata = {
+        ...data,
+      };
       const config = {
         headers: { 'Content-Type': 'application/json' },
       };
-      const response = await axios.post('/api/auth', data, config);
+      const response = await axios.post('/api/auth', apidata, config);
+      // token = await response.data.token;
+      console.log('signin successful', response);
+      dispatch({ type: SIGNIN_SUCCESS, payload: response.data });
+      return response;
+    } catch (error) {
+      // console.log('error', error.message);
+      console.log('error', error);
+      dispatch({
+        type: SIGNIN_FAIL,
+        payload:
+          error.response.data.msg ||
+          error.response.data.errors.map((errorObject, index) => (
+            <span key={index}>{errorObject.msg}</span>
+          )),
+      });
+    }
+  };
+  const SignInAdminHandler = async (data) => {
+    try {
+      const apidata = {
+        ...data,
+      };
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+      };
+      const response = await axios.post('/api/auth', apidata, config);
       // token = await response.data.token;
       console.log('signin successful', response);
       dispatch({ type: SIGNIN_SUCCESS, payload: response.data });
@@ -101,9 +136,10 @@ const AuthState = ({ children }) => {
         user: state.user,
         error: state.error,
         SignUpUserHandler,
-        SignUpUserExists,
+        // SignUpUserExists,
         SignInUserHandler,
         clearErrorHandler,
+        SignInAdminHandler,
         // SignInUserExists,
       }}
     >

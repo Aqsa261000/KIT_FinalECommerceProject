@@ -1,19 +1,13 @@
 import React, { Fragment } from 'react';
-
 import { CssBaseline } from '@mui/material';
 import { Route, Routes } from 'react-router-dom';
-
 import { BrowserRouter } from 'react-router-dom';
-
-// import { AdminHome } from './views';
-// import { DefaultLayout } from './components/layout';
-import { SignUp, Home, Login } from './views';
-// import Home from './views';
-
-import { DefaultLayout } from './components/layout';
-
 import AlertState from './context/alert/alertState';
 import AuthState from './context/auth/authState';
+import { SignUp, Home, Login } from './views';
+import { AdminHome, AdminLogin } from './views';
+import { VendorHome, VendorLogin, VendorSignUp } from './views';
+
 // import BasicAlert from './components/common/Alert';
 const App = () => {
   return (
@@ -24,11 +18,16 @@ const App = () => {
             <CssBaseline />
             {/* Yahan par routes aayeghe */}
 
-          <Routes>
-            <Route path="/" element={<Home />} />
+            <Routes>
+              <Route path="/" element={<Home />} />
 
               <Route path="/signup" element={<SignUp />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/adminlogin" element={<AdminLogin />} />
+              <Route path="/adminhome" element={<AdminHome />} />
+              <Route path="/vendorsignup" element={<VendorSignUp />} />
+              <Route path="/vendorlogin" element={<VendorLogin />} />
+              <Route path="/vendorhome" element={<VendorHome />} />
             </Routes>
           </Fragment>
         </BrowserRouter>

@@ -9,6 +9,7 @@ import {
   Grid,
   List,
   ListItem,
+  Typography,
   useMediaQuery,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -60,216 +61,256 @@ const Navbar = () => {
       <Container
         sx={{
           display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          // border:'1px solid black',
-          height: '70px',
+          flexDirection: 'column',
+
+          // border: '1px solid black',
         }}
       >
+        <Box>
+          <Box className="topnav" to={'/vendorsignup'}>
+            <Typography sx={{ fontFamily: 'inherit' }}>
+              Hello{' '}
+              <span style={{ color: '#8a33fd', fontWeight: '700' }}>
+                Hussain
+              </span>
+              , Welcome Again!
+            </Typography>
+            <Link className="topnavlink" to={'/vendorsignup'}>
+              Become a seller
+            </Link>
+          </Box>
+        </Box>
         <Box
           sx={{
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
-            columnGap: '5px',
+            justifyContent: 'space-between',
+            // border: '1px solid black',
+            height: '70px',
           }}
         >
-          <LocalMallIcon sx={style.buttonIcons} />
-          <Link style={{ textDecoration: 'none', color: 'black' }} to={'/'}>
-            <h1>KickKart</h1>
-          </Link>
-        </Box>
-        {isWideScreen ? (
-          <>
-            <Box component={'ul'} sx={style.navItems} className="ulList">
-              <Box component={'li'} sx={style.listItems}>
-                <Link className="link">Home</Link>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              columnGap: '5px',
+              // border: '1px solid black',
+            }}
+          >
+            <LocalMallIcon sx={style.buttonIcons} />
+            <Link style={{ textDecoration: 'none', color: 'black' }} to={'/'}>
+              <h1>KickKart</h1>
+            </Link>
+          </Box>
+          {isWideScreen ? (
+            <>
+              <Box component={'ul'} sx={style.navItems} className="ulList">
+                <Box component={'li'} sx={style.listItems}>
+                  <Link className="linkStyle">Home</Link>
+                </Box>
+                <Box component={'li'} sx={style.listItems}>
+                  <Link className="linkStyle">About Us</Link>
+                </Box>
+                <Box component={'li'} sx={style.listItems}>
+                  <Link className="linkStyle">Contact Us</Link>
+                </Box>
+                <Box
+                  component={'li'}
+                  sx={[style.listItems, style.shopItem]}
+                  style={{ padding: '22px 0' }}
+                  onMouseEnter={handleShopHover}
+                  onMouseLeave={handleShopLeave}
+                >
+                  <Link className="linkStyle">Shop</Link>
+                </Box>
               </Box>
-              <Box component={'li'} sx={style.listItems}>
-                <Link className="link">About Us</Link>
+              <Box sx={style.navButtons}>
+                <Box
+                  component={'li'}
+                  sx={{ listStyle: 'none', margin: '0 20px' }}
+                  className="navButton"
+                >
+                  <Button>
+                    <ShoppingCartIcon
+                      className="buttonIcons"
+                      sx={style.buttonIcons}
+                    />
+                  </Button>
+                </Box>
+                <Box
+                  component={'li'}
+                  sx={{
+                    listStyle: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                  }}
+                  className="navButton"
+                >
+                  <Link to="/login">
+                    <Button sx={style.button}>Login</Button>
+                  </Link>
+                  {/* <div class="dropdown">
+                    <Button class="dropbtn">
+                      <Avatar sx={{ bgcolor: 'orange' }}>A</Avatar>
+                      {/* <AccountCircleIcon sx={style.buttonIcons} /> */}
+                  {/* </Button>
+                    <div class="dropdown-content">
+                      <Link to={''}>My Profile</Link>
+                      <Link to={''}>My Orders</Link>
+                      <Link to={''}>Logout</Link>
+                    </div> */}
+                  {/* </div> */}
+                </Box>
               </Box>
-              <Box component={'li'} sx={style.listItems}>
-                <Link className="link">Contact Us</Link>
-              </Box>
-              <Box
-                component={'li'}
-                sx={[style.listItems, style.shopItem]}
-                style={{ padding: '22px 0' }}
-                onMouseEnter={handleShopHover}
-                onMouseLeave={handleShopLeave}
-              >
-                <Link className="link">Shop</Link>
-              </Box>
-            </Box>
-            <Box sx={style.navButtons}>
-              <Box
-                component={'li'}
-                sx={{ listStyle: 'none', margin: '0 20px' }}
-                className="navButton"
-              >
-                <Button>
-                  <ShoppingCartIcon
-                    className="buttonIcons"
-                    sx={style.buttonIcons}
-                  />
+            </>
+          ) : (
+            <>
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <Button onClick={handleDrawerOpen}>
+                  <MenuIcon sx={style.menuButton} />
                 </Button>
-              </Box>
-              <Box
-                component={'li'}
-                sx={{
-                  listStyle: 'none',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-                className="navButton"
-              >
                 <Link to="/login">
                   <Button sx={style.button}>Login</Button>
                 </Link>
-                {/* <AccountCircleIcon sx={style.buttonIcons} /> */}
-                {/* <Avatar sx={{ bgcolor: 'orange' }}>A</Avatar> */}
-              </Box>
-            </Box>
-          </>
-        ) : (
-          <>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Button onClick={handleDrawerOpen}>
-                <MenuIcon sx={style.menuButton} />
-              </Button>
-
-              <Button sx={style.button}>Login</Button>
-
-              {/* <Button>
+                {/* <Button>
                 <Avatar sx={style.button}>A</Avatar>
               </Button> */}
-            </Box>
-            <Drawer
-              anchor="right"
-              open={drawerOpen}
-              onClose={handleDrawerClose}
-            >
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  height: '100vh',
-                  width: '200px',
-                }}
-              >
-                <List>
-                  <ListItem button>
-                    <Link style={style.listItems} className="link">
-                      Home
-                    </Link>
-                  </ListItem>
-                  <ListItem button>
-                    <Link style={style.listItems} className="link">
-                      About Us
-                    </Link>
-                  </ListItem>
-                  <ListItem button>
-                    <Link style={style.listItems} className="link">
-                      Contact Us
-                    </Link>
-                  </ListItem>
-                  <ListItem
-                    button
-                    onMouseEnter={handleShopHover}
-                    onMouseLeave={handleShopLeave}
-                  >
-                    <Link style={style.listItems} className="link">
-                      Shop
-                    </Link>
-
-                    {/* {showSubcategories && <SubCategories />} */}
-                  </ListItem>
-                  <ListItem
-                    button
-                    sx={{
-                      bgcolor: 'grey',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      bgcolor: '#f2f2f2',
-                    }}
-                  >
-                    <Link style={style.listItems} className="link">
-                      {/* <ShoppingCartIcon /> */}
-                      <h4>Brands</h4>
-                    </Link>
-                    <Link
-                      style={style.listItems}
-                      className="link underlinetext"
-                    >
-                      {/* <ShoppingCartIcon /> */}
-                      Adidas
-                    </Link>
-                    <Link
-                      style={style.listItems}
-                      className="link underlinetext"
-                    >
-                      {/* <ShoppingCartIcon /> */}
-                      Servis
-                    </Link>
-                    <Link
-                      style={style.listItems}
-                      className="link underlinetext"
-                    >
-                      {/* <ShoppingCartIcon /> */}
-                      Bata
-                    </Link>
-                    <Link style={style.listItems} className="link">
-                      {/* <ShoppingCartIcon /> */}
-                      <h4>Categories</h4>
-                    </Link>
-                    <Link
-                      style={style.listItems}
-                      className="link underlinetext"
-                    >
-                      {/* <ShoppingCartIcon /> */}
-                      Sports
-                    </Link>
-                    <Link
-                      style={style.listItems}
-                      className="link underlinetext"
-                    >
-                      {/* <ShoppingCartIcon /> */}
-                      Formals
-                    </Link>
-                    <Link
-                      style={style.listItems}
-                      className="link underlinetext"
-                    >
-                      {/* <ShoppingCartIcon /> */}
-                      Casuals
-                    </Link>
-                  </ListItem>
-                  <ListItem button>
-                    <Link style={style.listItems} className="link">
-                      {/* <ShoppingCartIcon /> */}
-                      My Cart
-                    </Link>
-                  </ListItem>
-
-                  {/* Add more ListItems for additional navigation items */}
-                </List>
-                <List>
-                  <ListItem button>
-                    <Link style={style.listItems} className="link">
-                      <LogoutIcon />
-                      Logout
-                    </Link>
-                  </ListItem>
-                </List>
               </Box>
-            </Drawer>
-          </>
-        )}
-        {/* <Box sx={style.menuButton}>
+              <Drawer
+                anchor="right"
+                open={drawerOpen}
+                onClose={handleDrawerClose}
+              >
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    height: '100vh',
+                    width: '200px',
+                  }}
+                >
+                  <List>
+                    <ListItem button>
+                      <Link style={style.listItems} className="link">
+                        Home
+                      </Link>
+                    </ListItem>
+                    <ListItem button>
+                      <Link style={style.listItems} className="link">
+                        About Us
+                      </Link>
+                    </ListItem>
+                    <ListItem button>
+                      <Link style={style.listItems} className="link">
+                        Contact Us
+                      </Link>
+                    </ListItem>
+                    <ListItem button>
+                      <Link style={style.listItems} className="link">
+                        Shop
+                      </Link>
+
+                      {/* {showSubcategories && <SubCategories />} */}
+                    </ListItem>
+                    <ListItem
+                      button
+                      sx={{
+                        bgcolor: 'grey',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        bgcolor: '#f2f2f2',
+                      }}
+                    >
+                      <Link style={style.listItems} className="link">
+                        {/* <ShoppingCartIcon /> */}
+                        <h4>Brands</h4>
+                      </Link>
+                      <Link
+                        style={style.listItems}
+                        className="link underlinetext"
+                      >
+                        {/* <ShoppingCartIcon /> */}
+                        Adidas
+                      </Link>
+                      <Link
+                        style={style.listItems}
+                        className="link underlinetext"
+                      >
+                        {/* <ShoppingCartIcon /> */}
+                        Servis
+                      </Link>
+                      <Link
+                        style={style.listItems}
+                        className="link underlinetext"
+                      >
+                        {/* <ShoppingCartIcon /> */}
+                        Bata
+                      </Link>
+                      <Link style={style.listItems} className="link">
+                        {/* <ShoppingCartIcon /> */}
+                        <h4>Categories</h4>
+                      </Link>
+                      <Link
+                        style={style.listItems}
+                        className="link underlinetext"
+                      >
+                        {/* <ShoppingCartIcon /> */}
+                        Sports
+                      </Link>
+                      <Link
+                        style={style.listItems}
+                        className="link underlinetext"
+                      >
+                        {/* <ShoppingCartIcon /> */}
+                        Formals
+                      </Link>
+                      <Link
+                        style={style.listItems}
+                        className="link underlinetext"
+                      >
+                        {/* <ShoppingCartIcon /> */}
+                        Casuals
+                      </Link>
+                    </ListItem>
+                    <ListItem button>
+                      <Link style={style.listItems} className="link">
+                        {/* <ShoppingCartIcon /> */}
+                        My Cart
+                      </Link>
+                    </ListItem>
+                    {/* <ListItem button>
+                      <Link style={style.listItems} className="link">
+                        {/* <ShoppingCartIcon /> */}
+                    {/* My Orders
+                      </Link>
+                    </ListItem>
+                    <ListItem button>
+                      <Link style={style.listItems} className="link">
+                        <ShoppingCartIcon /> */}
+                    {/* My Profile
+                      </Link> */}
+                    {/* </ListItem> */}
+                    {/* Add more ListItems for additional navigation items */}
+                  </List>
+                  {/* <List>
+                    <ListItem button>
+                      <Link style={style.listItems} className="link">
+                        <LogoutIcon />
+                        Logout
+                      </Link>
+                    </ListItem>
+                  </List> */}
+                </Box>
+              </Drawer>
+            </>
+          )}
+          {/* <Box sx={style.menuButton}>
           <AccountCircleIcon />
         </Box> */}
+        </Box>
       </Container>
       {isShopHovered && (
         <Box
@@ -307,12 +348,12 @@ const Navbar = () => {
                   flexDirection: 'column',
                 }}
               >
-                <Link className="link" style={{ fontWeight: 700 }}>
+                <Link className="linkStyle" style={{ fontWeight: 700 }}>
                   Brands
                 </Link>
-                <Link className="link underlinetext">Adidas</Link>
-                <Link className="link underlinetext">Servis</Link>
-                <Link className="link underlinetext">Bata</Link>
+                <Link className="linkStyle underlinetext">Adidas</Link>
+                <Link className="linkStyle underlinetext">Servis</Link>
+                <Link className="linkStyle underlinetext">Bata</Link>
               </Box>
             </Grid>
             <Grid
@@ -337,12 +378,12 @@ const Navbar = () => {
                   flexDirection: 'column',
                 }}
               >
-                <Link className="link" style={{ fontWeight: 700 }}>
+                <Link className="linkStyle" style={{ fontWeight: 700 }}>
                   Categories
                 </Link>
-                <Link className="link underlinetext">Sports</Link>
-                <Link className="link underlinetext">Formals</Link>
-                <Link className="link underlinetext">Casuals</Link>
+                <Link className="linkStyle underlinetext">Sports</Link>
+                <Link className="linkStyle underlinetext">Formals</Link>
+                <Link className="linkStyle underlinetext">Casuals</Link>
               </Box>
             </Grid>
             <Grid

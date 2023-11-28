@@ -6,7 +6,7 @@ import AlertContext from '../../../../context/alert/alertContext';
 import { BasicAlert } from '../../../common';
 import AuthContext from '../../../../context/auth/authContext';
 import { useNavigate } from 'react-router-dom';
-const SignUpDefault = () => {
+const VendorSignUpDefault = () => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
   const navigate = useNavigate();
@@ -95,7 +95,7 @@ const SignUpDefault = () => {
       <BasicAlert />
       <div className="signup-registeration-form">
         <div className="col-1">
-          <h2 className="signupHeading">SignUp</h2>
+          <h2 className="signupHeading">Vendor SignUp</h2>
           <h4 className="signupsubHeading">Sign Up for free!</h4>
           <form
             id="signupForm"
@@ -162,6 +162,47 @@ const SignUpDefault = () => {
               minLength={11}
               maxLength={11}
             />
+            <input
+              type="text"
+              name="businessName"
+              value={signup.businessName}
+              placeholder="Enter your Business Name"
+              id="businessName"
+              onChange={onChangeHandler}
+            />
+            <input
+              type="text"
+              name="companyAddress"
+              value={signup.companyAddress}
+              placeholder="Enter your Company Address"
+              id="companyAddress"
+              onChange={onChangeHandler}
+            />
+            <input
+              type="text"
+              name="companyAddress"
+              value={signup.companyAddress}
+              placeholder="Enter your Company Address"
+              id="companyAddress"
+              onChange={onChangeHandler}
+            />
+            <h4>Banking Information</h4>
+            <input
+              type="text"
+              name="bankName"
+              value={signup.bankName}
+              placeholder="Enter your Bank Name"
+              id="bankName"
+              onChange={onChangeHandler}
+            />
+            <input
+              type="text"
+              name="accountNumber"
+              value={signup.accountNumber}
+              placeholder="Enter your Account Number"
+              id="accountNumber"
+              onChange={onChangeHandler}
+            />
             {/* <i class="fa-regular fa-eye .eye-icon-1"></i> */}
 
             <button className="btn" type="submit">
@@ -170,7 +211,7 @@ const SignUpDefault = () => {
           </form>
           <p className="flex2">
             Already Have an Account?{' '}
-            <Link to="/login" className="linkk">
+            <Link to="/vendorlogin" className="linkk">
               Login
             </Link>
           </p>
@@ -183,4 +224,4 @@ const SignUpDefault = () => {
   );
 };
 
-export default SignUpDefault;
+export default VendorSignUpDefault;

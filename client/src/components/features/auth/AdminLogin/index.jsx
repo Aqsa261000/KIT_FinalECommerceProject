@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import img from '../../../../assets/sneaker.jpg';
-import { Link } from 'react-router-dom';
+
 import './style.css';
 import AuthContext from '../../../../context/auth/authContext';
 import AlertContext from '../../../../context/alert/alertContext';
 import { BasicAlert } from '../../../common';
 import { useNavigate } from 'react-router-dom';
-const LoginDefault = () => {
+const AdminLoginDefault = () => {
   const [signin, setSignin] = useState({
     email: '',
     password: '',
@@ -14,19 +14,19 @@ const LoginDefault = () => {
   const { email, password } = signin;
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
-  const { SignInUserHandler, error, clearErrorHandler, isAuthenticated } =
+  const { error, clearErrorHandler, isAuthenticated, SignInAdminHandler } =
     authContext;
   const { AlertHandler } = alertContext;
   const navigate = useNavigate();
   useEffect(() => {
-    // if (isAuthenticated) {
-    //   navigate('/');
-    // }
+    if (isAuthenticated) {
+      navigate('/adminhome');
+    }
     if (error) {
       AlertHandler(error, 'error');
     }
     clearErrorHandler();
-  }, [error]);
+  }, [error, isAuthenticated]);
 
   const onChangeHandler = (e) => {
     setSignin((prevData) => ({ ...prevData, [e.target.name]: e.target.value }));
@@ -55,7 +55,7 @@ const LoginDefault = () => {
       // } catch (error) {
       //   console.log('error occured', error);
       // }
-      SignInUserHandler(signin);
+      SignInAdminHandler(signin);
     }
   };
   return (
@@ -63,7 +63,7 @@ const LoginDefault = () => {
       <BasicAlert />
       <div className="sigin-registeration-form">
         <div className="column-1">
-          <h2 className="signinHeader">Log In</h2>
+          <h2 className="signinHeader">Admin Login</h2>
           <h4 className="signinsubHeading">Welcome back!</h4>
           <form
             id="signinForm"
@@ -93,13 +93,13 @@ const LoginDefault = () => {
               Login
             </button>
           </form>
-          <p className="flex2">
+          {/* <p className="flex2">
             Don't have an Account?{' '}
             <Link to="/signup" className="linkk">
               {' '}
               Register
             </Link>
-          </p>
+          </p> */}
         </div>
         <div className="col-2">
           <img src={img} alt="" />
@@ -109,4 +109,4 @@ const LoginDefault = () => {
   );
 };
 
-export default LoginDefault;
+export default AdminLoginDefault;

@@ -10,10 +10,11 @@ const AuthReducer = (state, action) => {
   switch (action.type) {
     case SIGNUP_SUCCESS:
     case SIGNIN_SUCCESS:
+      // console.log('Setting token:', action.payload.token);
       localStorage.setItem('token', action.payload.token);
       return {
         ...state,
-        ...action.payload,
+        token: localStorage.getItem('token'),
         isAuthenticated: true,
         isLoading: false,
       };

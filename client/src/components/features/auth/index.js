@@ -3,6 +3,13 @@
 // export { SampleComponentDefault };
 import SignUpDefault from './SignUp';
 import LoginDefault from './Login';
-
-export { SignUpDefault };
-export { LoginDefault };
+import AdminLoginDefault from './AdminLogin';
+import VendorSignUpDefault from './VendorSignUp';
+import VendorLoginDefault from './VendorLogin';
+export {
+  SignUpDefault,
+  LoginDefault,
+  AdminLoginDefault,
+  VendorSignUpDefault,
+  VendorLoginDefault,
+};
