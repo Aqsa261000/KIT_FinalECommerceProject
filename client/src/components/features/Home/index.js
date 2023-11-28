@@ -16,6 +16,7 @@ import { Button } from '@mui/base';
 const HomeDefault = () => {
   const [arrival, setArrival] = useState([
     {
+      id: 1,
       image: knitted,
       title: 'Knitted Joggers',
     },
@@ -68,7 +69,7 @@ const HomeDefault = () => {
           <div className="arrival">
             {arrival.map((item, index) => {
               return (
-                <div className="itemArrival">
+                <div className="itemArrival" key={index}>
                   <img src={item.image} alt="shoes" className="prod-card-img" />
                   <h2>{item.title}</h2>
                 </div>
@@ -93,7 +94,7 @@ const HomeDefault = () => {
           <div className="arrival">
             {arrival.map((item, index) => {
               return (
-                <div className="itemArrival">
+                <div className="itemArrival" key={index}>
                   <img src={item.image} alt="shoes" className="prod-card-img" />
                   <h5>{item.title}</h5>
                 </div>
@@ -118,7 +119,7 @@ const HomeDefault = () => {
           <div className="arrival">
             {arrival.map((item, index) => {
               return (
-                <div className="itemArrival">
+                <div className="itemArrival" key={index}>
                   <img src={item.image} alt="shoes" className="prod-card-img" />
                   <h5>{item.title}</h5>
                 </div>
