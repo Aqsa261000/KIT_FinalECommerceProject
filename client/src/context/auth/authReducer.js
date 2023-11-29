@@ -1,5 +1,8 @@
 import {
+  AUTH_FAIL,
+  AUTH_SUCCESS,
   CLEAR_ERROR,
+  LOGOUT,
   SIGNIN_FAIL,
   SIGNIN_SUCCESS,
   SIGNUP_FAIL,
@@ -14,28 +17,38 @@ const AuthReducer = (state, action) => {
       localStorage.setItem('token', action.payload.token);
       return {
         ...state,
-        token: localStorage.getItem('token'),
+        ...action.payload,
         isAuthenticated: true,
         isLoading: false,
       };
-
-    case SIGNUP_FAIL:
-    case SIGNIN_FAIL:
-      localStorage.removeItem('token');
+    case AUTH_SUCCESS: {
       return {
         ...state,
+        token: localStorage.getItem('token'),
+        isAuthenticated: true,
+        isLoading: false,
+        user: action.payload,
+      };
+    }
+    case SIGNUP_FAIL:
+    case SIGNIN_FAIL:
+    case AUTH_FAIL:
+    case LOGOUT:
+      localStorage.removeItem('token');
+      return {
         isAuthenticated: false,
         isLoading: false,
         error: action?.payload ?? null,
+        user: null,
       };
 
     case CLEAR_ERROR:
-      localStorage.removeItem('token');
       return {
         ...state,
         isAuthenticated: false,
         isLoading: false,
         error: null,
+        user: null,
       };
     default:
       return state;

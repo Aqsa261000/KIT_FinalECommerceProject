@@ -7,3 +7,4 @@ export const AUTH_FAIL = 'authFail';
 export const CLEAR_ERROR = 'clearError';
 export const SIGNIN_SUCCESS = 'loginSuccess';
 export const SIGNIN_FAIL = 'loginFail';
+export const LOGOUT = 'logout'

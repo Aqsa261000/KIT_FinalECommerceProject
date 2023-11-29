@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { DefaultLayout } from '../../layout';
 
 import HeroSection from './HeroSection';
@@ -13,8 +13,11 @@ import brand4 from '../../../assets/image 18.svg';
 
 import { Container } from '@mui/material';
 import { Button } from '@mui/base';
+import AuthContext from '../../../context/auth/authContext';
 
 const HomeDefault = () => {
+  const authContext = useContext(AuthContext);
+  const { isAuthenticated, isLoading, getUser } = authContext;
   const [arrival, setArrival] = useState([
     {
       image: knitted,
@@ -52,6 +55,9 @@ const HomeDefault = () => {
       image: brand4,
     },
   ];
+  useEffect(() => {
+    getUser();
+  }, []);
   return (
     <>
       <DefaultLayout>

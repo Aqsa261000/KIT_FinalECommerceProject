@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './style.css';
 import AuthContext from '../../../../context/auth/authContext';
 import AlertContext from '../../../../context/alert/alertContext';
-import { BasicAlert } from '../../../common';
+import { BasicAlert, Spinner } from '../../../common';
 import { useNavigate } from 'react-router-dom';
 const LoginDefault = () => {
   const [signin, setSignin] = useState({
@@ -14,19 +14,28 @@ const LoginDefault = () => {
   const { email, password } = signin;
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
-  const { SignInUserHandler, error, clearErrorHandler, isAuthenticated } =
-    authContext;
+  const {
+    error,
+    SignInUserHandler,
+
+    clearErrorHandler,
+    isAuthenticated,
+    isLoading,
+  } = authContext;
   const { AlertHandler } = alertContext;
   const navigate = useNavigate();
   useEffect(() => {
-    // if (isAuthenticated) {
-    //   navigate('/');
-    // }
+    if (isAuthenticated) {
+      navigate('/');
+    }
+
     if (error) {
       AlertHandler(error, 'error');
+      clearErrorHandler();
     }
-    clearErrorHandler();
-  }, [error]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error, isAuthenticated]);
 
   const onChangeHandler = (e) => {
     setSignin((prevData) => ({ ...prevData, [e.target.name]: e.target.value }));
@@ -59,53 +68,56 @@ const LoginDefault = () => {
     }
   };
   return (
-    <section className="fullcontainer">
-      <BasicAlert />
-      <div className="sigin-registeration-form">
-        <div className="column-1">
-          <h2 className="signinHeader">Log In</h2>
-          <h4 className="signinsubHeading">Welcome back!</h4>
-          <form
-            id="signinForm"
-            className="flex flex-col"
-            onSubmit={onSubmitHandler}
-          >
-            {/* <input  type='text' placeholder='Type your Full Name' /> */}
-            <input
-              type="text"
-              placeholder="Enter your Email"
-              name="email"
-              id="email"
-              value={signin.email}
-              onChange={onChangeHandler}
-            />
-            <input
-              type="password"
-              placeholder="Enter your Password"
-              name="password"
-              id="password"
-              value={signin.password}
-              onChange={onChangeHandler}
-            />
-            {/* <i className="fa-regular fa-eye eye-icon2"></i> */}
+    <>
+      <section className="fullcontainer">
+        <BasicAlert />
 
-            <button className="btn" type="submit">
-              Login
-            </button>
-          </form>
-          <p className="flex2">
-            Don't have an Account?{' '}
-            <Link to="/signup" className="linkk">
-              {' '}
-              Register
-            </Link>
-          </p>
+        <div className="sigin-registeration-form">
+          <div className="column-1">
+            <h2 className="signinHeader">Log In</h2>
+            <h4 className="signinsubHeading">Welcome back!</h4>
+            <form
+              id="signinForm"
+              className="flex flex-col"
+              onSubmit={onSubmitHandler}
+            >
+              {/* <input  type='text' placeholder='Type your Full Name' /> */}
+              <input
+                type="text"
+                placeholder="Enter your Email"
+                name="email"
+                id="email"
+                value={signin.email}
+                onChange={onChangeHandler}
+              />
+              <input
+                type="password"
+                placeholder="Enter your Password"
+                name="password"
+                id="password"
+                value={signin.password}
+                onChange={onChangeHandler}
+              />
+              {/* <i className="fa-regular fa-eye eye-icon2"></i> */}
+
+              <button className="btn" type="submit">
+                Login
+              </button>
+            </form>
+            <p className="flex2">
+              Don't have an Account?{' '}
+              <Link to="/signup" className="linkk">
+                {' '}
+                Register
+              </Link>
+            </p>
+          </div>
+          <div className="col-2">
+            <img src={img} alt="" />
+          </div>
         </div>
-        <div className="col-2">
-          <img src={img} alt="" />
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

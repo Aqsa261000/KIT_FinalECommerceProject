@@ -31,8 +31,8 @@ const SignUpDefault = () => {
     }
     if (error) {
       AlertHandler(error, 'error');
+      clearErrorHandler();
     }
-    clearErrorHandler();
   }, [error, isAuthenticated]);
   const onChangeHandler = (e) => {
     setSignup((prevData) => ({ ...prevData, [e.target.name]: e.target.value }));

@@ -4,12 +4,16 @@ import useId from '@mui/material/utils/useId';
 import AuthReducer from './authReducer';
 import AuthContext from './authContext';
 import {
+  AUTH_FAIL,
+  AUTH_SUCCESS,
   CLEAR_ERROR,
+  LOGOUT,
   SIGNIN_FAIL,
   SIGNIN_SUCCESS,
   SIGNUP_FAIL,
   SIGNUP_SUCCESS,
 } from '../type';
+import setAuthToken from '../../utils/setAuthToken';
 
 const AuthState = ({ children }) => {
   const initialState = {
@@ -21,15 +25,26 @@ const AuthState = ({ children }) => {
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
-  // const SignUpUserExists = async () => {
-  //   try {
-  //     const response = await axios.get('/api/users');
-  //     console.log(response);
-  //     return response;
-  //   } catch (error) {
-  //     console.log('error', error.message);
-  //   }
-  // };
+  const getUser = async () => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+    try {
+      const response = await axios.get('/api/auth');
+      console.log(response);
+      // dispatch({ type: 'AUTH_SUCCESS', payload: response.data });
+      dispatch({
+        type: AUTH_SUCCESS,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log('error', error);
+      dispatch({
+        type: AUTH_FAIL,
+        // payload: error.response.data.msg,
+      });
+    }
+  };
   const SignUpUserHandler = async (data) => {
     try {
       const apidata = {
@@ -45,6 +60,9 @@ const AuthState = ({ children }) => {
         type: SIGNUP_SUCCESS,
         payload: response.data,
       });
+      if (localStorage.token) {
+        getUser();
+      }
     } catch (error) {
       // console.log('error', error.message);
       console.log('error', error.response.data.errors);
@@ -62,13 +80,10 @@ const AuthState = ({ children }) => {
   let token;
   const SignInUserHandler = async (data) => {
     try {
-      const apidata = {
-        ...data,
-      };
       const config = {
         headers: { 'Content-Type': 'application/json' },
       };
-      const response = await axios.post('/api/auth', apidata, config);
+      const response = await axios.post('/api/auth', data, config);
       // token = await response.data.token;
       console.log('signin successful', response);
       dispatch({ type: SIGNIN_SUCCESS, payload: response.data });
@@ -88,13 +103,10 @@ const AuthState = ({ children }) => {
   };
   const SignInAdminHandler = async (data) => {
     try {
-      const apidata = {
-        ...data,
-      };
       const config = {
         headers: { 'Content-Type': 'application/json' },
       };
-      const response = await axios.post('/api/auth', apidata, config);
+      const response = await axios.post('/api/auth', config);
       // token = await response.data.token;
       console.log('signin successful', response);
       dispatch({ type: SIGNIN_SUCCESS, payload: response.data });
@@ -124,6 +136,10 @@ const AuthState = ({ children }) => {
   //     console.log('error', error);
   //   }
   // };
+
+  const logoutHandler = () => {
+    dispatch({ type: LOGOUT });
+  };
   const clearErrorHandler = () => {
     dispatch({ type: CLEAR_ERROR });
   };
@@ -140,6 +156,8 @@ const AuthState = ({ children }) => {
         SignInUserHandler,
         clearErrorHandler,
         SignInAdminHandler,
+        getUser,
+        logoutHandler,
         // SignInUserExists,
       }}
     >

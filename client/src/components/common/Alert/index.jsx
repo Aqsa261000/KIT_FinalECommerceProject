@@ -8,7 +8,7 @@ const BasicAlert = () => {
   const { alerts } = alertContext;
   return (
     <>
-      {alerts && 
+      {alerts &&
         alerts.length > 0 &&
         alerts.map((alert) => (
           <Alert key={alert.id} severity={alert.type}>
