@@ -42,17 +42,7 @@ router.post(
 
     try {
       const user = await User.findOne({ email });
-      // const {role} = user;
-      // console.log(role);
-      // if(role == "1"){
-      //   console.log("Admin Login");
-      // }
-      // else if(role == "0"){
-      //   console.log("Normal User Login");
-      // }
-      // else if(role == "2"){
-      //   console.log("Vendor Login");
-      // }
+
       console.log("USER: ",user);
       if (!user) {
         return res.status(400).json({ msg: 'User not exist.' });
@@ -77,9 +67,16 @@ router.post(
         {
           expiresIn: 3600000,
         },
-        (err, token) => {
+        async(err, token) => {
           if (err) throw err.message;
-          return res.json({ token });
+          console.log("--The decoded user is----");
+          const decoded = jwt.verify(token, process.env.JWTSECRET);
+          const {user} = decoded;
+          const {id} = user;
+          console.log("The decoded is : ",id);
+          const dt = await User.findOne({_id:id});
+          const {role} = dt;
+          return res.json({ token, role });
         }
       );
     } catch (error) {
