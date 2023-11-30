@@ -24,8 +24,8 @@ const AdminLoginDefault = () => {
     }
     if (error) {
       AlertHandler(error, 'error');
+      clearErrorHandler();
     }
-    clearErrorHandler();
   }, [error, isAuthenticated]);
 
   const onChangeHandler = (e) => {

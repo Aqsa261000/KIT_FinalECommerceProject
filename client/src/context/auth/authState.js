@@ -77,7 +77,37 @@ const AuthState = ({ children }) => {
     }
   };
 
-  let token;
+  const SignUpVendorHandler = async (data) => {
+    try {
+      const apidata = {
+        ...data,
+        role: 2,
+      };
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+      };
+      const response = await axios.post('/api/users', apidata, config);
+      console.log('signup successful', response);
+      dispatch({
+        type: SIGNUP_SUCCESS,
+        payload: response.data,
+      });
+      if (localStorage.token) {
+        getUser();
+      }
+    } catch (error) {
+      // console.log('error', error.message);
+      console.log('error', error.response.data.errors);
+      dispatch({
+        type: SIGNUP_FAIL,
+        payload:
+          error.response.data.msg ||
+          error.response.data.errors.map((errorObject, index) => (
+            <span key={index}>{errorObject.msg}</span>
+          )),
+      });
+    }
+  };
   const SignInUserHandler = async (data) => {
     try {
       const config = {
@@ -85,9 +115,15 @@ const AuthState = ({ children }) => {
       };
       const response = await axios.post('/api/auth', data, config);
       // token = await response.data.token;
-      console.log('signin successful', response);
-      dispatch({ type: SIGNIN_SUCCESS, payload: response.data });
-      return response;
+      if (response.data.role === 0) {
+        console.log('signin successful', response);
+        dispatch({ type: SIGNIN_SUCCESS, payload: response.data });
+      } else {
+        dispatch({
+          type: SIGNIN_FAIL,
+          payload: 'User not exist',
+        });
+      }
     } catch (error) {
       // console.log('error', error.message);
       console.log('error', error);
@@ -106,10 +142,47 @@ const AuthState = ({ children }) => {
       const config = {
         headers: { 'Content-Type': 'application/json' },
       };
-      const response = await axios.post('/api/auth', config);
+      const response = await axios.post('/api/auth', data, config);
       // token = await response.data.token;
-      console.log('signin successful', response);
-      dispatch({ type: SIGNIN_SUCCESS, payload: response.data });
+      if (response.data.role === 1) {
+        console.log('signin successful', response);
+        dispatch({ type: SIGNIN_SUCCESS, payload: response.data });
+      } else {
+        dispatch({
+          type: SIGNIN_FAIL,
+          payload: 'User not exist',
+        });
+      }
+      return response;
+    } catch (error) {
+      // console.log('error', error.message);
+      console.log('error', error);
+      dispatch({
+        type: SIGNIN_FAIL,
+        payload:
+          error.response.data.msg ||
+          error.response.data.errors.map((errorObject, index) => (
+            <span key={index}>{errorObject.msg}</span>
+          )),
+      });
+    }
+  };
+  const SignInVendorHandler = async (data) => {
+    try {
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+      };
+      const response = await axios.post('/api/auth', data, config);
+      // token = await response.data.token;
+      if (response.data.role === 2) {
+        console.log('signin successful', response);
+        dispatch({ type: SIGNIN_SUCCESS, payload: response.data });
+      } else {
+        dispatch({
+          type: SIGNIN_FAIL,
+          payload: 'User not exist',
+        });
+      }
       return response;
     } catch (error) {
       // console.log('error', error.message);
@@ -152,10 +225,11 @@ const AuthState = ({ children }) => {
         user: state.user,
         error: state.error,
         SignUpUserHandler,
-        // SignUpUserExists,
+        SignUpVendorHandler,
         SignInUserHandler,
         clearErrorHandler,
         SignInAdminHandler,
+        SignInVendorHandler,
         getUser,
         logoutHandler,
         // SignInUserExists,

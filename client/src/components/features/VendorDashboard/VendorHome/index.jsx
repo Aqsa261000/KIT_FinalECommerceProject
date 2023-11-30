@@ -8,7 +8,7 @@ import {
   Typography,
   useMediaQuery,
 } from '@mui/material';
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import style from './style.js';
 import './style.css';
@@ -20,11 +20,16 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
+import AuthContext from '../../../../context/auth/authContext.js';
 
 const VendorHomeDefault = () => {
+  const authContext = useContext(AuthContext);
+  const { isAuthenticated, isLoading, user, getUser } = authContext;
   const isWideScreen = useMediaQuery('(min-width:1200px)');
   const [drawerOpen, setDrawerOpen] = React.useState(false);
-
+  useEffect(() => {
+    getUser();
+  }, []);
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
   };
@@ -79,7 +84,12 @@ const VendorHomeDefault = () => {
               </Box>
               <Box component={'li'} sx={style.listItems}>
                 <Link className="linkItems">
-                  <MenuIcon /> Inventory
+                  <BadgeIcon /> Vendors
+                </Link>
+              </Box>
+              <Box component={'li'} sx={style.listItems}>
+                <Link className="linkItems">
+                  <PeopleAltIcon /> Users
                 </Link>
               </Box>
             </Box>
@@ -140,7 +150,12 @@ const VendorHomeDefault = () => {
                   </Box>
                   <Box component={'li'} sx={style.listItems}>
                     <Link className="linkItems">
-                      <MenuIcon /> Inventory
+                      <BadgeIcon /> Vendors
+                    </Link>
+                  </Box>
+                  <Box component={'li'} sx={style.listItems}>
+                    <Link className="linkItems">
+                      <PeopleAltIcon /> Users
                     </Link>
                   </Box>
                 </Box>
@@ -167,7 +182,7 @@ const VendorHomeDefault = () => {
             variant="h4"
             style={{ color: '#8833fd', padding: '20px', fontWeight: 700 }}
           >
-            Vendor Dashboard
+            Hello {user?.name}
           </Typography>
         </Box>
       </Grid>

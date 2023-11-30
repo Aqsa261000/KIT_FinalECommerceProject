@@ -10,7 +10,7 @@ const VendorSignUpDefault = () => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
   const navigate = useNavigate();
-  const { SignUpUserHandler, error, clearErrorHandler, isAuthenticated } =
+  const { error, clearErrorHandler, isAuthenticated, SignUpVendorHandler } =
     authContext;
   const { AlertHandler } = alertContext;
   const [signup, setSignup] = useState({
@@ -21,13 +21,14 @@ const VendorSignUpDefault = () => {
     city: '',
     gender: '',
     phone: '',
+    cnic: '',
   });
-  const { name, email, password, confirmPassword, city, gender, phone } =
+  const { name, email, password, confirmPassword, city, gender, phone, cnic } =
     signup;
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/');
+      navigate('/vendorhome');
     }
     if (error) {
       AlertHandler(error, 'error');
@@ -50,7 +51,8 @@ const VendorSignUpDefault = () => {
       !confirmPassword ||
       !city ||
       !gender ||
-      !phone
+      !phone ||
+      !cnic
     ) {
       AlertHandler('Please fill all the required fields', 'error');
     } else if (password !== confirmPassword) {
@@ -87,7 +89,7 @@ const VendorSignUpDefault = () => {
       // } catch (error) {
       //   console.error('Error checking if email exists:', error.message);
       // }
-      SignUpUserHandler(signup);
+      SignUpVendorHandler(signup);
     }
   };
   return (
@@ -164,20 +166,21 @@ const VendorSignUpDefault = () => {
             />
             <input
               type="text"
+              name="cnic"
+              value={signup.cnic}
+              placeholder="Enter your CNIC Number"
+              id="cnic"
+              onChange={onChangeHandler}
+            />
+            {/* <input
+              type="text"
               name="businessName"
               value={signup.businessName}
               placeholder="Enter your Business Name"
               id="businessName"
               onChange={onChangeHandler}
             />
-            <input
-              type="text"
-              name="companyAddress"
-              value={signup.companyAddress}
-              placeholder="Enter your Company Address"
-              id="companyAddress"
-              onChange={onChangeHandler}
-            />
+
             <input
               type="text"
               name="companyAddress"
@@ -202,7 +205,7 @@ const VendorSignUpDefault = () => {
               placeholder="Enter your Account Number"
               id="accountNumber"
               onChange={onChangeHandler}
-            />
+            /> */}
             {/* <i class="fa-regular fa-eye .eye-icon-1"></i> */}
 
             <button className="btn" type="submit">

@@ -14,13 +14,13 @@ const VendorLoginDefault = () => {
   const { email, password } = signin;
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
-  const { SignInUserHandler, error, clearErrorHandler, isAuthenticated } =
+  const { SignInVendorHandler, error, clearErrorHandler, isAuthenticated } =
     authContext;
   const { AlertHandler } = alertContext;
   const navigate = useNavigate();
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/');
+      navigate('/vendorhome');
     }
     if (error) {
       AlertHandler(error, 'error');
@@ -55,7 +55,7 @@ const VendorLoginDefault = () => {
       // } catch (error) {
       //   console.log('error occured', error);
       // }
-      SignInUserHandler(signin);
+      SignInVendorHandler(signin);
     }
   };
   return (
