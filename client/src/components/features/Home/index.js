@@ -56,15 +56,16 @@ const HomeDefault = () => {
     },
   ];
   useEffect(() => {
+    
     getUser();
   }, []);
   return (
     <>
       <DefaultLayout>
-        {/* <HeroSection />
+      <HeroSection />
         <CardSection />
 
-        <Container className="prod-container">
+        <div className="prod-container">
           <div className="heading-div">
             <div className="color"></div>
             <div>
@@ -75,7 +76,7 @@ const HomeDefault = () => {
           <div className="arrival">
             {arrival.map((item, index) => {
               return (
-                <div className="itemArrival">
+                <div className="itemArrival" key={item.id}>
                   <img src={item.image} alt="shoes" className="prod-card-img" />
                   <h2>{item.title}</h2>
                 </div>
@@ -87,9 +88,9 @@ const HomeDefault = () => {
               Shop Now
             </Button>
           </div>
-        </Container>
+        </div>
 
-        <Container>
+        <div>
           <div className="heading-div">
             <div className="color"></div>
             <div>
@@ -100,7 +101,7 @@ const HomeDefault = () => {
           <div className="arrival">
             {arrival.map((item, index) => {
               return (
-                <div className="itemArrival">
+                <div className="itemArrival" key={item.id}>
                   <img src={item.image} alt="shoes" className="prod-card-img" />
                   <h5>{item.title}</h5>
                 </div>
@@ -112,9 +113,9 @@ const HomeDefault = () => {
               Shop Now
             </Button>
           </div>
-        </Container>
+        </div>
 
-        <Container>
+        <div>
           <div className="heading-div">
             <div className="color"></div>
             <div>
@@ -125,7 +126,7 @@ const HomeDefault = () => {
           <div className="arrival">
             {arrival.map((item, index) => {
               return (
-                <div className="itemArrival">
+                <div className="itemArrival" key={item.id}>
                   <img src={item.image} alt="shoes" className="prod-card-img" />
                   <h5>{item.title}</h5>
                 </div>
@@ -137,32 +138,31 @@ const HomeDefault = () => {
               Shop Now
             </Button>
           </div>
-        </Container>
-        <Container>
-          <div className="heading-div">
-            <div className="color"></div>
-            <div>
-              <h2 style={{ color: '#3C4242' }}>Women</h2>
-            </div>
-          </div>
-          <div className="arrival">
-            {arrival.map((item, index) => {
-              return (
-                <div className="itemArrival">
-                  <img src={item.image} alt="shoes" className="prod-card-img" />
-                  <h5>{item.title}</h5>
-                </div>
-              );
-            })}
-          </div>
-          <div className="center">
-            <Button variant="contained" className="shop-btn">
-              Shop Now
-            </Button>
-          </div>
-        </Container>
+        </div>
 
-        <Container className="brand-container center">
+        <div className="heading-div">
+          <div className="color"></div>
+          <div>
+            <h2 style={{ color: '#3C4242' }}>Women</h2>
+          </div>
+        </div>
+        <div className="arrival">
+          {arrival.map((item, index) => {
+            return (
+              <div className="itemArrival" key={item.id}>
+                <img src={item.image} alt="shoes" className="prod-card-img" />
+                <h5>{item.title}</h5>
+              </div>
+            );
+          })}
+        </div>
+        <div className="center">
+          <Button variant="contained" className="shop-btn">
+            Shop Now
+          </Button>
+        </div>
+
+        <div className="brand-container center">
           <div className="content">
             <h1 style={{ color: '#fff' }}>Top Brands Deal</h1>
             <h6 style={{ color: '#fff' }}>
@@ -172,7 +172,7 @@ const HomeDefault = () => {
             <div className="arrival">
               {brands.map((item, index) => {
                 return (
-                  <div className="itemBrand">
+                  <div className="itemBrand" key={item.id}>
                     <img
                       src={item.image}
                       alt="shoes"
@@ -183,8 +183,7 @@ const HomeDefault = () => {
               })}
             </div>
           </div>
-        </Container> */}
-        I am a homepage
+        </div>
       </DefaultLayout>
     </>
   );

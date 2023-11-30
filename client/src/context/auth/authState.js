@@ -76,7 +76,37 @@ const AuthState = ({ children }) => {
       });
     }
   };
-
+  const SignUpAdminHandler = async (data) => {
+    try {
+      const apidata = {
+        ...data,
+        role: 1,
+      };
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+      };
+      const response = await axios.post('/api/users', apidata, config);
+      console.log('signup successful', response);
+      dispatch({
+        type: SIGNUP_SUCCESS,
+        payload: response.data,
+      });
+      if (localStorage.token) {
+        getUser();
+      }
+    } catch (error) {
+      // console.log('error', error.message);
+      console.log('error', error.response.data.errors);
+      dispatch({
+        type: SIGNUP_FAIL,
+        payload:
+          error.response.data.msg ||
+          error.response.data.errors.map((errorObject, index) => (
+            <span key={index}>{errorObject.msg}</span>
+          )),
+      });
+    }
+  };
   const SignUpVendorHandler = async (data) => {
     try {
       const apidata = {
@@ -225,6 +255,7 @@ const AuthState = ({ children }) => {
         user: state.user,
         error: state.error,
         SignUpUserHandler,
+        SignUpAdminHandler,
         SignUpVendorHandler,
         SignInUserHandler,
         clearErrorHandler,
