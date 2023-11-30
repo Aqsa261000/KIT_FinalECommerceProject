@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 const LoginDefault = () => {
   const [signin, setSignin] = useState({
     email: '',
-    password: '',
+    password: '',  
   });
   const { email, password } = signin;
   const alertContext = useContext(AlertContext);
