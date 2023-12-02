@@ -18,10 +18,9 @@ const App = () => {
           <Fragment>
             <CssBaseline />
             {/* Yahan par routes aayeghe */}
-            <AppRouter />
-            {/* <Routes>
+            {/* <AppRouter /> */}
+            <Routes>
               <Route path="/" element={<Home />} />
-
               <Route path="/signup" element={<SignUp />} />
               <Route path="/login" element={<Login />} />
               <Route path="/adminlogin" element={<AdminLogin />} />
@@ -29,7 +28,7 @@ const App = () => {
               <Route path="/vendorsignup" element={<VendorSignUp />} />
               <Route path="/vendorlogin" element={<VendorLogin />} />
               <Route path="/vendorhome" element={<VendorHome />} />
-            </Routes> */}
+            </Routes>
           </Fragment>
         </BrowserRouter>
       </AlertState>

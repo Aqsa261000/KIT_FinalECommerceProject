@@ -13,7 +13,7 @@ const AuthReducer = (state, action) => {
   switch (action.type) {
     case SIGNUP_SUCCESS:
     case SIGNIN_SUCCESS:
-      // console.log('Setting token:', action.payload.token);
+      localStorage.setItem('role', action.payload.role);
       localStorage.setItem('token', action.payload.token);
       return {
         ...state,
@@ -25,6 +25,7 @@ const AuthReducer = (state, action) => {
       return {
         ...state,
         token: localStorage.getItem('token'),
+        role: localStorage.getItem('role'),
         isAuthenticated: true,
         isLoading: false,
         user: action.payload,
@@ -35,6 +36,7 @@ const AuthReducer = (state, action) => {
     case AUTH_FAIL:
     case LOGOUT:
       localStorage.removeItem('token');
+      localStorage.removeItem('role');
       return {
         isAuthenticated: false,
         isLoading: false,

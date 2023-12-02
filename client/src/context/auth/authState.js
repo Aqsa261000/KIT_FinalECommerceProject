@@ -18,6 +18,7 @@ import setAuthToken from '../../utils/setAuthToken';
 const AuthState = ({ children }) => {
   const initialState = {
     token: null,
+    role: null,
     isAuthenticated: false,
     isLoading: true,
     user: null,
