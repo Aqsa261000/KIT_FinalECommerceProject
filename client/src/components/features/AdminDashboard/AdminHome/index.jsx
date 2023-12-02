@@ -24,7 +24,8 @@ import AuthContext from '../../../../context/auth/authContext.js';
 
 const AdminHomeDefault = () => {
   const authContext = useContext(AuthContext);
-  const { isAuthenticated, isLoading, user, getUser } = authContext;
+  const { isAuthenticated, isLoading, user, getUser, logoutHandler } =
+    authContext;
   const isWideScreen = useMediaQuery('(min-width:1200px)');
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   useEffect(() => {
@@ -95,8 +96,8 @@ const AdminHomeDefault = () => {
             </Box>
           </Box>
           <Box sx={{ margin: '30px auto', width: '70%' }}>
-            <Button sx={style.button}>
-              <ExitToAppIcon /> Signout
+            <Button sx={style.button} onClick={logoutHandler}>
+              <ExitToAppIcon /> Logout
             </Button>
           </Box>
         </Grid>
@@ -161,8 +162,8 @@ const AdminHomeDefault = () => {
                 </Box>
               </Box>
               <Box sx={{ margin: '30px auto', width: '70%' }}>
-                <Button sx={style.button}>
-                  <ExitToAppIcon /> Signout
+                <Button sx={style.button} onClick={logoutHandler}>
+                  <ExitToAppIcon /> Logout
                 </Button>
               </Box>
             </Grid>

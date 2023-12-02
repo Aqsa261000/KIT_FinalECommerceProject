@@ -562,13 +562,15 @@ const Navbar = () => {
                     <Button onClick={handleDrawerOpen}>
                       <MenuIcon sx={style.menuButton} />
                     </Button>
-                    <Link to="/login">
+
+                    {/* <Link to="/login">
                       <Button sx={style.button}>Login</Button>
-                    </Link>
+                    </Link> */}
                     {/* <Button>
                 <Avatar sx={style.button}>A</Avatar>
               </Button> */}
                   </Box>
+
                   <Drawer
                     anchor="right"
                     open={drawerOpen}
@@ -583,7 +585,7 @@ const Navbar = () => {
                         width: '200px',
                       }}
                     >
-                      <List>
+                      <List onClick={handleDrawerClose}>
                         <ListItem button>
                           <Link style={style.listItems} className="link">
                             Home
@@ -668,32 +670,30 @@ const Navbar = () => {
                         </ListItem>
                         <ListItem button>
                           <Link style={style.listItems} className="link">
-                            {/* <ShoppingCartIcon /> */}
-                            My Cart
+                            <ShoppingCartIcon /> My Cart
                           </Link>
                         </ListItem>
-                        {/* <ListItem button>
-                      <Link style={style.listItems} className="link">
-                        {/* <ShoppingCartIcon /> */}
-                        {/* My Orders
-                      </Link>
-                    </ListItem>
-                    <ListItem button>
-                      <Link style={style.listItems} className="link">
-                        <ShoppingCartIcon /> */}
-                        {/* My Profile
-                      </Link> */}
-                        {/* </ListItem> */}
+                        <ListItem button>
+                          <Link style={style.listItems} className="link">
+                            {/* <ShoppingCartIcon /> */}
+                            My Orders
+                          </Link>
+                        </ListItem>
+                        <ListItem button>
+                          <Link style={style.listItems} className="link">
+                            My Profile
+                          </Link>
+                        </ListItem>
                         {/* Add more ListItems for additional navigation items */}
                       </List>
-                      {/* <List>
-                    <ListItem button>
-                      <Link style={style.listItems} className="link">
-                        <LogoutIcon />
-                        Logout
-                      </Link>
-                    </ListItem>
-                  </List> */}
+                      <List onClick={handleDrawerClose}>
+                        <ListItem button onClick={logoutHandler}>
+                          <Button style={style.listItems} className="linkStyle">
+                            <LogoutIcon />
+                            Logout
+                          </Button>
+                        </ListItem>
+                      </List>
                     </Box>
                   </Drawer>
                 </>

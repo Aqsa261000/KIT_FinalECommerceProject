@@ -7,6 +7,7 @@ import AuthState from './context/auth/authState';
 import { SignUp, Home, Login } from './views';
 import { AdminHome, AdminLogin } from './views';
 import { VendorHome, VendorLogin, VendorSignUp } from './views';
+import AppRouter from './router';
 
 // import BasicAlert from './components/common/Alert';
 const App = () => {
@@ -17,8 +18,8 @@ const App = () => {
           <Fragment>
             <CssBaseline />
             {/* Yahan par routes aayeghe */}
-
-            <Routes>
+            <AppRouter />
+            {/* <Routes>
               <Route path="/" element={<Home />} />
 
               <Route path="/signup" element={<SignUp />} />
@@ -28,7 +29,7 @@ const App = () => {
               <Route path="/vendorsignup" element={<VendorSignUp />} />
               <Route path="/vendorlogin" element={<VendorLogin />} />
               <Route path="/vendorhome" element={<VendorHome />} />
-            </Routes>
+            </Routes> */}
           </Fragment>
         </BrowserRouter>
       </AlertState>
