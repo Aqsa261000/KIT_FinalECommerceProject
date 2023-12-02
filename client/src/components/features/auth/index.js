@@ -6,6 +6,7 @@ import LoginDefault from './Login';
 import AdminLoginDefault from './AdminLogin';
 import VendorSignUpDefault from './VendorSignUp';
 import VendorLoginDefault from './VendorLogin';
+
 export {
   SignUpDefault,
   LoginDefault,

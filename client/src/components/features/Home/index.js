@@ -63,7 +63,6 @@ const HomeDefault = () => {
       <DefaultLayout>
         {/* <HeroSection />
         <CardSection />
-
         <Container className="prod-container">
           <div className="heading-div">
             <div className="color"></div>
@@ -88,7 +87,6 @@ const HomeDefault = () => {
             </Button>
           </div>
         </Container>
-
         <Container>
           <div className="heading-div">
             <div className="color"></div>
@@ -113,7 +111,6 @@ const HomeDefault = () => {
             </Button>
           </div>
         </Container>
-
         <Container>
           <div className="heading-div">
             <div className="color"></div>
@@ -161,7 +158,6 @@ const HomeDefault = () => {
             </Button>
           </div>
         </Container>
-
         <Container className="brand-container center">
           <div className="content">
             <h1 style={{ color: '#fff' }}>Top Brands Deal</h1>
