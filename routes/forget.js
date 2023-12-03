@@ -47,7 +47,7 @@ routes.post('/',async(req,res)=>{
         });
         const mailOptions = {
           from: 'kickart11@gmail.com',
-          to: `awaiszubair512@gmail.com`,
+          to: `${email}`,
           subject: 'OTP CODE',
           text: `Your OTP Code is ${otp} don't share this code with anyone`
         };
