@@ -260,30 +260,7 @@ const AuthState = ({ children }) => {
       });
     }
   };
-  // const OTPVerification = async (data) => {
-  //   if (localStorage.token) {
-  //     setAuthToken(localStorage.token);
-  //   }
-  //   try {
-  //     const config = {
-  //       headers: { 'Content-Type': 'application/json' },
-  //     };
-  //     const response = await axios.post('/api/reset', data, config);
-  //     console.log('otp response', response.data.otp);
-  //     console.log(data);
-  //     dispatch({ type: OTPVERIFY_SUCCESS, payload: response.data });
-  //   } catch (error) {
-  //     console.log('error', error);
-  //     dispatch({
-  //       type: OTPVERIFY_FAIL,
-  //       payload:
-  //         error.response.data.msg ||
-  //         error.response.data.errors.map((errorObject, index) => (
-  //           <span key={index}>{errorObject.msg}</span>
-  //         )),
-  //     });
-  //   }
-  // };
+
   const OTPVerification = async (data) => {
     try {
       const config = {
@@ -295,21 +272,6 @@ const AuthState = ({ children }) => {
     } catch (error) {
       console.log(error);
     }
-    //   if (localStorage.token) {
-    //     setAuthToken(localStorage.token);
-    //   }
-    //   try {
-    //     const config = {
-    //       headers: { 'Content-Type': 'application/json' },
-    //     };
-    //     const response = await axios.post('/api/reset/verify', data, config);
-    //     console.log('otp response', response.data.otp);
-    //     console.log('data', data.otpcode);
-    //     // if(response.data.otp === data.otpcode){
-    //     // }
-    //   } catch (error) {
-    //     console.log('error', error);
-    //   }
   };
 
   const logoutHandler = () => {
