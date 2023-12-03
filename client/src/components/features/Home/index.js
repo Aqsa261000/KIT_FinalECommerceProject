@@ -137,7 +137,7 @@ const HomeDefault = () => {
               Shop Now
             </Button>
           </div>
-        </Container>
+        </div>
         <Container>
           <div className="heading-div">
             <div className="color"></div>
@@ -182,8 +182,8 @@ const HomeDefault = () => {
               })}
             </div>
           </div>
-        </Container> */}
-        I am a homepage
+        </Container>
+        
       </DefaultLayout>
     </>
   );
