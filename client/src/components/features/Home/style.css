@@ -87,6 +87,7 @@ p {
 .itemArrival {
   width: 25%;
   border-radius: 12px;
+  min-width: 300px;
 }
 /* .center {
     display: flex;
