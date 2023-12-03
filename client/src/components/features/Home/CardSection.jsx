@@ -3,7 +3,7 @@ import './style.css'; // Import a CSS file for styling
 import leftCard from '../../../assets/letfCard.svg';
 import rightCard from '../../../assets/rightCard.svg';
 import { Container } from '@mui/material';
-
+import './style.css';
 const CardSection = () => {
   return (
     <Container>

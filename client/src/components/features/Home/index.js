@@ -10,7 +10,7 @@ import puma from '../../../assets/image 21.svg';
 import hm from '../../../assets/image 7.svg';
 import brand3 from '../../../assets/image 19.svg';
 import brand4 from '../../../assets/image 18.svg';
-
+import './style.css';
 import { Container } from '@mui/material';
 import { Button } from '@mui/base';
 import AuthContext from '../../../context/auth/authContext';
@@ -61,7 +61,7 @@ const HomeDefault = () => {
   return (
     <>
       <DefaultLayout>
-        {/* <HeroSection />
+        <HeroSection />
         <CardSection />
         <Container className="prod-container">
           <div className="heading-div">
@@ -100,7 +100,7 @@ const HomeDefault = () => {
               return (
                 <div className="itemArrival">
                   <img src={item.image} alt="shoes" className="prod-card-img" />
-                  <h5>{item.title}</h5>
+                  <h2>{item.title}</h2>
                 </div>
               );
             })}
@@ -124,7 +124,7 @@ const HomeDefault = () => {
               return (
                 <div className="itemArrival">
                   <img src={item.image} alt="shoes" className="prod-card-img" />
-                  <h5>{item.title}</h5>
+                  <h2>{item.title}</h2>
                 </div>
               );
             })}
@@ -147,7 +147,7 @@ const HomeDefault = () => {
               return (
                 <div className="itemArrival">
                   <img src={item.image} alt="shoes" className="prod-card-img" />
-                  <h5>{item.title}</h5>
+                  <h2>{item.title}</h2>
                 </div>
               );
             })}
@@ -179,7 +179,7 @@ const HomeDefault = () => {
               })}
             </div>
           </div>
-        </Container> */}
+        </Container>
         I am a homepage
       </DefaultLayout>
     </>
