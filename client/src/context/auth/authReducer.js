@@ -1,8 +1,14 @@
 import {
   AUTH_FAIL,
   AUTH_SUCCESS,
+  CHANGEPASSWORD_FAIL,
+  CHANGEPASSWORD_SUCCESS,
   CLEAR_ERROR,
   LOGOUT,
+  OTPSEND_FAIL,
+  OTPSEND_SUCCESS,
+  OTPVERIFY_FAIL,
+  OTPVERIFY_SUCCESS,
   SIGNIN_FAIL,
   SIGNIN_SUCCESS,
   SIGNUP_FAIL,
@@ -13,7 +19,7 @@ const AuthReducer = (state, action) => {
   switch (action.type) {
     case SIGNUP_SUCCESS:
     case SIGNIN_SUCCESS:
-      // console.log('Setting token:', action.payload.token);
+      localStorage.setItem('role', action.payload.role);
       localStorage.setItem('token', action.payload.token);
       return {
         ...state,
@@ -25,6 +31,7 @@ const AuthReducer = (state, action) => {
       return {
         ...state,
         token: localStorage.getItem('token'),
+        role: localStorage.getItem('role'),
         isAuthenticated: true,
         isLoading: false,
         user: action.payload,
@@ -34,12 +41,25 @@ const AuthReducer = (state, action) => {
     case SIGNIN_FAIL:
     case AUTH_FAIL:
     case LOGOUT:
+    case OTPSEND_FAIL:
       localStorage.removeItem('token');
+      localStorage.removeItem('role');
       return {
         isAuthenticated: false,
         isLoading: false,
         error: action?.payload ?? null,
         user: null,
+        otpRequest: false,
+        otpVerify: false,
+      };
+    case OTPVERIFY_FAIL:
+      return {
+        isAuthenticated: false,
+        isLoading: false,
+        error: action?.payload ?? null,
+        user: null,
+        otpRequest: true,
+        otpVerify: false,
       };
 
     case CLEAR_ERROR:
@@ -49,6 +69,26 @@ const AuthReducer = (state, action) => {
         isLoading: false,
         error: null,
         user: null,
+      };
+
+    case OTPSEND_SUCCESS:
+      return {
+        ...state,
+        ...action.payload,
+        isAuthenticated: false,
+        isLoading: false,
+        otpRequest: true,
+        otpVerify: false,
+      };
+
+    case OTPVERIFY_SUCCESS:
+      return {
+        ...state,
+        ...action.payload,
+        isAuthenticated: false,
+        isLoading: false,
+        otpRequest: true,
+        otpVerify: true,
       };
     default:
       return state;

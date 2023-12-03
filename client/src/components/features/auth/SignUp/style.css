@@ -70,12 +70,12 @@ background: linear-gradient(to right, #F8CDDA, #1D2B64);  */
   background-color: #7a2fdc;
 }
 
-.flex {
+.flexx {
   display: flex;
   gap: 1em;
 }
 
-.flex2 {
+.flexx2 {
   display: flex;
   gap: 0.2rem;
 }

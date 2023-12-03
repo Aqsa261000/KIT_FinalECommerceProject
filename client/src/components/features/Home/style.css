@@ -1,7 +1,7 @@
 /* HeroSection.css */
 
 .hero-section {
-  position: relative;
+  /* position: relative; */
   width: 100vw;
   height: 80vh; /* Set the desired height */
   background-image: url('../../../assets/homebg.svg'); /* Replace with your image path */
@@ -9,12 +9,14 @@
   background-position: center;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .hero-content {
-  padding-left: 120px; /* Adjust the padding as needed */
+  /* padding-left: 120px; */
   color: white; /* Text color */
   width: 50%;
+  margin-left: 50px;
 }
 .hero-content > h1 {
   font-weight: 900;
@@ -39,9 +41,9 @@
   display: flex;
   width: 90vw;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin: 20px;
+  margin: 30px 5vw;
   column-gap: 0px;
 }
 
@@ -85,7 +87,14 @@ p {
   padding: 30px 0px;
 }
 .itemArrival {
-  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 20vw;
+  min-width: 260px;
+  margin: 0px 20px;
   border-radius: 12px;
   min-width: 300px;
 }
@@ -110,7 +119,7 @@ p {
   border-radius: 4px;
 }
 .center {
-  width: 100vw;
+  width: 99vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -133,7 +142,7 @@ p {
 }
 .content {
   background-color: #3c4242;
-  width: 95vw;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;

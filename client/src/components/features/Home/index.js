@@ -63,7 +63,8 @@ const HomeDefault = () => {
       <DefaultLayout>
         <HeroSection />
         <CardSection />
-        <Container className="prod-container">
+
+        <div className="prod-container">
           <div className="heading-div">
             <div className="color"></div>
             <div>
@@ -74,7 +75,7 @@ const HomeDefault = () => {
           <div className="arrival">
             {arrival.map((item, index) => {
               return (
-                <div className="itemArrival">
+                <div className="itemArrival" key={item.id}>
                   <img src={item.image} alt="shoes" className="prod-card-img" />
                   <h2>{item.title}</h2>
                 </div>
@@ -86,8 +87,9 @@ const HomeDefault = () => {
               Shop Now
             </Button>
           </div>
-        </Container>
-        <Container>
+        </div>
+
+        <div>
           <div className="heading-div">
             <div className="color"></div>
             <div>
@@ -98,7 +100,7 @@ const HomeDefault = () => {
           <div className="arrival">
             {arrival.map((item, index) => {
               return (
-                <div className="itemArrival">
+                <div className="itemArrival" key={item.id}>
                   <img src={item.image} alt="shoes" className="prod-card-img" />
                   <h2>{item.title}</h2>
                 </div>
@@ -110,8 +112,9 @@ const HomeDefault = () => {
               Shop Now
             </Button>
           </div>
-        </Container>
-        <Container>
+        </div>
+
+        <div>
           <div className="heading-div">
             <div className="color"></div>
             <div>
@@ -122,7 +125,7 @@ const HomeDefault = () => {
           <div className="arrival">
             {arrival.map((item, index) => {
               return (
-                <div className="itemArrival">
+                <div className="itemArrival" key={item.id}>
                   <img src={item.image} alt="shoes" className="prod-card-img" />
                   <h2>{item.title}</h2>
                 </div>
@@ -168,7 +171,7 @@ const HomeDefault = () => {
             <div className="arrival">
               {brands.map((item, index) => {
                 return (
-                  <div className="itemBrand">
+                  <div className="itemBrand" key={item.id}>
                     <img
                       src={item.image}
                       alt="shoes"
@@ -179,7 +182,7 @@ const HomeDefault = () => {
               })}
             </div>
           </div>
-        </Container>
+        </Container> */}
         I am a homepage
       </DefaultLayout>
     </>

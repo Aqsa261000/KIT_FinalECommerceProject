@@ -99,7 +99,7 @@ const SignUpDefault = () => {
           <h4 className="signupsubHeading">Sign Up for free!</h4>
           <form
             id="signupForm"
-            className="flex flex-col"
+            className="flexx flex-col"
             onSubmit={onSubmitHandler}
           >
             <input
@@ -168,7 +168,7 @@ const SignUpDefault = () => {
               Sign Up
             </button>
           </form>
-          <p className="flex2">
+          <p className="flexx2">
             Already Have an Account?{' '}
             <Link to="/login" className="linkk">
               Login

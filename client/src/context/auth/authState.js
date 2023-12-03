@@ -6,8 +6,14 @@ import AuthContext from './authContext';
 import {
   AUTH_FAIL,
   AUTH_SUCCESS,
+  CHANGEPASSWORD_FAIL,
+  CHANGEPASSWORD_SUCCESS,
   CLEAR_ERROR,
   LOGOUT,
+  OTPSEND_FAIL,
+  OTPSEND_SUCCESS,
+  OTPVERIFY_FAIL,
+  OTPVERIFY_SUCCESS,
   SIGNIN_FAIL,
   SIGNIN_SUCCESS,
   SIGNUP_FAIL,
@@ -18,10 +24,13 @@ import setAuthToken from '../../utils/setAuthToken';
 const AuthState = ({ children }) => {
   const initialState = {
     token: null,
+    role: null,
     isAuthenticated: false,
     isLoading: true,
     user: null,
     error: null,
+    otpRequest: null,
+    optVerify: null,
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
@@ -76,7 +85,37 @@ const AuthState = ({ children }) => {
       });
     }
   };
-
+  const SignUpAdminHandler = async (data) => {
+    try {
+      const apidata = {
+        ...data,
+        role: 1,
+      };
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+      };
+      const response = await axios.post('/api/users', apidata, config);
+      console.log('signup successful', response);
+      dispatch({
+        type: SIGNUP_SUCCESS,
+        payload: response.data,
+      });
+      if (localStorage.token) {
+        getUser();
+      }
+    } catch (error) {
+      // console.log('error', error.message);
+      console.log('error', error.response.data.errors);
+      dispatch({
+        type: SIGNUP_FAIL,
+        payload:
+          error.response.data.msg ||
+          error.response.data.errors.map((errorObject, index) => (
+            <span key={index}>{errorObject.msg}</span>
+          )),
+      });
+    }
+  };
   const SignUpVendorHandler = async (data) => {
     try {
       const apidata = {
@@ -197,18 +236,71 @@ const AuthState = ({ children }) => {
       });
     }
   };
-  // const SignInUserExists = async () => {
+
+  const ForgetPasswordHandler = async (data) => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+    try {
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+      };
+      let response = await axios.post('/api/reset', data, config);
+      console.log('fp response', response);
+      dispatch({ type: OTPSEND_SUCCESS, payload: response.data });
+    } catch (error) {
+      console.log('error', error);
+      dispatch({
+        type: OTPSEND_FAIL,
+        payload:
+          error.response.data.msg ||
+          error.response.data.errors.map((errorObject, index) => (
+            <span key={index}>{errorObject.msg}</span>
+          )),
+      });
+    }
+  };
+  // const OTPVerification = async (data) => {
+  //   if (localStorage.token) {
+  //     setAuthToken(localStorage.token);
+  //   }
   //   try {
   //     const config = {
-  //       headers: { 'Content-Type': 'application/json', 'x-auth-token': token },
+  //       headers: { 'Content-Type': 'application/json' },
   //     };
-  //     const response = await axios.get('/api/auth', config);
-  //     console.log('get response', response);
-  //     // return response;
+  //     const response = await axios.post('/api/reset', data, config);
+  //     console.log('otp response', response.data.otp);
+  //     console.log(data);
+  //     dispatch({ type: OTPVERIFY_SUCCESS, payload: response.data });
   //   } catch (error) {
   //     console.log('error', error);
+  //     dispatch({
+  //       type: OTPVERIFY_FAIL,
+  //       payload:
+  //         error.response.data.msg ||
+  //         error.response.data.errors.map((errorObject, index) => (
+  //           <span key={index}>{errorObject.msg}</span>
+  //         )),
+  //     });
   //   }
   // };
+  const OTPVerification = async (data) => {
+    //   if (localStorage.token) {
+    //     setAuthToken(localStorage.token);
+    //   }
+    //   try {
+    //     const config = {
+    //       headers: { 'Content-Type': 'application/json' },
+    //     };
+    //     const response = await axios.post('/api/reset/verify', data, config);
+    //     console.log('otp response', response.data.otp);
+    //     console.log('data', data.otpcode);
+    //     // if(response.data.otp === data.otpcode){
+    //     // }
+    //   } catch (error) {
+    //     console.log('error', error);
+    //   }
+  };
 
   const logoutHandler = () => {
     dispatch({ type: LOGOUT });
@@ -224,7 +316,10 @@ const AuthState = ({ children }) => {
         isLoading: state.isLoading,
         user: state.user,
         error: state.error,
+        otpRequest: state.otpRequest,
+        otpVerify: state.otpVerify,
         SignUpUserHandler,
+        SignUpAdminHandler,
         SignUpVendorHandler,
         SignInUserHandler,
         clearErrorHandler,
@@ -232,6 +327,8 @@ const AuthState = ({ children }) => {
         SignInVendorHandler,
         getUser,
         logoutHandler,
+        ForgetPasswordHandler,
+        OTPVerification,
         // SignInUserExists,
       }}
     >

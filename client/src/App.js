@@ -16,6 +16,7 @@ import {
 import { AdminHome, AdminLogin } from './views';
 import { ForgetPassword, Verification, CheckEmail, NewPassword } from './views';
 import { VendorHome, VendorLogin, VendorSignUp } from './views';
+import AppRouter from './router';
 
 // import BasicAlert from './components/common/Alert';
 const App = () => {
@@ -26,10 +27,9 @@ const App = () => {
           <Fragment>
             <CssBaseline />
             {/* Yahan par routes aayeghe */}
-
+            {/* <AppRouter /> */}
             <Routes>
               <Route path="/" element={<Home />} />
-
               <Route path="/signup" element={<SignUp />} />
               <Route path="/login" element={<Login />} />
               <Route path="/adminlogin" element={<AdminLogin />} />
