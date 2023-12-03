@@ -4,7 +4,13 @@ import SignUp from './signUp';
 import Home from './home';
 import { VendorHome } from './VendorDashboard';
 import { VendorSignUp } from './VendorDashboard';
-import { VendorLogin } from './VendorDashboard';
+import {
+  VendorLogin,
+  VendorOrders,
+  VendorProfile,
+  VendorInventory,
+  VendorProducts,
+} from './VendorDashboard';
 import { AdminLogin } from './AdminDashboard';
 import NewPassword from './NewPassword';
 import ForgetPassword from './ForgetPassword';
@@ -23,4 +29,8 @@ export {
   CheckEmail,
   ForgetPassword,
   NewPassword,
+  VendorOrders,
+  VendorProfile,
+  VendorInventory,
+  VendorProducts,
 };

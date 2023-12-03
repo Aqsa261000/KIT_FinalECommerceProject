@@ -22,6 +22,11 @@ import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import AuthContext from '../../../../context/auth/authContext.js';
 
+import Inventory from '../Inventory.jsx';
+import Orders from '../Orders.jsx';
+import Products from '../Products.jsx';
+import Profile from '../Profile.jsx';
+
 const VendorHomeDefault = () => {
   const authContext = useContext(AuthContext);
   const { isAuthenticated, isLoading, user, getUser } = authContext;
@@ -82,14 +87,10 @@ const VendorHomeDefault = () => {
                   <ReorderIcon /> Orders
                 </Link>
               </Box>
+
               <Box component={'li'} sx={style.listItems}>
                 <Link className="linkItems">
-                  <BadgeIcon /> Vendors
-                </Link>
-              </Box>
-              <Box component={'li'} sx={style.listItems}>
-                <Link className="linkItems">
-                  <PeopleAltIcon /> Users
+                  <PeopleAltIcon /> Inventory
                 </Link>
               </Box>
             </Box>
@@ -148,14 +149,10 @@ const VendorHomeDefault = () => {
                       <ReorderIcon /> Orders
                     </Link>
                   </Box>
+
                   <Box component={'li'} sx={style.listItems}>
                     <Link className="linkItems">
-                      <BadgeIcon /> Vendors
-                    </Link>
-                  </Box>
-                  <Box component={'li'} sx={style.listItems}>
-                    <Link className="linkItems">
-                      <PeopleAltIcon /> Users
+                      <PeopleAltIcon /> Inventory
                     </Link>
                   </Box>
                 </Box>
@@ -170,7 +167,7 @@ const VendorHomeDefault = () => {
         </>
       )}
 
-      <Grid item xl={9} lg={9}>
+      <Grid item xl={9} lg={9} sm={12}>
         <Box
           sx={{
             display: 'flex',

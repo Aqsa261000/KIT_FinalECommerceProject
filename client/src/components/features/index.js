@@ -4,7 +4,13 @@ import HomeDefault from './Home';
 import { AdminLoginDefault } from './auth';
 import { VendorSignUpDefault } from './auth';
 import { VendorLoginDefault } from './auth';
-import { VendorHomeDefault } from './VendorDashboard';
+import {
+  VendorHomeDefault,
+  Profile,
+  Inventory,
+  Orders,
+  Products,
+} from './VendorDashboard';
 
 import { VerificationDefault } from './auth';
 import { NewPasswordDefault } from './auth';
@@ -18,6 +24,10 @@ export {
   VendorSignUpDefault,
   VendorLoginDefault,
   VendorHomeDefault,
+  Profile,
+  Inventory,
+  Orders,
+  Products,
   VerificationDefault,
   NewPasswordDefault,
   CheckEmailDefault,
