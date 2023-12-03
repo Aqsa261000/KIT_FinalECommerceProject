@@ -5,8 +5,9 @@
   flex-wrap: wrap;
   justify-content: center;
   margin: 20px 0px;
-  border: 1px solid #bebcbd;
-  min-height: 70vh;
+  
+  min-height: 80vh;
+  /* max-height: 100vh; */
 }
 .side1 {
   /* border: 1px solid red; */
@@ -30,7 +31,7 @@
 }
 .image {
   width: 100%;
-  height: 100%;
+  max-height: 100%;
 }
 .heading {
   color: #333;
@@ -65,7 +66,7 @@
   display: flex;
   flex-direction: column;
   /* align-items: center;
-    justify-content: flex-start; */
+  justify-content: flex-start; */
   /* border: 1px solid grey; */
   margin-top: 50px;
   width: 38vw;
@@ -87,6 +88,21 @@ form input {
   border: 1px solid rgba(102, 102, 102, 0.8);
   margin-bottom: 40px;
 }
+.newPass {
+  display: flex;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid black; */
+}
+.hide {
+  width: 20px;
+  height: 20px;
+  align-self: flex-end;
+  /* border: 1px solid red; */
+  /* justify-self: flex-start; */
+  /* margin-top: -80px; */
+}
 .hideBtn {
   width: 20px;
   height: 20px;
@@ -107,7 +123,9 @@ form input {
   line-height: 21px; /* 131.25% */
   margin-left: 0px;
 }
-
+#confirmPassword {
+  margin-bottom: 2px;
+}
 .button {
   color: white;
   background-color: #8a33fd;
@@ -124,12 +142,9 @@ form input {
   background-color: #7613f7;
 }
 
-.loginback {
-  color: #3c4242;
-  text-decoration: none;
-  margin: 5px 0px;
+.hidden {
+  display: none;
 }
-
 @media only screen and (max-width: 600px) {
   .form {
     display: flex;

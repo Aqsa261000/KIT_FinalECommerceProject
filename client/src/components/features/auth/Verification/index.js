@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { DefaultLayout } from '../../layout';
-import shoesSide from '../../../assets/shoesSide.jpg';
+import { DefaultLayout } from '../../../layout';
+import shoesSide from '../../../../assets/shoesSide.jpg';
 
 import './style.css';
 

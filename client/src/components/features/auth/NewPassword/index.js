@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { DefaultLayout } from '../../layout';
-import shoesSide from '../../../assets/shoe1Side.jpg';
-import hide from '../../../assets/hide.png';
+import { DefaultLayout } from '../../../layout';
+import shoesSide from '../../../../assets/shoe1Side.jpg';
+import hide from '../../../../assets/hide.png';
 import './style.css';
 
 const NewPasswordDefault = () => {

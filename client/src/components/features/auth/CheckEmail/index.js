@@ -1,8 +1,8 @@
 import React from 'react';
-import { DefaultLayout } from '../../layout';
-import shoesSide from '../../../assets/shoe3Side.jpg';
+import { DefaultLayout } from '../../../layout';
+import shoesSide from '../../../../assets/shoe3Side.jpg';
 import './style.css';
-import left from '../../../assets/left.svg';
+import left from '../../../../assets/left.svg';
 const CheckEmailDefault = () => {
   return (
     <DefaultLayout>

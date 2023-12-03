@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { DefaultLayout } from '../../layout';
-import shoesSide from '../../../assets/shoe2Side.jpg';
+import { DefaultLayout } from '../../../layout';
+import shoesSide from '../../../../assets/shoe2Side.jpg';
 import './style.css';
 const ForgetPasswordDefault = () => {
   const [email, setEmail] = useState('');
