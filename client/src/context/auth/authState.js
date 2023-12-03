@@ -285,6 +285,16 @@ const AuthState = ({ children }) => {
   //   }
   // };
   const OTPVerification = async (data) => {
+    try {
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+      };
+      const response = await axios.post('/api/reset/verify', data, config);
+      console.log('user otp', data);
+      console.log('Verification result', response.data);
+    } catch (error) {
+      console.log(error);
+    }
     //   if (localStorage.token) {
     //     setAuthToken(localStorage.token);
     //   }
