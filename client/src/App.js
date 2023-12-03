@@ -6,6 +6,7 @@ import AlertState from './context/alert/alertState';
 import AuthState from './context/auth/authState';
 import { SignUp, Home, Login } from './views';
 import { AdminHome, AdminLogin } from './views';
+import { ForgetPassword, Verification, CheckEmail, NewPassword } from './views';
 import { VendorHome, VendorLogin, VendorSignUp } from './views';
 import AppRouter from './router';
 
@@ -28,6 +29,10 @@ const App = () => {
               <Route path="/vendorsignup" element={<VendorSignUp />} />
               <Route path="/vendorlogin" element={<VendorLogin />} />
               <Route path="/vendorhome" element={<VendorHome />} />
+              <Route path="/forgetpassword" element={<ForgetPassword />} />
+              <Route path="/checkemail" element={<CheckEmail />} />
+              <Route path="/verification" element={<Verification />} />
+              <Route path="/newpassword" element={<NewPassword />} />
             </Routes>
           </Fragment>
         </BrowserRouter>

@@ -6,6 +6,10 @@ import { VendorSignUpDefault } from './auth';
 import { VendorLoginDefault } from './auth';
 import { VendorHomeDefault } from './VendorDashboard';
 
+import { VerificationDefault } from './auth';
+import { NewPasswordDefault } from './auth';
+import { CheckEmailDefault } from './auth';
+import { ForgetPasswordDefault } from './auth';
 export {
   SignUpDefault,
   LoginDefault,
@@ -14,4 +18,8 @@ export {
   VendorSignUpDefault,
   VendorLoginDefault,
   VendorHomeDefault,
+  VerificationDefault,
+  NewPasswordDefault,
+  CheckEmailDefault,
+  ForgetPasswordDefault,
 };

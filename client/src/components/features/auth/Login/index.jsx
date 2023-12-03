@@ -29,7 +29,7 @@ const LoginDefault = () => {
       navigate('/');
     }
 
-    if (error) {
+    if (error) {  
       AlertHandler(error, 'error');
       clearErrorHandler();
     }

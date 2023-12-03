@@ -56,14 +56,14 @@ const HomeDefault = () => {
     },
   ];
   useEffect(() => {
-    
     getUser();
   }, []);
   return (
     <>
       <DefaultLayout>
-      <HeroSection />
+        {/* <HeroSection />
         <CardSection />
+        <Container className="prod-container">
 
         <div className="prod-container">
           <div className="heading-div">
@@ -115,7 +115,9 @@ const HomeDefault = () => {
           </div>
         </div>
 
-        <div>
+        w
+        </Container>
+        <Container>
           <div className="heading-div">
             <div className="color"></div>
             <div>
@@ -138,7 +140,7 @@ const HomeDefault = () => {
               Shop Now
             </Button>
           </div>
-        </div>
+        
 
         <div className="heading-div">
           <div className="color"></div>
@@ -163,6 +165,31 @@ const HomeDefault = () => {
         </div>
 
         <div className="brand-container center">
+        </Container>
+        <Container>
+          <div className="heading-div">
+            <div className="color"></div>
+            <div>
+              <h2 style={{ color: '#3C4242' }}>Women</h2>
+            </div>
+          </div>
+          <div className="arrival">
+            {arrival.map((item, index) => {
+              return (
+                <div className="itemArrival">
+                  <img src={item.image} alt="shoes" className="prod-card-img" />
+                  <h5>{item.title}</h5>
+                </div>
+              );
+            })}
+          </div>
+          <div className="center">
+            <Button variant="contained" className="shop-btn">
+              Shop Now
+            </Button>
+          </div>
+        </Container>
+        <Container className="brand-container center">
           <div className="content">
             <h1 style={{ color: '#fff' }}>Top Brands Deal</h1>
             <h6 style={{ color: '#fff' }}>
@@ -183,7 +210,7 @@ const HomeDefault = () => {
               })}
             </div>
           </div>
-        </div>
+        </Container> */}
       </DefaultLayout>
     </>
   );
