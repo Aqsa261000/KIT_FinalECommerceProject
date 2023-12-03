@@ -228,18 +228,20 @@ const AuthState = ({ children }) => {
       });
     }
   };
-  // const SignInUserExists = async () => {
-  //   try {
-  //     const config = {
-  //       headers: { 'Content-Type': 'application/json', 'x-auth-token': token },
-  //     };
-  //     const response = await axios.get('/api/auth', config);
-  //     console.log('get response', response);
-  //     // return response;
-  //   } catch (error) {
-  //     console.log('error', error);
-  //   }
-  // };
+  const ForgetPasswordHandler = async (data) => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+    try {
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+      };
+      const response = await axios.post('/api/reset', data, config);
+      console.log('fp response', response);
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
 
   const logoutHandler = () => {
     dispatch({ type: LOGOUT });
@@ -264,6 +266,7 @@ const AuthState = ({ children }) => {
         SignInVendorHandler,
         getUser,
         logoutHandler,
+        ForgetPasswordHandler,
         // SignInUserExists,
       }}
     >
