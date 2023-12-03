@@ -5,7 +5,7 @@ import './style.css';
 import AuthContext from '../../../../context/auth/authContext';
 import AlertContext from '../../../../context/alert/alertContext';
 import { BasicAlert } from '../../../common';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const AdminLoginDefault = () => {
   const [signin, setSignin] = useState({
     email: '',
@@ -67,7 +67,7 @@ const AdminLoginDefault = () => {
           <h4 className="signinsubHeading">Welcome back!</h4>
           <form
             id="signinForm"
-            className="flex flex-col"
+            className="flexx flex-col"
             onSubmit={onSubmitHandler}
           >
             {/* <input  type='text' placeholder='Type your Full Name' /> */}
@@ -88,7 +88,18 @@ const AdminLoginDefault = () => {
               onChange={onChangeHandler}
             />
             {/* <i className="fa-regular fa-eye eye-icon2"></i> */}
-
+            <Link
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'flex-end',
+                fontSize: '12px',
+                color: 'black',
+              }}
+              to={'/forgetpassword'}
+            >
+              Forget Password?
+            </Link>
             <button className="btn" type="submit">
               Login
             </button>

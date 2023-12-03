@@ -67,7 +67,7 @@ const VendorLoginDefault = () => {
           <h4 className="signinsubHeading">Welcome back!</h4>
           <form
             id="signinForm"
-            className="flex flex-col"
+            className="flexx flex-col"
             onSubmit={onSubmitHandler}
           >
             {/* <input  type='text' placeholder='Type your Full Name' /> */}
@@ -88,12 +88,23 @@ const VendorLoginDefault = () => {
               onChange={onChangeHandler}
             />
             {/* <i className="fa-regular fa-eye eye-icon2"></i> */}
-
+            <Link
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'flex-end',
+                fontSize: '12px',
+                color: 'black',
+              }}
+              to={'/forgetpassword'}
+            >
+              Forget Password?
+            </Link>
             <button className="btn" type="submit">
               Login
             </button>
           </form>
-          <p className="flex2">
+          <p className="flexx2">
             Don't have an Account?{' '}
             <Link to="/vendorsignup" className="linkk">
               {' '}

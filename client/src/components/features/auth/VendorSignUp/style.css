@@ -70,12 +70,12 @@ body {
   background-color: #7a2fdc;
 }
 
-.flex {
+.flexx {
   display: flex;
   gap: 1em;
 }
 
-.flex2 {
+.flexx2 {
   display: flex;
   gap: 0.2rem;
 }

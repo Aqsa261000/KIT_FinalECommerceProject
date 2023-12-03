@@ -35,9 +35,9 @@ const NewPasswordDefault = () => {
                     value={password}
                     onChange={changeHandler}
                   />
-                  <button className="hideBtn">
+                  {/* <button className="hideBtn">
                     <img src={hide} alt="hide" className="hide" />
-                  </button>
+                  </button> */}
                 </div>
 
                 <label htmlFor="password">Confirm Password</label>

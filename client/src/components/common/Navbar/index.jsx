@@ -24,7 +24,7 @@ import AuthContext from '../../../context/auth/authContext.js';
 
 const Navbar = () => {
   const authContext = useContext(AuthContext);
-  const { isAuthenticated, isLoading, user, logoutHandler } = authContext;
+  const { isAuthenticated, user, logoutHandler } = authContext;
   const isWideScreen = useMediaQuery('(min-width:900px)');
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const firstLetter = user?.name ? user?.name.charAt(0).toUpperCase() : '';
