@@ -28,7 +28,7 @@ const NewPasswordDefault = () => {
   } = authContext;
   const { AlertHandler } = alertContext;
   useEffect(() => {
-    if (otpRequest && otpVerify && changePass) {
+    if (changePass) {
       // console.log(otpRequest, otpVerify, changePass);
       AlertHandler('Password is resetted successfully', 'success');
       // navigate('/login');
@@ -37,7 +37,6 @@ const NewPasswordDefault = () => {
       AlertHandler(error, 'error');
       clearErrorHandler();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changePass, error]);
   const onChangeHandler = (e) => {
     setData((prevData) => ({ ...prevData, [e.target.name]: e.target.value }));

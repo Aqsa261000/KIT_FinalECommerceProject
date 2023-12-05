@@ -51,6 +51,7 @@ const AuthReducer = (state, action) => {
         user: null,
         otpRequest: false,
         otpVerify: false,
+        changePass: false,
       };
     case OTPVERIFY_FAIL:
       return {
@@ -60,6 +61,7 @@ const AuthReducer = (state, action) => {
         user: null,
         otpRequest: true,
         otpVerify: false,
+        changePass: false,
       };
 
     case CLEAR_ERROR:
@@ -79,6 +81,7 @@ const AuthReducer = (state, action) => {
         isLoading: false,
         otpRequest: true,
         otpVerify: false,
+        changePass: false,
       };
 
     case OTPVERIFY_SUCCESS:
@@ -89,6 +92,7 @@ const AuthReducer = (state, action) => {
         isLoading: false,
         otpRequest: true,
         otpVerify: true,
+        changePass: false,
       };
     case CHANGEPASSWORD_SUCCESS:
       return {

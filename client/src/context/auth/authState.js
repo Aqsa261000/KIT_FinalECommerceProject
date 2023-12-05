@@ -31,6 +31,7 @@ const AuthState = ({ children }) => {
     error: null,
     otpRequest: null,
     optVerify: null,
+    changePass: null,
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
@@ -331,6 +332,7 @@ const AuthState = ({ children }) => {
         error: state.error,
         otpRequest: state.otpRequest,
         otpVerify: state.otpVerify,
+        changePass: state.changePass,
         SignUpUserHandler,
         SignUpAdminHandler,
         SignUpVendorHandler,
