@@ -269,8 +269,49 @@ const AuthState = ({ children }) => {
       const response = await axios.post('/api/reset/verify', data, config);
       console.log('user otp', data);
       console.log('Verification result', response.data);
+      if (response.data?.verify === true) {
+        dispatch({ type: OTPVERIFY_SUCCESS, payload: response.data });
+      } else {
+        dispatch({ type: OTPVERIFY_FAIL, payload: response.data.msg });
+      }
     } catch (error) {
       console.log(error);
+      dispatch({
+        type: OTPVERIFY_FAIL,
+        payload:
+          error.response.data.msg ||
+          error.response.data.errors.map((errorObject, index) => (
+            <span key={index}>{errorObject.msg}</span>
+          )),
+      });
+    }
+  };
+
+  const ChangePassword = async (data) => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+    try {
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+      };
+      const response = await axios.put('/api/reset/verify', data, config);
+      console.log('reset password response is', response.data);
+      if (response.data?.updateUser) {
+        dispatch({ type: CHANGEPASSWORD_SUCCESS, payload: response.data });
+      } else {
+        dispatch({ type: CHANGEPASSWORD_FAIL, payload: response.data.msg });
+      }
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: CHANGEPASSWORD_FAIL,
+        payload: error.response.data.msg,
+        // ||
+        // error.response.data.errors.map((errorObject, index) => (
+        //   <span key={index}>{errorObject.msg}</span>
+        // )),
+      });
     }
   };
 
@@ -301,6 +342,7 @@ const AuthState = ({ children }) => {
         logoutHandler,
         ForgetPasswordHandler,
         OTPVerification,
+        ChangePassword,
         // SignInUserExists,
       }}
     >

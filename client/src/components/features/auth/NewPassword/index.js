@@ -1,19 +1,62 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { DefaultLayout } from '../../../layout';
 import shoesSide from '../../../../assets/shoe1Side.jpg';
 import hide from '../../../../assets/hide.png';
 import './style.css';
+import AuthContext from '../../../../context/auth/authContext';
+import AlertContext from '../../../../context/alert/alertContext';
+import { useNavigate } from 'react-router-dom';
+import { BasicAlert } from '../../../common';
 
 const NewPasswordDefault = () => {
-  const [password, setPassword] = useState('');
-  const changeHandler = (e) => {
-    setPassword(e.target.value);
+  const [data, setData] = useState({
+    password: '',
+  });
+
+  const authContext = useContext(AuthContext);
+  const alertContext = useContext(AlertContext);
+  const navigate = useNavigate();
+  const {
+    OTPVerification,
+    isAuthenticated,
+    error,
+    clearErrorHandler,
+    otpRequest,
+    otpVerify,
+    ChangePassword,
+    changePass,
+  } = authContext;
+  const { AlertHandler } = alertContext;
+  useEffect(() => {
+    if (otpRequest && otpVerify && changePass) {
+      // console.log(otpRequest, otpVerify, changePass);
+      AlertHandler('Password is resetted successfully', 'error');
+      // navigate('/login');
+    }
+    if (error) {
+      AlertHandler(error, 'error');
+      clearErrorHandler();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [changePass, error]);
+  const onChangeHandler = (e) => {
+    setData((prevData) => ({ ...prevData, [e.target.name]: e.target.value }));
+    console.log(data);
   };
-  const submitHandler = (e) => {
+
+  const onSubmitHandler = (e) => {
+    if (!data.password) {
+      AlertHandler('Please fill the required field', 'error');
+    }
     e.preventDefault();
+    console.log(data);
+    ChangePassword(data);
+    // OTPVerification(data);
   };
+
   return (
     <DefaultLayout>
+      <BasicAlert />
       <div className="flex">
         <div className="side1">
           <img src={shoesSide} alt="shoesside" className="image" />
@@ -25,32 +68,36 @@ const NewPasswordDefault = () => {
               Your new password must be different from previous used passwords.
             </p>
             <div className="formContent">
-              <form action="#" className="form" onSubmit={submitHandler}>
+              <form action="#" className="form" onSubmit={onSubmitHandler}>
                 <label htmlFor="password">Password</label>
                 <div className="newPass">
                   <input
                     type="password"
-                    name="newPassword"
-                    id="newPassword"
-                    value={password}
-                    onChange={changeHandler}
+                    name="password"
+                    id="password"
+                    value={data.password}
+                    onChange={onChangeHandler}
                   />
                   {/* <button className="hideBtn">
                     <img src={hide} alt="hide" className="hide" />
                   </button> */}
                 </div>
 
-                <label htmlFor="password">Confirm Password</label>
+                {/* <label htmlFor="password">Confirm Password</label>
                 <input
                   type="password"
                   name="confirmPassword"
                   id="confirmPassword"
-                />
-                <p className="paraRed hidden">
+                  value={data.confirmPassword}
+                  onChange={onChangeHandler}
+                /> */}
+                {/* <p className="paraRed hidden">
                   New password and comfirm new password do not match
-                </p>
+                </p> */}
 
-                <button className="button">Reset Password</button>
+                <button className="button" type="submit">
+                  Reset Password
+                </button>
               </form>
             </div>
           </div>

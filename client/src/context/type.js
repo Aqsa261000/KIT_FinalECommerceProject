@@ -12,3 +12,5 @@ export const OTPSEND_SUCCESS = 'otpSendSuccess';
 export const OTPSEND_FAIL = 'otpSendFail';
 export const OTPVERIFY_SUCCESS = 'otpVerifySuccess';
 export const OTPVERIFY_FAIL = 'otpVerifyFail';
+export const CHANGEPASSWORD_SUCCESS = 'changePasswordSuccess';
+export const CHANGEPASSWORD_FAIL = 'changePasswordFail';

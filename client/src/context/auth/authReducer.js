@@ -90,6 +90,26 @@ const AuthReducer = (state, action) => {
         otpRequest: true,
         otpVerify: true,
       };
+    case CHANGEPASSWORD_SUCCESS:
+      return {
+        ...state,
+        ...action.payload,
+        isAuthenticated: false,
+        isLoading: false,
+        otpRequest: true,
+        otpVerify: true,
+        changePass: true,
+      };
+
+    case CHANGEPASSWORD_FAIL:
+      return {
+        isAuthenticated: false,
+        isLoading: false,
+        otpRequest: true,
+        otpVerify: true,
+        changePass: false,
+        error: action?.payload ?? null,
+      };
     default:
       return state;
   }
