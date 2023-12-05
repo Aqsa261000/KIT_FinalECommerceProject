@@ -30,7 +30,7 @@ const NewPasswordDefault = () => {
   useEffect(() => {
     if (otpRequest && otpVerify && changePass) {
       // console.log(otpRequest, otpVerify, changePass);
-      AlertHandler('Password is resetted successfully', 'error');
+      AlertHandler('Password is resetted successfully', 'success');
       // navigate('/login');
     }
     if (error) {
