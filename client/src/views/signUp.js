@@ -1,7 +1,5 @@
-import React, { Fragment } from 'react';
-import { SignUpDefault } from '../components/features';
-
-
+import React, { Fragment } from "react";
+import { SignUpDefault } from "../components/features";
 
 const SignUp = () => {
   return (

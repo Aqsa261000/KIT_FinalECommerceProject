@@ -1,24 +1,24 @@
-const express = require('express');
-const { check, validationResult } = require('express-validator');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const auth = require('../middlewares/auth');
+const express = require("express");
+const { check, validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const auth = require("../middlewares/auth");
 
-const User = require('../models/User');
+const User = require("../models/User");
 
 const router = express.Router();
 
 // @route GET api/auth
 // @describe get loggedin user data
 // @access Private
-router.get('/', auth, async (req, res) => {
+router.get("/", auth, async (req, res) => {
   const id = req.user.id;
   try {
-    const user = await User.findById(id).select('-password');
+    const user = await User.findById(id).select("-password");
     res.json(user);
   } catch (err) {
     console.error(err.message);
-    res.status(400).json({ msg: 'Server error' });
+    res.status(400).json({ msg: "Server error" });
   }
 });
 
@@ -26,10 +26,10 @@ router.get('/', auth, async (req, res) => {
 // @describe user login
 // @access Public
 router.post(
-  '/',
+  "/",
   [
-    check('email', 'Please enter a valid email address').isEmail(),
-    check('password', 'Please enter correct password').exists(),
+    check("email", "Please enter a valid email address").isEmail(),
+    check("password", "Please enter correct password").exists(),
   ],
   async (req, res) => {
     const result = validationResult(req);
@@ -38,32 +38,19 @@ router.post(
     }
 
     const { email, password } = req.body;
-    // console.log("REquest body", email+" "+password);
 
     try {
       const user = await User.findOne({ email });
-      // const {role} = user;
-      // console.log(role);
-      // if(role == "1"){
-      //   console.log("Admin Login");
-      // }
-      // else if(role == "0"){
-      //   console.log("Normal User Login");
-      // }
-      // else if(role == "2"){
-      //   console.log("Vendor Login");
-      // }
-      console.log("USER: ",user);
+
       if (!user) {
-        return res.status(400).json({ msg: 'User not exist.' });
+        return res.status(400).json({ msg: "User not exist." });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
-        return res.status(400).json({ msg: 'Password Incorrect' });
+        return res.status(400).json({ msg: "Password Incorrect" });
       }
-
 
       const payload = {
         user: {
@@ -84,9 +71,8 @@ router.post(
       );
     } catch (error) {
       console.error(error.message);
-      res.status(500).json({ msg: 'Server error' });
+      res.status({ msg: "Server error" });
     }
-    
   }
 );
 
