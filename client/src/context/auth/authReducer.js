@@ -97,7 +97,7 @@ const AuthReducer = (state, action) => {
     case CHANGEPASSWORD_SUCCESS:
       return {
         ...state,
-        ...action.payload,
+
         isAuthenticated: false,
         isLoading: false,
         otpRequest: true,
