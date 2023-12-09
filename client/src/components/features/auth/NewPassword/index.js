@@ -1,24 +1,23 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { DefaultLayout } from '../../../layout';
 import shoesSide from '../../../../assets/shoe1Side.jpg';
-import hide from '../../../../assets/hide.png';
+// import hide from '../../../../assets/hide.png';
 import './style.css';
 import AuthContext from '../../../../context/auth/authContext';
 import AlertContext from '../../../../context/alert/alertContext';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { BasicAlert } from '../../../common';
 
 const NewPasswordDefault = () => {
   const [data, setData] = useState({
     password: '',
+    confirmPassword: '',
   });
 
   const authContext = useContext(AuthContext);
   const alertContext = useContext(AlertContext);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const {
-    OTPVerification,
-    isAuthenticated,
     error,
     clearErrorHandler,
     otpRequest,
@@ -37,6 +36,7 @@ const NewPasswordDefault = () => {
       AlertHandler(error, 'error');
       clearErrorHandler();
     }
+    // eslint-disable-next-line
   }, [changePass, error]);
   const onChangeHandler = (e) => {
     setData((prevData) => ({ ...prevData, [e.target.name]: e.target.value }));
@@ -44,8 +44,12 @@ const NewPasswordDefault = () => {
   };
 
   const onSubmitHandler = (e) => {
-    if (!data.password) {
+    if (!data.password || !data.confirmPassword) {
       AlertHandler('Please fill the required field', 'error');
+    } else if (data.password !== data.confirmPassword) {
+      AlertHandler('Password does not match', 'error');
+    } else if (data.password.length < 6 || data.confirmPassword.length < 6) {
+      AlertHandler('Password should be more than 6 characters');
     }
     e.preventDefault();
     console.log(data);
@@ -82,14 +86,14 @@ const NewPasswordDefault = () => {
                   </button> */}
                 </div>
 
-                {/* <label htmlFor="password">Confirm Password</label>
+                <label htmlFor="password">Confirm Password</label>
                 <input
                   type="password"
                   name="confirmPassword"
                   id="confirmPassword"
                   value={data.confirmPassword}
                   onChange={onChangeHandler}
-                /> */}
+                />
                 {/* <p className="paraRed hidden">
                   New password and comfirm new password do not match
                 </p> */}
