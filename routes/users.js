@@ -2,18 +2,33 @@ const express = require('express');
 const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../models/User')
+const User = require('../models/User');
+const {cityModel } = require('../models/cities');
+
 const router = express.Router();
 
 router.get('/',async (req,res)=>{
     try {
-        const users = await User.find();
+        const users = await User.find().populate('city');
         res.json(users);
       } catch (error) {
         console.error(error.message);
         res.status(500).send('Server Error');
       }
 })
+
+
+router.post('/addcity' , async(req , res)=>{
+
+const {Cityname} = req.body
+
+    const addCity = await cityModel.create({Cityname})
+  return res.send(addCity)
+  
+  
+  })
+
+
 
 router.post('/',[
     check('name','enter valid name').not().isEmpty(),
