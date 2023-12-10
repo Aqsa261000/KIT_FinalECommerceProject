@@ -74,7 +74,7 @@ const AdminDashboardSideBar = (props) => {
                 </Link>
               </Box>
               <Box component={'li'} sx={style.listItems}>
-                <Link className="linkItems" to={'/adminproducts'}>
+                <Link className="linkItems">
                   <CategoryIcon /> Products
                 </Link>
               </Box>
@@ -140,8 +140,8 @@ const AdminDashboardSideBar = (props) => {
                     </Link>
                   </Box>
                   <Box component={'li'} sx={style.listItems}>
-                    <Link className="linkItems" to={'/adminproducts'}>
-                      <CategoryIcon /> Products   
+                    <Link className="linkItems">
+                      <CategoryIcon /> Products
                     </Link>
                   </Box>
                   <Box component={'li'} sx={style.listItems}>

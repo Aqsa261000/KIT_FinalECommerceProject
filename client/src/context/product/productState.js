@@ -41,18 +41,20 @@ const ProductState = ({ children }) => {
 
   // get contacts
   const getAllProductsHandler = async () => {
-    // if (localStorage.token) {
-    //   setAuthToken(localStorage.token);
-    // }
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
 
     try {
-      const res = await axios.get('/api/products/products');
+      const res = await axios.get('/api/products/products/');
+
       dispatch({
         type: GET_PRODUCTS,
         payload: res.data,
       });
     } catch (err) {
       console.log(err);
+      console.error('Error Response:', err.response);
     }
   };
 
