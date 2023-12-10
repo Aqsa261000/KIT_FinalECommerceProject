@@ -3,7 +3,14 @@ const auth = require('../middlewares/auth');
 const Product = require('../models/Products');
 const routes = express.Router();
 
-
+routes.get('/',async(req,res)=>{
+    try {
+        const product = await Product.find()
+        res.status(200).json(product)
+    } catch (error) {
+        res.status(500).json({msg:error.message})
+    }
+})
 
 
 routes.get("/:id", async (req, res) => {
@@ -46,7 +53,8 @@ try {
 
 
 routes.put('/:pid',auth,async(req,res)=>{
-    const {name, description, price, category, quantity,pid} = req.body;
+    const {pid} = req.params
+    const {name, description, price, category, quantity} = req.body;
     const id = req.user.id;
     console.log("PUT API")
    // const {pid} = req.params
