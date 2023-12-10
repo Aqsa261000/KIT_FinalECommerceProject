@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const router = require('./users');
 const speakeasy = require('speakeasy');
+const  jwt = require('jsonwebtoken');
 
 
 const secret = speakeasy.generateSecret({ length: 20 });
@@ -30,6 +31,8 @@ routes.post('/',async(req,res)=>{
         secret: secret.base32,
         encoding: 'base32',
       });
+        
+
           console.log(`Your OTP is: ${otp}`);
          req.otp = otp;
          console.log("Secret key is ",secret.base32);
@@ -71,7 +74,9 @@ routes.post('/',async(req,res)=>{
 
 
 routes.post('/verify',(req,res)=>{
-  const {id} = req.body;
+  const {id ,email} = req.body;
+  
+
   const isValid = speakeasy.totp.verify({
       secret: secret.base32,
       encoding: 'base32',
@@ -86,34 +91,50 @@ routes.post('/verify',(req,res)=>{
   if(!verify){
     return res.json({msg:"Wrong otp code"})
   }
-  otpFlag = true;
-  return res.json({verify})
+
+  const token = jwt.sign({verified:true , email} , "secret")
+
+  
+  return res.json({msg:"OTP Verified" , token})
 })
 
 
 
 routes.put('/verify',async(req,res)=>{
 //   const {id} = user;
-  const {password} = req.body;
-    if(otpFlag){
+ //const token = req.header
+  
+
+    //if(otpFlag){
     //   console.log(id);
       try {
+
+        const {password , token } = req.body;
+
+        const ISverified = jwt.verify(token,"secret")
+        if(!ISverified){
+            return res.json({msg:"Invalid Token"})
+        
+        }
+        if(!ISverified.verified == true){
+            return res.json({msg:"Wrong otp code"})
+        }
+
         const update = {
             password
         }
         const salt = await bcrypt.genSalt(10);
         update.password = await bcrypt.hash(password,salt);
         // const updateUser = await User.findByIdAndUpdate({_id:id},update,{new:true})
-        const updateUser = await User.findOneAndUpdate({ email: `${mail}` }, update, { new: true })
+        const updateUser = await User.findOneAndUpdate({ email: `${ISverified.email}` }, update, { new: true })
         otpFlag = false;
        return res.status(200).json({updateUser})
     } catch (error) {
         return res.status(500).json({"msg":"Error to update the user"})
     }
-    }
-   return res.json({msg:"wrong otp code"})
+    //}
     // console.log(id)
     // res.json({id,token});
 })
 
-module.exports = routes
+module.exports = routes;
