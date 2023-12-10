@@ -22,6 +22,7 @@ app.use('/api/forget',require('./routes/forget'));
 // app.use('api/vendor/products', require('./routes/products'))
 
 app.use('/api/products',require('./routes/products'))
+app.use('/api/orders',require('./routes/order'))
 
 
 // const data = {id:1 , name:"owais"}

@@ -41,12 +41,12 @@ const ProductState = ({ children }) => {
 
   // get contacts
   const getAllProductsHandler = async () => {
-    if (localStorage.token) {
-      setAuthToken(localStorage.token);
-    }
+    // if (localStorage.token) {
+    //   setAuthToken(localStorage.token);
+    // }
 
     try {
-      const res = await axios.get('/api/products/products/');
+      const res = await axios.get('/api/products');
 
       dispatch({
         type: GET_PRODUCTS,
@@ -79,7 +79,7 @@ const ProductState = ({ children }) => {
   //     } catch (err) {
   //       console.log(err);
   //     }
-  //   };  
+  //   };
 
   //   // current contact
   //   const currentContactHandler = (data) => {
