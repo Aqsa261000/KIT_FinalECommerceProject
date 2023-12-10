@@ -79,7 +79,7 @@ const ProductState = ({ children }) => {
   //     } catch (err) {
   //       console.log(err);
   //     }
-  //   };
+  //   };  
 
   //   // current contact
   //   const currentContactHandler = (data) => {

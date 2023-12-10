@@ -66,7 +66,7 @@ const AdminDashboardSideBar = (props) => {
             >
               <LocalMallIcon sx={style.buttonIcons} />
               <h1 style={{ color: 'white' }}>KickKart</h1>
-            </Box>
+            </Box>  
             <Box component={'ul'} style={style.navItems}>
               <Box component={'li'} sx={style.listItems}>
                 <Link className="linkItems">
