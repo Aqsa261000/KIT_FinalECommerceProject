@@ -80,10 +80,10 @@ routes.put('/:pid',auth,async(req,res)=>{
         console.log("PUT API")
        const {pid} = req.params
         try {
-            const productCreate = await Product.findByIdAndDelete(pid);
+            const productDelete = await Product.findByIdAndDelete(pid);
             res.status(201).json({msg:"Product Deleted Succesfully"})    
         } catch (error) {
-            res.status(400).json({msg:"Error to create Product"})
+            res.status(400).json({msg:error.message})
         }
         
         })
