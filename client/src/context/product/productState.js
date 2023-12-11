@@ -151,7 +151,7 @@ const ProductState = ({ children }) => {
         products: state.products,
         currentContactData: state.currentContact,
         filteredProducts: state.filteredProducts,
-        getAllProducts: getAllProductsHandler,
+        getAllProductsHandler,
         // addContact: addContactHandler,
         // updateContact: updateContactHandler,
         // currentContact: currentContactHandler,

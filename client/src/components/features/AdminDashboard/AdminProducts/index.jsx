@@ -7,9 +7,12 @@ import { Link } from 'react-router-dom';
 import ProductContext from '../../../../context/product/productContext';
 const AdminProductsDefault = () => {
   const productContext = useContext(ProductContext);
-  const { getAllProducts, products, deleteProduct } = productContext;
+  const { getAllProductsHandler, products, deleteProduct } = productContext;
   useEffect(() => {
-    getAllProducts();
+    getAllProductsHandler();
+
+    console.log(products, 'vv');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
