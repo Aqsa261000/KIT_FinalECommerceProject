@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css'; // Import a CSS file for styling
+import './homestyles.css'; // Import a CSS file for styling
 
 const HeroSection = () => {
   return (
