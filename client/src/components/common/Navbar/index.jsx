@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import style from './styles.js';
+import './styles.css';
 import {
   Avatar,
   Box,
@@ -19,8 +20,10 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MenuIcon from '@mui/icons-material/Menu';
 import LogoutIcon from '@mui/icons-material/Logout.js';
 import NewArrivalsImage from '../../../assets/shoeposter.jpg';
-import './styles.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import AuthContext from '../../../context/auth/authContext.js';
+import { Dropdown } from 'react-bootstrap';
 
 const Navbar = () => {
   const authContext = useContext(AuthContext);
@@ -58,6 +61,18 @@ const Navbar = () => {
     // If the mouse leaves the box, close it
     setShopHovered(false);
   };
+  const [isProfileHovered, setIsProfileHovered] = useState(false);
+  const handleProfileHover = () => {
+    setIsProfileHovered(true);
+  };
+
+  const handleProfileLeave = () => {
+    // setShopHovered(false);
+    if (!isMouseOnBox) {
+      setIsProfileHovered(false);
+    }
+  };
+
   const GuestUser = () => {
     return (
       <>
@@ -535,13 +550,13 @@ const Navbar = () => {
                       {/* <Link to="/login">
                     <Button sx={style.button}>Login</Button>
                   </Link> */}
-                      <div class="dropdown">
-                        <Button class="dropbtn">
+                      {/* <div class="dropdown">
+                        <div class="dropbtn">
                           <Avatar sx={{ bgcolor: 'orange' }}>
                             {firstLetter}
                           </Avatar>
                           {/* <AccountCircleIcon sx={style.buttonIcons} /> */}
-                        </Button>
+                      {/* </div>
                         <div class="dropdown-content">
                           <Link to={''}>My Profile</Link>
                           <Link to={''}>My Orders</Link>
@@ -551,8 +566,35 @@ const Navbar = () => {
                           >
                             Logout
                           </a>
-                        </div>
-                      </div>
+                        </div> */}
+                      {/* </div> */}
+                      {/* <Dropdown>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                          Dropdown Button
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                          <Dropdown.Item href="#/action-1">
+                            Action
+                          </Dropdown.Item>
+                          <Dropdown.Item href="#/action-2">
+                            Another action
+                          </Dropdown.Item>
+                          <Dropdown.Item href="#/action-3">
+                            Something else
+                          </Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown> */}
+
+                      <Avatar sx={{ bgcolor: 'orange' }}>{firstLetter}</Avatar>
+
+                      <Button
+                        sx={style.button}
+                        onClick={logoutHandler}
+                        style={{ marginLeft: '20px' }}
+                      >
+                        Logout
+                      </Button>
                     </Box>
                   </Box>
                 </>

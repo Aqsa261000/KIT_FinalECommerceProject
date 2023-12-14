@@ -15,18 +15,18 @@ const reducerMethod = (state, action) => {
         ...state,
         products: action.payload,
       };
-    // case ADD_PRODUCT:
-    //   return { ...state, contacts: [action.payload, ...state.contacts] };
-    // case UPDATE_PRODUCT:
-    //   return {
-    //     ...state,
-    //     contacts: state.contacts.map((data) => {
-    //       if (data._id.toString() === action.payload.id.toString()) {
-    //         return action.payload;
-    //       }
-    //       return data;
-    //     }),
-    //   };
+    case ADD_PRODUCT:
+      return { ...state, products: [action.payload, ...state.products] };
+    case UPDATE_PRODUCT:
+      return {
+        ...state,
+        products: state.products.map((data) => {
+          if (data._id.toString() === action.payload.id.toString()) {
+            return action.payload;
+          }
+          return data;
+        }),
+      };
     // case CURRENT_PRODUCT:
     //   return { ...state, currentContact: action.payload };
     // case CLEAR_CURRENT_PRODUCT:

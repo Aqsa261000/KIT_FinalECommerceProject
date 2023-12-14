@@ -39,11 +39,11 @@ const ProductState = ({ children }) => {
   //     }
   //   };
 
-  // get contacts
+  // get products
   const getAllProductsHandler = async () => {
-    // if (localStorage.token) {
-    //   setAuthToken(localStorage.token);
-    // }
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
 
     try {
       const res = await axios.get('/api/products');
@@ -58,28 +58,29 @@ const ProductState = ({ children }) => {
     }
   };
 
-  //   // add contact
-  //   const addContactHandler = async (data) => {
-  //     if (localStorage.token) {
-  //       setAuthToken(localStorage.token);
-  //     }
+  // add product
+  const addProductHandler = async (data) => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
 
-  //     const config = {
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //     };
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
 
-  //     try {
-  //       const res = await axios.post('api/contacts', data, config);
-  //       dispatch({
-  //         type: ADD_CONTACT,
-  //         payload: res.data,
-  //       });
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
+    try {
+      const res = await axios.post('api/products', data, config);
+      console.log(res.data);
+      dispatch({
+        type: ADD_PRODUCT,
+        payload: res.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   //   // current contact
   //   const currentContactHandler = (data) => {
@@ -127,7 +128,7 @@ const ProductState = ({ children }) => {
     }
 
     try {
-      await axios.delete(`api/products/products/${id}`);
+      await axios.delete(`api/products/${id}`);
       dispatch({
         type: DELETE_PRODUCT,
         payload: id,
@@ -152,7 +153,7 @@ const ProductState = ({ children }) => {
         currentContactData: state.currentContact,
         filteredProducts: state.filteredProducts,
         getAllProducts: getAllProductsHandler,
-        // addContact: addContactHandler,
+        addProduct: addProductHandler,
         // updateContact: updateContactHandler,
         // currentContact: currentContactHandler,
         // clearCurrentContact: clearCurrentContactHandler,
