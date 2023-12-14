@@ -6,10 +6,7 @@ import { VendorHome } from './VendorDashboard';
 import { VendorSignUp } from './VendorDashboard';
 import {
   VendorLogin,
-  VendorOrders,
-  VendorProfile,
-  VendorInventory,
-  VendorProducts,
+ 
 } from './VendorDashboard';
 import { AdminLogin } from './AdminDashboard';
 import NewPassword from './NewPassword';
@@ -29,8 +26,5 @@ export {
   CheckEmail,
   ForgetPassword,
   NewPassword,
-  VendorOrders,
-  VendorProfile,
-  VendorInventory,
-  VendorProducts,
+ 
 };
