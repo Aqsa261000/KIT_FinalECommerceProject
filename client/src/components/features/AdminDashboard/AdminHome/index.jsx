@@ -213,7 +213,7 @@ const AdminHomeDefault = () => {
           <div className="pending dataBox">
             <img src={conversion} alt="conversion" />
             <h3>Conversion Rate</h3>
-            <h1>27&</h1>
+            <h1>27%</h1>
           </div>
         </div>
 
