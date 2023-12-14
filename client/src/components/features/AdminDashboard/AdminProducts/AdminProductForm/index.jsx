@@ -262,7 +262,9 @@ const AdminProductForm = ({ show, handleClose }) => {
       </div> */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Product</Modal.Title>
+          <Modal.Title>
+            {currentProductData ? 'Update Product' : 'Add Product'}
+          </Modal.Title>
         </Modal.Header>
 
         <BasicAlert />
@@ -343,8 +345,17 @@ const AdminProductForm = ({ show, handleClose }) => {
               ></Form.Control>
             </Form.Group>
 
-            <Button variant="secondary">Close</Button>
-            <Button type="submit" variant="primary">
+            <Button
+              variant="secondary"
+              style={{ backgroundColor: 'grey', color: 'white' }}
+            >
+              Close
+            </Button>
+            <Button
+              type="submit"
+              variant="primary"
+              style={{ backgroundColor: 'black', color: 'white' }}
+            >
               {currentProductData ? 'Update Product' : 'Add Product'}
             </Button>
           </Form>
