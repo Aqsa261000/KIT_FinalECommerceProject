@@ -94,7 +94,7 @@ const SignUpDefault = () => {
     <section>
       <BasicAlert />
       <div className="signup-registeration-form">
-        <div className="col-1">
+        <div className="column-1">
           <h2 className="signupHeading">SignUp</h2>
           <h4 className="signupsubHeading">Sign Up for free!</h4>
           <form
