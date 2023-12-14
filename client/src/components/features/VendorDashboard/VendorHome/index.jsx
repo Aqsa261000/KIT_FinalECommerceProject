@@ -11,7 +11,7 @@ import {
 import React, { useContext, useEffect } from 'react';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import style from './style.js';
-import './style.css';
+import './vendor.css';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CategoryIcon from '@mui/icons-material/Category';
 import ReorderIcon from '@mui/icons-material/Reorder';
