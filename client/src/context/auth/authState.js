@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import axios from 'axios';
-import useId from '@mui/material/utils/useId';
+// import useId from '@mui/material/utils/useId';
 import AuthReducer from './authReducer';
 import AuthContext from './authContext';
 import {
@@ -31,6 +31,7 @@ const AuthState = ({ children }) => {
     error: null,
     otpRequest: null,
     optVerify: null,
+    changePass: null,
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
@@ -154,7 +155,7 @@ const AuthState = ({ children }) => {
       };
       const response = await axios.post('/api/auth', data, config);
       // token = await response.data.token;
-      if (response.data.role === 0) {
+      if (response.data.role === "0") {
         console.log('signin successful', response);
         dispatch({ type: SIGNIN_SUCCESS, payload: response.data });
       } else {
@@ -183,7 +184,7 @@ const AuthState = ({ children }) => {
       };
       const response = await axios.post('/api/auth', data, config);
       // token = await response.data.token;
-      if (response.data.role === 1) {
+      if (response.data.role === "1") {
         console.log('signin successful', response);
         dispatch({ type: SIGNIN_SUCCESS, payload: response.data });
       } else {
@@ -213,7 +214,7 @@ const AuthState = ({ children }) => {
       };
       const response = await axios.post('/api/auth', data, config);
       // token = await response.data.token;
-      if (response.data.role === 2) {
+      if (response.data.role === "2") {
         console.log('signin successful', response);
         dispatch({ type: SIGNIN_SUCCESS, payload: response.data });
       } else {
@@ -260,46 +261,59 @@ const AuthState = ({ children }) => {
       });
     }
   };
-  // const OTPVerification = async (data) => {
-  //   if (localStorage.token) {
-  //     setAuthToken(localStorage.token);
-  //   }
-  //   try {
-  //     const config = {
-  //       headers: { 'Content-Type': 'application/json' },
-  //     };
-  //     const response = await axios.post('/api/reset', data, config);
-  //     console.log('otp response', response.data.otp);
-  //     console.log(data);
-  //     dispatch({ type: OTPVERIFY_SUCCESS, payload: response.data });
-  //   } catch (error) {
-  //     console.log('error', error);
-  //     dispatch({
-  //       type: OTPVERIFY_FAIL,
-  //       payload:
-  //         error.response.data.msg ||
-  //         error.response.data.errors.map((errorObject, index) => (
-  //           <span key={index}>{errorObject.msg}</span>
-  //         )),
-  //     });
-  //   }
-  // };
+
   const OTPVerification = async (data) => {
-    //   if (localStorage.token) {
-    //     setAuthToken(localStorage.token);
-    //   }
-    //   try {
-    //     const config = {
-    //       headers: { 'Content-Type': 'application/json' },
-    //     };
-    //     const response = await axios.post('/api/reset/verify', data, config);
-    //     console.log('otp response', response.data.otp);
-    //     console.log('data', data.otpcode);
-    //     // if(response.data.otp === data.otpcode){
-    //     // }
-    //   } catch (error) {
-    //     console.log('error', error);
-    //   }
+    try {
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+      };
+      const response = await axios.post('/api/reset/verify', data, config);
+      console.log('user otp', data);
+      console.log('Verification result', response.data);
+      if (response.data?.verify === true) {
+        dispatch({ type: OTPVERIFY_SUCCESS, payload: response.data });
+      } else {
+        dispatch({ type: OTPVERIFY_FAIL, payload: response.data.msg });
+      }
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: OTPVERIFY_FAIL,
+        payload:
+          error.response.data.msg ||
+          error.response.data.errors.map((errorObject, index) => (
+            <span key={index}>{errorObject.msg}</span>
+          )),
+      });
+    }
+  };
+
+  const ChangePassword = async (data) => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+    try {
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+      };
+      const response = await axios.put('/api/reset/verify', data, config);
+      console.log('reset password response is', response.data);
+      if (response.data?.updateUser) {
+        dispatch({ type: CHANGEPASSWORD_SUCCESS, payload: response.data });
+      } else {
+        dispatch({ type: CHANGEPASSWORD_FAIL, payload: response.data.msg });
+      }
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: CHANGEPASSWORD_FAIL,
+        payload: error.response.data.msg,
+        // ||
+        // error.response.data.errors.map((errorObject, index) => (
+        //   <span key={index}>{errorObject.msg}</span>
+        // )),
+      });
+    }
   };
 
   const logoutHandler = () => {
@@ -318,6 +332,7 @@ const AuthState = ({ children }) => {
         error: state.error,
         otpRequest: state.otpRequest,
         otpVerify: state.otpVerify,
+        changePass: state.changePass,
         SignUpUserHandler,
         SignUpAdminHandler,
         SignUpVendorHandler,
@@ -329,6 +344,7 @@ const AuthState = ({ children }) => {
         logoutHandler,
         ForgetPasswordHandler,
         OTPVerification,
+        ChangePassword,
         // SignInUserExists,
       }}
     >

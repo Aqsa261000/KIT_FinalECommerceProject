@@ -15,7 +15,8 @@ const userSchema = mongoose.Schema({
     required: true,
   },
   role: {
-    type: Number,
+    type: String,
+    enum:[0,1 ,2],
     default: 0
   },
   gender: {
@@ -24,7 +25,8 @@ const userSchema = mongoose.Schema({
     default: null
   },
   city: {
-    type: String,
+    type: mongoose.Types.ObjectId,
+    ref:'City',
     default: null
   },
   cnic: {

@@ -12,7 +12,7 @@ const DefaultLayout = (props) => {
       >
         <Navbar />
         <Box component={'main'} sx={{ flex: 1 }}>
-          <Box maxWidth="lg">{props.children}</Box>
+          <Box maxWidth="xl">{props.children}</Box>
         </Box>
         <Footer />
       </Box>

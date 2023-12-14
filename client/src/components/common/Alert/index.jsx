@@ -11,7 +11,7 @@ const BasicAlert = () => {
       {alerts &&
         alerts.length > 0 &&
         alerts.map((alert) => (
-          <Alert key={alert.id} severity={alert.type}>
+          <Alert key={`${alert.type}-${alert.msg}`} severity={alert.type}>
             {alert.msg}
           </Alert>
         ))}

@@ -9,7 +9,7 @@ import { BasicAlert } from '../../../common';
 import { useNavigate } from 'react-router-dom';
 const VerificationDefault = () => {
   const [data, setData] = useState({
-    otpcode: '',
+    id: '',
   });
 
   const authContext = useContext(AuthContext);
@@ -60,9 +60,9 @@ const VerificationDefault = () => {
                 <label htmlFor="verification">Verification Code</label>
                 <input
                   type="text"
-                  name="otpcode"
-                  id="otpcode"
-                  value={data.otpcode}
+                  name="id"
+                  id="id"
+                  value={data.id}
                   onChange={onChangeHandler}
                 />
                 <button className="button" type="submit">

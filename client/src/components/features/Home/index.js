@@ -10,8 +10,8 @@ import puma from '../../../assets/image 21.svg';
 import hm from '../../../assets/image 7.svg';
 import brand3 from '../../../assets/image 19.svg';
 import brand4 from '../../../assets/image 18.svg';
-import './style.css';
-import { Container } from '@mui/material';
+import './homestyles.css';
+import { Box, Container } from '@mui/material';
 import { Button } from '@mui/base';
 import AuthContext from '../../../context/auth/authContext';
 
@@ -138,7 +138,7 @@ const HomeDefault = () => {
             </Button>
           </div>
         </div>
-        <Container>
+        <Box>
           <div className="heading-div">
             <div className="color"></div>
             <div>
@@ -160,8 +160,8 @@ const HomeDefault = () => {
               Shop Now
             </Button>
           </div>
-        </Container>
-        <Container className="brand-container center">
+        </Box>
+        <Box className="brand-container center">
           <div className="content">
             <h1 style={{ color: '#fff' }}>Top Brands Deal</h1>
             <h6 style={{ color: '#fff' }}>
@@ -182,8 +182,7 @@ const HomeDefault = () => {
               })}
             </div>
           </div>
-        </Container>
-        
+        </Box>
       </DefaultLayout>
     </>
   );

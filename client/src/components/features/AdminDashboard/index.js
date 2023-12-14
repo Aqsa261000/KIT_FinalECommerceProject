@@ -1,3 +1,3 @@
 import AdminHomeDefault from './AdminHome';
-
-export { AdminHomeDefault };
+import AdminProductsDefault from './AdminProducts';
+export { AdminHomeDefault, AdminProductsDefault };

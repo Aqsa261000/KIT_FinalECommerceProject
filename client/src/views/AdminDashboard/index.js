@@ -1,3 +1,4 @@
 import AdminHome from './adminhome';
 import AdminLogin from './adminlogin';
-export { AdminHome, AdminLogin };
+import AdminProducts from './adminproducts';
+export { AdminHome, AdminLogin, AdminProducts };

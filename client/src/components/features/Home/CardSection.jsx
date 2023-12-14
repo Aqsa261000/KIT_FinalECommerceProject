@@ -1,12 +1,12 @@
 import React from 'react';
-import './style.css'; // Import a CSS file for styling
+import './homestyles.css'; // Import a CSS file for styling
 import leftCard from '../../../assets/letfCard.svg';
 import rightCard from '../../../assets/rightCard.svg';
-import { Container } from '@mui/material';
-import './style.css';
+import { Box, Container } from '@mui/material';
+
 const CardSection = () => {
   return (
-    <Container>
+    <Box>
       <div className="card-container">
         <div className="card">
           <div
@@ -30,7 +30,7 @@ const CardSection = () => {
           </div>
         </div>
       </div>
-    </Container>
+    </Box>
   );
 };
 
