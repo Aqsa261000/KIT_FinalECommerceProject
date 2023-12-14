@@ -20,7 +20,7 @@ const ForgetPasswordDefault = () => {
     clearErrorHandler,
     otpRequest,
   } = authContext;
-  const { AlertHandler } = alertContext;
+  const { AlertHandler } = alertContext;  
   useEffect(() => {
     if (otpRequest) {
       navigate('/verification');

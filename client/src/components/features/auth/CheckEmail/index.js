@@ -5,7 +5,7 @@ import './style.css';
 import left from '../../../../assets/left.svg';
 const CheckEmailDefault = () => {
   return (
-    <DefaultLayout>
+    <DefaultLayout>  
       <div className="flex">
         <div className="side1">
           <img src={shoesSide} alt="shoesside" className="image" />
