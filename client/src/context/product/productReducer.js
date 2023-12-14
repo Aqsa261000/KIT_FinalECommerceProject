@@ -27,10 +27,10 @@ const reducerMethod = (state, action) => {
           return data;
         }),
       };
-    // case CURRENT_PRODUCT:
-    //   return { ...state, currentContact: action.payload };
-    // case CLEAR_CURRENT_PRODUCT:
-    // return { ...state, currentContact: null };
+    case CURRENT_PRODUCT:
+      return { ...state, currentProduct: action.payload };
+    case CLEAR_CURRENT_PRODUCT:
+      return { ...state, currentProduct: null };
     case DELETE_PRODUCT:
       return {
         ...state,

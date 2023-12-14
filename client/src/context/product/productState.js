@@ -17,7 +17,7 @@ const ProductState = ({ children }) => {
   const id = useId();
   const initialState = {
     products: [],
-    currentContact: null,
+    currentProduct: null,
     filteredProducts: [],
   };
 
@@ -82,44 +82,45 @@ const ProductState = ({ children }) => {
     }
   };
 
-  //   // current contact
-  //   const currentContactHandler = (data) => {
-  //     dispatch({
-  //       type: CURRENT_CONTACT,
-  //       payload: data,
-  //     });
-  //   };
+  // current product
+  const currentProductHandler = (data) => {
+    dispatch({
+      type: CURRENT_PRODUCT,
+      payload: data,
+    });
+    console.log(data);
+  };
 
-  //   // clear current contact
-  //   const clearCurrentContactHandler = () => {
-  //     dispatch({
-  //       type: CLEAR_CURRENT_CONTACT,
-  //     });
-  //   };
+  // clear current product
+  const clearCurrentProductHandler = () => {
+    dispatch({
+      type: CLEAR_CURRENT_PRODUCT,
+    });
+  };
 
-  //   // update contact
-  //   const updateContactHandler = async (data) => {
-  //     if (localStorage.token) {
-  //       setAuthToken(localStorage.token);
-  //     }
+  // update product
+  const updateProductHandler = async (data) => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
 
-  //     const config = {
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //     };
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
 
-  //     try {
-  //       const res = await axios.put(`api/contacts/${data.id}`, data, config);
-  //       console.log(res);
-  //       dispatch({
-  //         type: UPDATE_CONTACT,
-  //         payload: data,
-  //       });
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
+    try {
+      const res = await axios.put(`api/products/${data.id}`, data, config);
+      console.log(res);
+      dispatch({
+        type: UPDATE_PRODUCT,
+        payload: data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   // delete contact
   const deleteProductHandler = async (id) => {
@@ -150,13 +151,13 @@ const ProductState = ({ children }) => {
     <ProductContext.Provider
       value={{
         products: state.products,
-        currentContactData: state.currentContact,
+        currentProductData: state.currentProduct,
         filteredProducts: state.filteredProducts,
         getAllProducts: getAllProductsHandler,
         addProduct: addProductHandler,
-        // updateContact: updateContactHandler,
-        // currentContact: currentContactHandler,
-        // clearCurrentContact: clearCurrentContactHandler,
+        updateProduct: updateProductHandler,
+        currentProduct: currentProductHandler,
+        clearCurrentProduct: clearCurrentProductHandler,
         deleteProduct: deleteProductHandler,
         // searchContacts: searchContactsHandler,
       }}

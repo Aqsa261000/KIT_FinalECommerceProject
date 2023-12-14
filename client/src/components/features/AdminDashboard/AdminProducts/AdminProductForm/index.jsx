@@ -1,13 +1,18 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import ProductContext from '../../../../../context/product/productContext';
+import AlertContext from '../../../../../context/alert/alertContext';
 import { Button, Form, Modal } from 'react-bootstrap';
+import { BasicAlert } from '../../../../common';
 
 const AdminProductForm = ({ show, handleClose }) => {
   const productContext = useContext(ProductContext);
-  const { addProduct } = productContext;
+  const alertContext = useContext(AlertContext);
+  const { AlertHandler } = alertContext;
+  const { addProduct, currentProductData, clearCurrentProduct, updateProduct } =
+    productContext;
   const [productData, setProductData] = useState({
     brand: '',
     category: '',
@@ -17,6 +22,16 @@ const AdminProductForm = ({ show, handleClose }) => {
     images: '',
   });
 
+  useEffect(() => {
+    setProductData({
+      brand: currentProductData?.brand ?? '',
+      category: currentProductData?.category ?? '',
+      name: currentProductData?.name ?? '',
+      description: currentProductData?.description ?? '',
+      price: currentProductData?.price ?? '',
+      images: currentProductData?.images ?? '',
+    });
+  }, [currentProductData]);
   const onChangeHandler = (e) => {
     setProductData((prevData) => ({
       ...prevData,
@@ -26,11 +41,37 @@ const AdminProductForm = ({ show, handleClose }) => {
   };
 
   const onSubmitHandler = (e) => {
+    // e.preventDefault();
+    // // setProductData(productData);
+    // // console.log('vv', productData);
+    // addProduct(productData);
+
     e.preventDefault();
-    // setProductData(productData);
-    console.log('vv', productData);
-    addProduct(productData);
-    handleClose();
+
+    if (
+      !productData.category ||
+      !productData.name ||
+      !productData.description ||
+      !productData.price
+    ) {
+      AlertHandler('Please enter all the required fields', 'error');
+    } else {
+      currentProductData !== null
+        ? updateProduct({ id: currentProductData.id, ...productData })
+        : addProduct(productData);
+
+      clearCurrentProduct();
+      handleClose();
+    }
+    setProductData({
+      brand: '',
+      category: '',
+      name: '',
+      description: '',
+      price: '',
+      images: '',
+    });
+    // handleClose();
   };
   return (
     <>
@@ -223,6 +264,8 @@ const AdminProductForm = ({ show, handleClose }) => {
         <Modal.Header closeButton>
           <Modal.Title>Add Product</Modal.Title>
         </Modal.Header>
+
+        <BasicAlert />
         <Modal.Body>
           <Form onSubmit={onSubmitHandler}>
             <Form.Group style={{ marginTop: '10px' }}>
@@ -302,7 +345,7 @@ const AdminProductForm = ({ show, handleClose }) => {
 
             <Button variant="secondary">Close</Button>
             <Button type="submit" variant="primary">
-              Add Product
+              {currentProductData ? 'Update Product' : 'Add Product'}
             </Button>
           </Form>
         </Modal.Body>
