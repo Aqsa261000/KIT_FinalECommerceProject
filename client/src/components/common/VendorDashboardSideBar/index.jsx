@@ -22,7 +22,7 @@ import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import AuthContext from '../../../context/auth/authContext.js';
 
-const AdminDashboardSideBar = (props) => {
+const VendorDashboardSideBar = (props) => {
   const authContext = useContext(AuthContext);
   const { isAuthenticated, isLoading, user, getUser, logoutHandler } =
     authContext;
@@ -65,7 +65,7 @@ const AdminDashboardSideBar = (props) => {
               }}
             >
               <LocalMallIcon sx={style.buttonIcons} />
-              <Link to={'/adminhome'} style={{ textDecoration: 'none' }}>
+              <Link to={'/vendorhome'} style={{ textDecoration: 'none' }}>
                 <h1 style={{ color: 'white' }}>KickKart</h1>
               </Link>
             </Box>
@@ -141,6 +141,16 @@ const AdminDashboardSideBar = (props) => {
                       <ReorderIcon /> Orders
                     </Link>
                   </Box>
+                  <Box component={'li'} sx={style.listItems}>
+                    <Link className="linkItems">
+                      <BadgeIcon /> Vendors
+                    </Link>
+                  </Box>
+                  <Box component={'li'} sx={style.listItems}>
+                    <Link className="linkItems">
+                      <PeopleAltIcon /> Users
+                    </Link>
+                  </Box>
                 </Box>
               </Box>
               <Box sx={{ margin: '30px auto', width: '70%' }}>
@@ -160,4 +170,4 @@ const AdminDashboardSideBar = (props) => {
   );
 };
 
-export default AdminDashboardSideBar;
+export default VendorDashboardSideBar;

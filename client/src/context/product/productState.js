@@ -41,9 +41,9 @@ const ProductState = ({ children }) => {
 
   // get products
   const getAllProductsHandler = async () => {
-    if (localStorage.token) {
-      setAuthToken(localStorage.token);
-    }
+    // if (localStorage.token) {
+    //   setAuthToken(localStorage.token);
+    // }
 
     try {
       const res = await axios.get('/api/products');

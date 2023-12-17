@@ -5,6 +5,8 @@ import { AdminLoginDefault } from './auth';
 import { VendorSignUpDefault } from './auth';
 import { VendorLoginDefault } from './auth';
 import { VendorHomeDefault } from './VendorDashboard';
+import { VendorProductsDefault } from './VendorDashboard';
+// import { VendorHomeDefault } from './VendorDashboard';
 
 import { VerificationDefault } from './auth';
 import { NewPasswordDefault } from './auth';
@@ -22,4 +24,5 @@ export {
   NewPasswordDefault,
   CheckEmailDefault,
   ForgetPasswordDefault,
+  VendorProductsDefault,
 };

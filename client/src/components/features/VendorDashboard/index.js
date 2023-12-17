@@ -1,3 +1,3 @@
 import VendorHomeDefault from './VendorHome';
-
-export { VendorHomeDefault };
+import VendorProductsDefault from './VendorProducts';
+export { VendorHomeDefault, VendorProductsDefault };

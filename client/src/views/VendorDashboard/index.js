@@ -1,5 +1,5 @@
 import VendorHome from './vendorhome';
 import VendorLogin from './vendorlogin';
 import VendorSignUp from './vendorsignup';
-
-export { VendorHome, VendorLogin, VendorSignUp };
+import VendorProducts from './VendorProducts';
+export { VendorHome, VendorLogin, VendorSignUp, VendorProducts };

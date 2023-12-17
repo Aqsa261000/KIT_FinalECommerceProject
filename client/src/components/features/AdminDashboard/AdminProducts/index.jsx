@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useId, useState } from 'react';
 import AdminDashboardSideBar from '../../../common/AdminDashboardSideBar';
 import AdminProductForm from './AdminProductForm';
 import ProductContext from '../../../../context/product/productContext';
+
 import { Button } from '@mui/material';
 
 const AdminProductsDefault = () => {
@@ -10,11 +11,12 @@ const AdminProductsDefault = () => {
   const { getAllProducts, products, deleteProduct, currentProduct } =
     productContext;
   const [show, setShow] = useState(false);
-  const id = useId();
+  // const id = useId();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   useEffect(() => {
     getAllProducts();
+    console.log(getAllProducts());
   }, []);
   return (
     <>
