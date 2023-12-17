@@ -71,7 +71,7 @@ const AdminDashboardSideBar = (props) => {
             </Box>
             <Box component={'ul'} style={style.navItems}>
               <Box component={'li'} sx={style.listItems}>
-                <Link className="linkItems">
+                <Link to={'/adminprofile'} className="linkItems">
                   <AccountCircleIcon /> My Profile
                 </Link>
               </Box>

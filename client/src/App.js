@@ -11,6 +11,8 @@ import { VendorHome, VendorLogin, VendorSignUp, VendorProducts } from './views';
 import AppRouter from './router';
 import { AdminProducts } from './views/AdminDashboard';
 import ProductState from './context/product/productState';
+import AdminProfile from './views/AdminDashboard/adminprofile';
+import VendorProfile from './views/VendorDashboard/vendorprofile';
 // import VendorProducts from './views/VendorDashboard/VendorProducts';
 
 // import BasicAlert from './components/common/Alert';
@@ -23,23 +25,25 @@ const App = () => {
             <Fragment>
               <CssBaseline />
               {/* Yahan par routes aayeghe */}
-              <AppRouter />
-              {/* <Routes>
+              {/* <AppRouter /> */}
+              <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/adminlogin" element={<AdminLogin />} />
                 <Route path="/adminhome" element={<AdminHome />} />
+                <Route path="/adminprofile" element={<AdminProfile />} />
                 <Route path="/adminproducts" element={<AdminProducts />} />
                 <Route path="/vendorsignup" element={<VendorSignUp />} />
                 <Route path="/vendorlogin" element={<VendorLogin />} />
                 <Route path="/vendorhome" element={<VendorHome />} />
+                <Route path="/vendorprofile" element={<VendorProfile />} />
                 <Route path="/vendorproducts" element={<VendorProducts />} />
                 <Route path="/forgetpassword" element={<ForgetPassword />} />
                 <Route path="/checkemail" element={<CheckEmail />} />
                 <Route path="/verification" element={<Verification />} />
                 <Route path="/newpassword" element={<NewPassword />} />
-              </Routes> */}
+              </Routes>
             </Fragment>
           </BrowserRouter>
         </ProductState>
