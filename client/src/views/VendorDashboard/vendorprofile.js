@@ -57,7 +57,7 @@ const VendorProfile = () => {
                     <Link
                       to={'/forgetpassword'}
                       style={{ textDecoration: 'none', color: 'white' }}
-                    >
+                    >  
                       <Button
                         style={{ backgroundColor: 'black', color: 'white' }}
                       >

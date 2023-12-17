@@ -54,16 +54,16 @@ const AdminProfile = () => {
                     <p className="text-muted mb-1">{user?.phone}</p>
                     <p className="text-muted mb-1">{user?.gender}</p>
                     {/* <p className="text-muted mb-1">{user?.city}</p> */}
-                    <Button
-                      style={{ backgroundColor: 'black', color: 'white' }}
+                    <Link
+                      to={'/forgetpassword'}
+                      style={{ textDecoration: 'none', color: 'white' }}
                     >
-                      <Link
-                        to={'/forgetpassword'}
-                        style={{ textDecoration: 'none', color: 'white' }}
+                      <Button
+                        style={{ backgroundColor: 'black', color: 'white' }}
                       >
                         Change Password
-                      </Link>
-                    </Button>
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
