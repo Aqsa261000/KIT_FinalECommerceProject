@@ -326,6 +326,7 @@ const AuthState = ({ children }) => {
     <AuthContext.Provider
       value={{
         token: state.token,
+        role: state.role,
         isAuthenticated: state.isAuthenticated,
         isLoading: state.isLoading,
         user: state.user,

@@ -7,7 +7,7 @@ const RequireAuth = () => {
   const { isAuthenticated, user } = authContext;
   const location = useLocation();
 
-  if (!isAuthenticated && !user) {
+  if (!isAuthenticated) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
