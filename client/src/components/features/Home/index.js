@@ -56,9 +56,7 @@ const HomeDefault = () => {
     },
   ];
   useEffect(() => {
-    if (isAuthenticated) {
-      getUser();
-    }
+    getUser();
   }, []);
   return (
     <>
