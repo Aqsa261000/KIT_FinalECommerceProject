@@ -28,6 +28,14 @@ const productSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  brand:{
+    type: String,
+    required: true
+  },
+  img:{
+    type: String,
+    required: true
+  },
   postedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "user", // Reference to the User model

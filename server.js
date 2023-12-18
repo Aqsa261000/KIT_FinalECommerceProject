@@ -6,6 +6,8 @@ require('dotenv').config();
 
 var app = express();
 connectDB();
+app.use('/uploads', express.static('uploads'))
+
 var port = process.env.PORT || 5000;
 
 
