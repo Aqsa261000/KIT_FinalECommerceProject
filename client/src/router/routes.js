@@ -82,8 +82,6 @@ const defaultRoutes = {
     routes.vendorSignUp,
     routes.vendorLogin,
     routes.adminLogin,
-
-    // routes.userHome,
   ],
   protectedRoutes: [
     routes.vendorHome,
@@ -96,9 +94,6 @@ const defaultRoutes = {
     routes.vendorProfile,
     routes.vendorOrders,
   ],
-  // protectedRoutes: [routes.userHome],
-  // vendorProtectedRoutes: [routes.vendorHome, routes.vendorSignUp, routes.vendorLogin],
-  // adminProtectedRoutes: [routes.adminHome],
 };
 
 export default defaultRoutes;
