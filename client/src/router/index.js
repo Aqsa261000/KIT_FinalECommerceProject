@@ -9,9 +9,9 @@ const AppRouter = () => {
   const authContext = useContext(AuthContext);
   const { isAuthenticated, getUser, role } = authContext;
   const { protectedRoutes, publicRoutes } = defaultRoutes;
-  useEffect(() => {
-    getUser();
-  }, []);
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
 
   const publicPageRoutes = publicRoutes.map(({ label, path, component }) => {
     return <Route key={label} path={`/${path}`} element={component} />;
