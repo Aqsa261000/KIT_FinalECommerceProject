@@ -7,7 +7,13 @@ import {
   VendorHome,
   VendorLogin,
   VendorSignUp,
+  VendorProducts,
 } from '../views';
+import { AdminProducts } from '../views/AdminDashboard';
+import AdminOrders from '../views/AdminDashboard/adminorders';
+import AdminProfile from '../views/AdminDashboard/adminprofile';
+import VendorOrders from '../views/VendorDashboard/vendororders';
+import VendorProfile from '../views/VendorDashboard/vendorprofile';
 
 const routes = {
   userSignUp: {
@@ -43,6 +49,30 @@ const routes = {
     path: '/adminhome',
     component: <AdminHome />,
   },
+  adminProducts: {
+    path: '/adminproducts',
+    component: <AdminProducts />,
+  },
+  adminProfile: {
+    path: '/adminprofile',
+    component: <AdminProfile />,
+  },
+  adminOrders: {
+    path: '/adminproducts',
+    component: <AdminOrders />,
+  },
+  vendorProducts: {
+    path: '/vendorproducts',
+    component: <VendorProducts />,
+  },
+  vendorProfile: {
+    path: '/vendorprofile',
+    component: <VendorProfile />,
+  },
+  vendorOrders: {
+    path: '/vendorOrders',
+    component: <VendorOrders />,
+  },
 };
 
 const defaultRoutes = {
@@ -52,9 +82,20 @@ const defaultRoutes = {
     routes.vendorSignUp,
     routes.vendorLogin,
     routes.adminLogin,
+
     // routes.userHome,
   ],
-  protectedRoutes: [routes.vendorHome, routes.adminHome, routes.userHome],
+  protectedRoutes: [
+    routes.vendorHome,
+    routes.adminHome,
+    routes.userHome,
+    routes.adminProducts,
+    routes.adminProfile,
+    routes.adminOrders,
+    routes.vendorProducts,
+    routes.vendorProfile,
+    routes.vendorOrders,
+  ],
   // protectedRoutes: [routes.userHome],
   // vendorProtectedRoutes: [routes.vendorHome, routes.vendorSignUp, routes.vendorLogin],
   // adminProtectedRoutes: [routes.adminHome],
