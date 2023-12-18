@@ -42,7 +42,7 @@ const AppRouter = () => {
                     ? '/vendorhome'
                     : role === '1'
                     ? '/adminhome'
-                    : '/'
+                    : '/login'
                   : '/login'
               }
             />
