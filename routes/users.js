@@ -25,7 +25,6 @@ const {Cityname} = req.body
     const addCity = await cityModel.create({Cityname})
   return res.send(addCity)
   
-  
   })
 
 
