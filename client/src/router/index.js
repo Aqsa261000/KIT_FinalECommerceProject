@@ -9,9 +9,9 @@ const AppRouter = () => {
   const authContext = useContext(AuthContext);
   const { isAuthenticated, getUser, role } = authContext;
   const { protectedRoutes, publicRoutes } = defaultRoutes;
-  // useEffect(() => {
-  //   getUser();
-  // }, []);
+  useEffect(() => {
+    getUser();
+  }, []);
 
   const publicPageRoutes = publicRoutes.map(({ label, path, component }) => {
     return <Route key={label} path={`/${path}`} element={component} />;
@@ -34,21 +34,7 @@ const AppRouter = () => {
 
         <Route
           path="*"
-          element={
-            <Navigate
-              to={
-                isAuthenticated
-                  ? role === '0'
-                    ? '/'
-                    : role === '1'
-                    ? '/adminhome'
-                    : role === '2'
-                    ? '/vendorhome'
-                    : '/login'
-                  : '/login'
-              }
-            />
-          }
+          element={<Navigate to={isAuthenticated && '/login'} />}
         />
       </Route>
     </Routes>
