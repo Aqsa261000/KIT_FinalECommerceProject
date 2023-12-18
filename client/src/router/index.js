@@ -7,7 +7,7 @@ import RequireAuth from './RequireAuth';
 
 const AppRouter = () => {
   const authContext = useContext(AuthContext);
-  const { isAuthenticated, getUser, role } = authContext;
+  const { isAuthenticated, getUser, user, role } = authContext;
   const { protectedRoutes, publicRoutes } = defaultRoutes;
   useEffect(() => {
     getUser();
@@ -34,7 +34,19 @@ const AppRouter = () => {
 
         <Route
           path="*"
-          element={<Navigate to={isAuthenticated && '/login'} />}
+          element={
+            <Navigate
+              to={
+                isAuthenticated
+                  ? role === '2'
+                    ? '/vendorhome'
+                    : role === '1'
+                    ? '/adminhome'
+                    : '/'
+                  : '/login'
+              }
+            />
+          }
         />
       </Route>
     </Routes>
