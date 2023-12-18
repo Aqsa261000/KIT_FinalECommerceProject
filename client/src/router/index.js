@@ -34,7 +34,21 @@ const AppRouter = () => {
 
         <Route
           path="*"
-          element={<Navigate to={isAuthenticated && '/login'} />}
+          element={
+            <Navigate
+              to={
+                isAuthenticated
+                  ? role === '0'
+                    ? '/'
+                    : role === '1'
+                    ? '/adminhome'
+                    : role === '2'
+                    ? '/vendorhome'
+                    : '/login'
+                  : '/'
+              }
+            />
+          }
         />
       </Route>
     </Routes>
