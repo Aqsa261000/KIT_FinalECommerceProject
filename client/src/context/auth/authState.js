@@ -155,7 +155,7 @@ const AuthState = ({ children }) => {
       };
       const response = await axios.post('/api/auth', data, config);
       // token = await response.data.token;
-      if (response.data.role === "0") {
+      if (response.data.role === '0') {
         console.log('signin successful', response);
         dispatch({ type: SIGNIN_SUCCESS, payload: response.data });
       } else {
@@ -184,7 +184,7 @@ const AuthState = ({ children }) => {
       };
       const response = await axios.post('/api/auth', data, config);
       // token = await response.data.token;
-      if (response.data.role === "1") {
+      if (response.data.role === '1') {
         console.log('signin successful', response);
         dispatch({ type: SIGNIN_SUCCESS, payload: response.data });
       } else {
@@ -214,7 +214,7 @@ const AuthState = ({ children }) => {
       };
       const response = await axios.post('/api/auth', data, config);
       // token = await response.data.token;
-      if (response.data.role === "2") {
+      if (response.data.role === '2') {
         console.log('signin successful', response);
         dispatch({ type: SIGNIN_SUCCESS, payload: response.data });
       } else {

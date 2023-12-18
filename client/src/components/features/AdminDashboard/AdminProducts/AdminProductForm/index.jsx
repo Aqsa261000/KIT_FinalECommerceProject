@@ -19,7 +19,7 @@ const AdminProductForm = ({ show, handleClose }) => {
     name: '',
     description: '',
     price: '',
-    images: '',
+    img: null,
   });
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const AdminProductForm = ({ show, handleClose }) => {
       name: currentProductData?.name ?? '',
       description: currentProductData?.description ?? '',
       price: currentProductData?.price ?? '',
-      images: currentProductData?.images ?? '',
+      img: currentProductData?.img ?? '',
     });
   }, [currentProductData]);
   const onChangeHandler = (e) => {
@@ -40,6 +40,13 @@ const AdminProductForm = ({ show, handleClose }) => {
     // console.log(productData);
   };
 
+  const handleImageChange = (e) => {
+    setProductData((prevData) => ({
+      ...prevData,
+      img: e.target.files,
+    }));
+  };
+
   const onSubmitHandler = (e) => {
     // e.preventDefault();
     // // setProductData(productData);
@@ -47,12 +54,15 @@ const AdminProductForm = ({ show, handleClose }) => {
     // addProduct(productData);
 
     e.preventDefault();
-
+    const formData = new FormData();
+    formData.append('img', productData.img);
     if (
       !productData.category ||
       !productData.name ||
       !productData.description ||
-      !productData.price
+      !productData.price ||
+      !productData.brand ||
+      !productData.img
     ) {
       AlertHandler('Please enter all the required fields', 'error');
     } else {
@@ -69,7 +79,7 @@ const AdminProductForm = ({ show, handleClose }) => {
       name: '',
       description: '',
       price: '',
-      images: '',
+      img: '',
     });
     // handleClose();
   };
@@ -335,11 +345,11 @@ const AdminProductForm = ({ show, handleClose }) => {
               <Form.Control
                 type="file"
                 placeholder="Enter your Product Quantity"
-                name="images"
-                // value={productData.images}
-                onChange={onChangeHandler}
+                name="img"
+                onChange={handleImageChange}
                 multiple
-                id="images"
+                id="img"
+                accept="image/*"
               ></Form.Control>
             </Form.Group>
 

@@ -40,7 +40,7 @@ const style = {
     fontWeight: 700,
     padding: '5px 20px',
     gap: '7px',
-    '&:hover': { backgroundColor: '#7a2fdc' },
+    '&:hover': { backgroundColor: '#7a2fdc', color:'white' },
   },
   buttonIcons: {
     color: 'white',

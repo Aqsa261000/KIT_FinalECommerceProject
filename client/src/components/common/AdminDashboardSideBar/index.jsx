@@ -69,6 +69,18 @@ const AdminDashboardSideBar = (props) => {
                 <h1 style={{ color: 'white' }}>KickKart</h1>
               </Link>
             </Box>
+            <Box style={{ textDecoration: 'none' }}>
+              <h4
+                style={{
+                  color: 'white',
+                  textAlign: 'center',
+                  marginBottom: '40px',
+                  fontWeight: '700',
+                }}
+              >
+                Admin Dashboard
+              </h4>
+            </Box>
             <Box component={'ul'} style={style.navItems}>
               <Box component={'li'} sx={style.listItems}>
                 <Link to={'/adminprofile'} className="linkItems">
@@ -81,7 +93,7 @@ const AdminDashboardSideBar = (props) => {
                 </Link>
               </Box>
               <Box component={'li'} sx={style.listItems}>
-                <Link className="linkItems">
+                <Link to={'/adminorders'} className="linkItems">
                   <ReorderIcon /> Orders
                 </Link>
               </Box>
@@ -123,21 +135,37 @@ const AdminDashboardSideBar = (props) => {
                   }}
                 >
                   <LocalMallIcon sx={style.buttonIcons} />
-                  <h1 style={{ color: 'white' }}>KickKart</h1>
+                  <Link to={'/adminhome'} style={{ textDecoration: 'none' }}>
+                    <h1 style={{ color: 'white' }}>KickKart</h1>
+                  </Link>
                 </Box>
+                <Box style={{ textDecoration: 'none' }}>
+              <h4
+                style={{
+                  color: 'white',
+                  textAlign: 'center',
+                  marginBottom: '40px',
+                  fontWeight: '700',
+                }}
+              >
+                Admin Dashboard
+              </h4>
+            </Box>
+                
+
                 <Box component={'ul'} style={style.navItems}>
                   <Box component={'li'} sx={style.listItems}>
-                    <Link className="linkItems">
+                    <Link to={'/adminprofile'} className="linkItems">
                       <AccountCircleIcon /> My Profile
                     </Link>
                   </Box>
                   <Box component={'li'} sx={style.listItems}>
-                    <Link className="linkItems" to={'/adminproducts'}>
+                    <Link to={'/adminproducts'} className="linkItems">
                       <CategoryIcon /> Products
                     </Link>
                   </Box>
                   <Box component={'li'} sx={style.listItems}>
-                    <Link className="linkItems">
+                    <Link to={'/adminorders'} className="linkItems">
                       <ReorderIcon /> Orders
                     </Link>
                   </Box>

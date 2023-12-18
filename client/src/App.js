@@ -13,6 +13,9 @@ import { AdminProducts } from './views/AdminDashboard';
 import ProductState from './context/product/productState';
 import AdminProfile from './views/AdminDashboard/adminprofile';
 import VendorProfile from './views/VendorDashboard/vendorprofile';
+import AdminOrders from './views/AdminDashboard/adminorders';
+import VendorOrders from './views/VendorDashboard/vendororders';
+import OrderState from './context/order/orderState';
 // import VendorProducts from './views/VendorDashboard/VendorProducts';
 
 // import BasicAlert from './components/common/Alert';
@@ -21,31 +24,35 @@ const App = () => {
     <AuthState>
       <AlertState>
         <ProductState>
-          <BrowserRouter>
-            <Fragment>
-              <CssBaseline />
-              {/* Yahan par routes aayeghe */}
-              {/* <AppRouter /> */}
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/adminlogin" element={<AdminLogin />} />
-                <Route path="/adminhome" element={<AdminHome />} />
-                <Route path="/adminprofile" element={<AdminProfile />} />
-                <Route path="/adminproducts" element={<AdminProducts />} />
-                <Route path="/vendorsignup" element={<VendorSignUp />} />
-                <Route path="/vendorlogin" element={<VendorLogin />} />
-                <Route path="/vendorhome" element={<VendorHome />} />
-                <Route path="/vendorprofile" element={<VendorProfile />} />
-                <Route path="/vendorproducts" element={<VendorProducts />} />
-                <Route path="/forgetpassword" element={<ForgetPassword />} />
-                <Route path="/checkemail" element={<CheckEmail />} />
-                <Route path="/verification" element={<Verification />} />
-                <Route path="/newpassword" element={<NewPassword />} />
-              </Routes>
-            </Fragment>
-          </BrowserRouter>
+          <OrderState>
+            <BrowserRouter>
+              <Fragment>
+                <CssBaseline />
+                {/* Yahan par routes aayeghe */}
+                {/* <AppRouter /> */}
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/signup" element={<SignUp />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/adminlogin" element={<AdminLogin />} />
+                  <Route path="/adminhome" element={<AdminHome />} />
+                  <Route path="/adminprofile" element={<AdminProfile />} />
+                  <Route path="/adminproducts" element={<AdminProducts />} />
+                  <Route path="/adminorders" element={<AdminOrders />} />
+                  <Route path="/vendorsignup" element={<VendorSignUp />} />
+                  <Route path="/vendorlogin" element={<VendorLogin />} />
+                  <Route path="/vendorhome" element={<VendorHome />} />
+                  <Route path="/vendorprofile" element={<VendorProfile />} />
+                  <Route path="/vendorproducts" element={<VendorProducts />} />
+                  <Route path="/vendororders" element={<VendorOrders />} />
+                  <Route path="/forgetpassword" element={<ForgetPassword />} />
+                  <Route path="/checkemail" element={<CheckEmail />} />
+                  <Route path="/verification" element={<Verification />} />
+                  <Route path="/newpassword" element={<NewPassword />} />
+                </Routes>
+              </Fragment>
+            </BrowserRouter>
+          </OrderState>
         </ProductState>
       </AlertState>
     </AuthState>

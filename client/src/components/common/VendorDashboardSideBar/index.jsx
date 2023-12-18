@@ -69,19 +69,31 @@ const VendorDashboardSideBar = (props) => {
                 <h1 style={{ color: 'white' }}>KickKart</h1>
               </Link>
             </Box>
+            <Box style={{ textDecoration: 'none' }}>
+              <h4
+                style={{
+                  color: 'white',
+                  textAlign: 'center',
+                  marginBottom: '40px',
+                  fontWeight: '700',
+                }}
+              >
+                Vendor Dashboard
+              </h4>
+            </Box>
             <Box component={'ul'} style={style.navItems}>
               <Box component={'li'} sx={style.listItems}>
-                <Link className="linkItems">
+                <Link to={'/vendorprofile'} className="linkItems">
                   <AccountCircleIcon /> My Profile
                 </Link>
               </Box>
               <Box component={'li'} sx={style.listItems}>
-                <Link to={'/adminproducts'} className="linkItems">
+                <Link to={'/vendorproducts'} className="linkItems">
                   <CategoryIcon /> Products
                 </Link>
               </Box>
               <Box component={'li'} sx={style.listItems}>
-                <Link className="linkItems">
+                <Link to={'/vendororders'} className="linkItems">
                   <ReorderIcon /> Orders
                 </Link>
               </Box>
@@ -123,32 +135,36 @@ const VendorDashboardSideBar = (props) => {
                   }}
                 >
                   <LocalMallIcon sx={style.buttonIcons} />
-                  <h1 style={{ color: 'white' }}>KickKart</h1>
+                  <Link to={'/vendorhome'} style={{ textDecoration: 'none' }}>
+                <h1 style={{ color: 'white' }}>KickKart</h1>
+              </Link>
                 </Box>
+                <Box style={{ textDecoration: 'none' }}>
+              <h4
+                style={{
+                  color: 'white',
+                  textAlign: 'center',
+                  marginBottom: '40px',
+                  fontWeight: '700',
+                }}
+              >
+                Vendor Dashboard
+              </h4>
+            </Box>
                 <Box component={'ul'} style={style.navItems}>
                   <Box component={'li'} sx={style.listItems}>
-                    <Link className="linkItems">
+                    <Link to={'/vendorprofile'} className="linkItems">
                       <AccountCircleIcon /> My Profile
                     </Link>
                   </Box>
                   <Box component={'li'} sx={style.listItems}>
-                    <Link className="linkItems" to={'/adminproducts'}>
+                    <Link to={'/vendorproducts'} className="linkItems">
                       <CategoryIcon /> Products
                     </Link>
                   </Box>
                   <Box component={'li'} sx={style.listItems}>
-                    <Link className="linkItems">
+                    <Link to={'/vendororders'} className="linkItems">
                       <ReorderIcon /> Orders
-                    </Link>
-                  </Box>
-                  <Box component={'li'} sx={style.listItems}>
-                    <Link className="linkItems">
-                      <BadgeIcon /> Vendors
-                    </Link>
-                  </Box>
-                  <Box component={'li'} sx={style.listItems}>
-                    <Link className="linkItems">
-                      <PeopleAltIcon /> Users
                     </Link>
                   </Box>
                 </Box>
