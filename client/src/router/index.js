@@ -38,14 +38,7 @@ const AppRouter = () => {
             <Navigate
               to={
                 isAuthenticated
-                  ? role === '0'
-                    ? '/'
-                    : role === '1'
-                    ? '/adminhome'
-                    : role === '2'
-                    ? '/vendorhome'
-                    : '/login'
-                  : '/login'
+                  && '/'
               }
             />
           }
