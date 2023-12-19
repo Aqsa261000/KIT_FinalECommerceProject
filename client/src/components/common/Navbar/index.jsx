@@ -80,7 +80,7 @@ const Navbar = () => {
           <Container
             sx={{
               display: 'flex',
-              flexDirection: 'column',
+              flexDirection: 'column',  
 
               // border: '1px solid black',
             }}
