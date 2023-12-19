@@ -82,12 +82,11 @@ const defaultRoutes = {
     routes.vendorSignUp,
     routes.vendorLogin,
     routes.adminLogin,
-    routes.userHome,
   ],
   protectedRoutes: [
     routes.vendorHome,
     routes.adminHome,
-
+    routes.userHome,
     routes.adminProducts,
     routes.adminProfile,
     routes.adminOrders,
