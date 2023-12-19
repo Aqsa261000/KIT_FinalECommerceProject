@@ -93,7 +93,11 @@ const VendorProductsDefault = () => {
                     <td>{product.name}</td>
                     <td>{product.description}</td>
                     <td>{product.price}</td>
-                    <td>{product.images}</td>
+                    <td>
+                      <img
+                        src={`https://5d10-39-50-198-81.ngrok-free.app/uploads/${product.img}`}
+                      />
+                    </td>
 
                     <td></td>
                     <td>
@@ -109,6 +113,7 @@ const VendorProductsDefault = () => {
                             name: product.name,
                             description: product.description,
                             price: product.price,
+                            img: product.img,
                           });
                           handleShow();
                         }}

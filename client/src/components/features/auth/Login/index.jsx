@@ -105,7 +105,7 @@ const LoginDefault = () => {
                   alignItems: 'center',
                   justifyContent: 'flex-end',
                   fontSize: '12px',
-                  color:'black'
+                  color: 'black',
                 }}
                 to={'/forgetpassword'}
               >
@@ -122,6 +122,11 @@ const LoginDefault = () => {
                 Register
               </Link>
             </p>
+            <p style={{textAlign:'center', fontWeight:700}}>OR</p>
+
+            <Link to={'/vendorlogin'} className="linkItems">
+              Login as Vendor?
+            </Link>
           </div>
           <div className="col-2">
             <img src={img} alt="" />

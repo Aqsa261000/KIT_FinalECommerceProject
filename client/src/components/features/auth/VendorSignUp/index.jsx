@@ -218,6 +218,11 @@ const VendorSignUpDefault = () => {
               Login
             </Link>
           </p>
+          <p style={{ textAlign: 'center', fontWeight: 700 }}>OR</p>
+
+          <Link to={'/signup'} className="linkItems">
+            SignUp as User?
+          </Link>
         </div>
         <div className="col-2">
           <img src={img} alt="" />

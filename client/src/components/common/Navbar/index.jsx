@@ -80,25 +80,11 @@ const Navbar = () => {
           <Container
             sx={{
               display: 'flex',
-              flexDirection: 'column',  
+              flexDirection: 'column',
 
               // border: '1px solid black',
             }}
           >
-            <Box>
-              <Box className="topnav" to={'/vendorsignup'}>
-                <Typography sx={{ fontFamily: 'inherit' }}>
-                  {/* Hello{' '}
-                  <span style={{ color: '#8a33fd', fontWeight: '700' }}>
-                    Hussain
-                  </span>
-                  , Welcome Again! */}
-                </Typography>
-                <Link className="topnavlink" to={'/vendorsignup'}>
-                  Become a seller
-                </Link>
-              </Box>
-            </Box>
             <Box
               sx={{
                 display: 'flex',
@@ -462,20 +448,6 @@ const Navbar = () => {
               // border: '1px solid black',
             }}
           >
-            <Box>
-              <Box className="topnav" to={'/vendorsignup'}>
-                <Typography sx={{ fontFamily: 'inherit' }}>
-                  Hello{' '}
-                  <span style={{ color: '#8a33fd', fontWeight: '700' }}>
-                    {user?.name}
-                  </span>
-                  , Welcome Again!
-                </Typography>
-                <Link className="topnavlink" to={'/vendorsignup'}>
-                  Become a seller
-                </Link>
-              </Box>
-            </Box>
             <Box
               sx={{
                 display: 'flex',

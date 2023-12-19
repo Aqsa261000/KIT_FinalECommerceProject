@@ -168,12 +168,17 @@ const SignUpDefault = () => {
               Sign Up
             </button>
           </form>
+
           <p className="flexx2">
             Already Have an Account?{' '}
             <Link to="/login" className="linkk">
               Login
             </Link>
           </p>
+          <p style={{ textAlign: 'center', fontWeight: 700 }}>OR</p>
+          <Link to={'/vendorsignup'} className="linkItems">
+            Sign Up as Vendor?
+          </Link>
         </div>
         <div className="col-2">
           <img src={img} alt="" />
