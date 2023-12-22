@@ -41,7 +41,7 @@ const AuthState = ({ children }) => {
     }
     try {
       const response = await axios.get('/api/auth');
-      console.log(response);
+      // console.log(response);
       // dispatch({ type: 'AUTH_SUCCESS', payload: response.data });
       dispatch({
         type: AUTH_SUCCESS,
