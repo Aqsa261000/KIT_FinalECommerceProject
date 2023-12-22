@@ -25,8 +25,7 @@ const userSchema = mongoose.Schema({
     default: null
   },
   city: {
-    type: mongoose.Types.ObjectId,
-    ref:'City',
+    type: String,
     default: null
   },
   cnic: {
