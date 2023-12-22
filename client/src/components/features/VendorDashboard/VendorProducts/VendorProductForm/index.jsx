@@ -19,7 +19,7 @@ const VendorProductForm = ({ show, handleClose }) => {
     name: '',
     description: '',
     price: '',
-    images: '',
+    // images: '',
   });
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const VendorProductForm = ({ show, handleClose }) => {
       name: currentProductData?.name ?? '',
       description: currentProductData?.description ?? '',
       price: currentProductData?.price ?? '',
-      images: currentProductData?.images ?? '',
+      // images: currentProductData?.images ?? '',
     });
   }, [currentProductData]);
   const onChangeHandler = (e) => {
@@ -69,7 +69,7 @@ const VendorProductForm = ({ show, handleClose }) => {
       name: '',
       description: '',
       price: '',
-      images: '',
+      // images: '',
     });
     // handleClose();
   };
@@ -327,7 +327,7 @@ const VendorProductForm = ({ show, handleClose }) => {
                 id="price"
               ></Form.Control>
             </Form.Group>
-            <Form.Group
+            {/* <Form.Group
               style={{ marginTop: '10px' }}
               controlId="formFileMultiple"
             >
@@ -341,7 +341,7 @@ const VendorProductForm = ({ show, handleClose }) => {
                 multiple
                 id="images"
               ></Form.Control>
-            </Form.Group>
+            </Form.Group> */}
 
             <Button variant="secondary">Close</Button>
             <Button type="submit" variant="primary">

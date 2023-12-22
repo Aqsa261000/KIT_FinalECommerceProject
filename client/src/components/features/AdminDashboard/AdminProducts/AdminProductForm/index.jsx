@@ -19,7 +19,7 @@ const AdminProductForm = ({ show, handleClose }) => {
     name: '',
     description: '',
     price: '',
-    img: null,
+    // img: null,
   });
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const AdminProductForm = ({ show, handleClose }) => {
       name: currentProductData?.name ?? '',
       description: currentProductData?.description ?? '',
       price: currentProductData?.price ?? '',
-      img: currentProductData?.img ?? '',
+      // img: currentProductData?.img ?? '',
     });
   }, [currentProductData]);
   const onChangeHandler = (e) => {
@@ -40,12 +40,12 @@ const AdminProductForm = ({ show, handleClose }) => {
     // console.log(productData);
   };
 
-  const handleImageChange = (e) => {
-    setProductData((prevData) => ({
-      ...prevData,
-      img: e.target.files,
-    }));
-  };
+  // const handleImageChange = (e) => {
+  //   setProductData((prevData) => ({
+  //     ...prevData,
+  //     img: e.target.files,
+  //   }));
+  // };
 
   const onSubmitHandler = (e) => {
     // e.preventDefault();
@@ -54,15 +54,15 @@ const AdminProductForm = ({ show, handleClose }) => {
     // addProduct(productData);
 
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('img', productData.img);
+    // const formData = new FormData();
+    // formData.append('img', productData.img);
     if (
       !productData.category ||
       !productData.name ||
       !productData.description ||
       !productData.price ||
-      !productData.brand ||
-      !productData.img
+      !productData.brand
+      // !productData.img
     ) {
       AlertHandler('Please enter all the required fields', 'error');
     } else {
@@ -79,7 +79,7 @@ const AdminProductForm = ({ show, handleClose }) => {
       name: '',
       description: '',
       price: '',
-      img: '',
+      // img: '',
     });
     // handleClose();
   };
@@ -337,7 +337,7 @@ const AdminProductForm = ({ show, handleClose }) => {
                 id="price"
               ></Form.Control>
             </Form.Group>
-            <Form.Group
+            {/* <Form.Group
               style={{ marginTop: '10px' }}
               controlId="formFileMultiple"
             >
@@ -345,13 +345,13 @@ const AdminProductForm = ({ show, handleClose }) => {
               <Form.Control
                 type="file"
                 placeholder="Enter your Product Quantity"
-                name="img"
+                // name="img"
                 onChange={handleImageChange}
                 multiple
                 id="img"
                 accept="image/*"
               ></Form.Control>
-            </Form.Group>
+            </Form.Group> */}
 
             <Button variant="secondary">Close</Button>
             <Button type="submit" variant="primary">
