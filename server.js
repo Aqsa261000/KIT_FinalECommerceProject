@@ -15,8 +15,6 @@ app.use(express.json({extended:false}))
 
 //controller
 
-
-
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/reset',require('./routes/reset'));

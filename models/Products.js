@@ -32,10 +32,6 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  img:{
-    type: String,
-    required: true
-  },
   postedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "user", // Reference to the User model

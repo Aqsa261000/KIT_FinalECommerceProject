@@ -47,9 +47,6 @@ routes.get("/:id", async (req, res) => {
 
 routes.post('/',[auth, upload.single('image')],async(req,res)=>{
 const {name, description, price, category,brand, quantity} = req.body;
-console.log(req.file);
-const image = req.file.filename
-console.log("The image is: ",image);
 const id = req.user.id;
 try {
     const data = {
@@ -60,7 +57,6 @@ try {
         brand,
         quantity,
         postedBy:id,
-        img:image
     }
     const productCreate = await Product.create(data);
     res.status(201).json(productCreate)    
