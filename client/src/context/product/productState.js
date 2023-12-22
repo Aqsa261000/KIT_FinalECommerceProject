@@ -111,7 +111,7 @@ const ProductState = ({ children }) => {
     };
 
     try {
-      const res = await axios.put(`api/products/${data.id}`, data, config);
+      const res = await axios.put(`api/products/${data._id}`, data, config);
       console.log(res);
       dispatch({
         type: UPDATE_PRODUCT,

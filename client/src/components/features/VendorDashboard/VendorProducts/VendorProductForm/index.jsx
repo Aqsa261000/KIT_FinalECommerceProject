@@ -57,7 +57,7 @@ const VendorProductForm = ({ show, handleClose }) => {
       AlertHandler('Please enter all the required fields', 'error');
     } else {
       currentProductData !== null
-        ? updateProduct({ id: currentProductData.id, ...productData })
+        ? updateProduct({ _id: currentProductData._id, ...productData })
         : addProduct(productData);
 
       clearCurrentProduct();

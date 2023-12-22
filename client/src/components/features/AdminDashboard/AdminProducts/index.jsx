@@ -105,7 +105,7 @@ const AdminProductsDefault = () => {
                         style={{ fontFamily: 'inherit' }}
                         onClick={() => {
                           currentProduct({
-                            id: product.id,
+                            _id: product._id,
                             brand: product.brand,
                             category: product.category,
                             name: product.name,

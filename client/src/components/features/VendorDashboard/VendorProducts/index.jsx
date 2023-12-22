@@ -107,7 +107,7 @@ const VendorProductsDefault = () => {
                         style={{ fontFamily: 'inherit' }}
                         onClick={() => {
                           currentProduct({
-                            id: product._id,
+                            _id: product._id,
                             brand: product.brand,
                             category: product.category,
                             name: product.name,

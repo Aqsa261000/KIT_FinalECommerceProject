@@ -21,7 +21,7 @@ const reducerMethod = (state, action) => {
       return {
         ...state,
         products: state.products.map((data) => {
-          if (data._id.toString() === action.payload.id.toString()) {
+          if (data._id.toString() === action.payload._id.toString()) {
             return action.payload;
           }
           return data;
